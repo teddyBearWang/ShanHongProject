@@ -9,6 +9,7 @@
 #import "StationSelectController.h"
 #import "SiteObject.h"
 #import "SVProgressHUD.h"
+#import "SingleInstanceObject.h"
 #define Bar_Height 44
 
 @interface StationSelectController ()<UITableViewDataSource,UITableViewDelegate>
@@ -62,14 +63,12 @@
     myTableView.dataSource = self;
     [self.view addSubview:myTableView];
     
-    listData = @[@"开化",@"江山",@"上虞",@"舟山",@"鄞州",@"淳安"];
-    
     [SVProgressHUD show];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         if ([SiteObject fetchSite]) {
-            listData = [SiteObject requestDatas];
             [SVProgressHUD dismissWithSuccess:nil];
             dispatch_async(dispatch_get_main_queue(), ^{
+                listData = [SiteObject requestDatas];
                 //主界面更新UI
                 [myTableView reloadData];
             });
@@ -94,8 +93,13 @@
 
 - (void)comfirmAction:(UIButton *)btn
 {
-    [self.delegate selectStationAction:selectArea];
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    if (selectArea.length == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请选择一个站点" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+    }else{
+        [self.delegate selectStationAction:selectArea];
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }
 }
 
 #pragma mark - UITableVIewDataSource
@@ -110,7 +114,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
     }
-    cell.textLabel.text = listData[indexPath.row];
+    cell.textLabel.text = [listData[indexPath.row] objectForKey:@"ScityName"];
     return cell;
 }
 
@@ -126,7 +130,15 @@ static NSInteger _selectRow;
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     _selectRow = indexPath.row;
-    selectArea = listData[indexPath.row];
+    NSDictionary *dic = listData[indexPath.row];
+    selectArea = [dic objectForKey:@"ScityName"];
+    SingleInstanceObject *instance = [SingleInstanceObject defaultInstance];
+    instance.Scityid = [dic objectForKey:@"Scityid"];
+    instance.ScityName = [dic objectForKey:@"ScityName"];
+    instance.SproxyUrl = [dic objectForKey:@"SproxyUrl"];
+    instance.ScenterLng = [dic objectForKey:@"ScenterLng"];
+    instance.ScenterLat = [dic objectForKey:@"ScenterLat"];
+    instance.ScenterZoom = [dic objectForKey:@"ScenterZoom"];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

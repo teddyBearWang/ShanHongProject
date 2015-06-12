@@ -9,8 +9,9 @@
 #import "LoginViewController.h"
 #import "MenuViewController.h"
 #import "StationSelectController.h"
+#import "SingleInstanceObject.h"
 
-@interface LoginViewController ()<selectStationDelegate>
+@interface LoginViewController ()<selectDelegate>
 {
     UIButton *statusBtn;//站点
 }
@@ -29,6 +30,11 @@
     self.bar.translucent = NO;
     [self.bar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.bar.barTintColor = [UIColor blueColor];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)viewDidLoad {
@@ -57,8 +63,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 - (IBAction)loginAction:(id)sender
 {

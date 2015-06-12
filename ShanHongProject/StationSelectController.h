@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol selectStationDelegate <NSObject>
+@protocol selectDelegate <NSObject>
 
 - (void)selectStationAction:(NSString *)area;
 
 @end
 
-@interface StationSelectController : UIViewController
 
-@property (nonatomic, assign) id<selectStationDelegate>delegate;
+@interface StationSelectController : UIViewController
+@property (nonatomic, assign) id<selectDelegate>delegate;
 
 @end

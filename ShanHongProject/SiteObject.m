@@ -7,15 +7,16 @@
 //
 
 #import "SiteObject.h"
-#import "ASIFormDataRequest.h"
 #import "SingleInstanceObject.h"
+#import <AFNetworking.h>
 
 @implementation SiteObject
 
 + (BOOL)fetchSite
 {
-    __block BOOL ret = NO;
-    NSURL *url = [NSURL URLWithString:URL];
+     BOOL ret = NO;
+   // NSURL *url = [NSURL URLWithString:URL];
+    /*
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     [request setPostValue:@"GetSite" forKey:@"t"];
     request.timeOutSeconds = 15;
@@ -30,6 +31,18 @@
         
     }];
     [request startSynchronous];
+     */
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSDictionary *parameter = @{@"t":@"GetSite",
+                                @"returntype":@"json"};
+    AFHTTPRequestOperation *operation = [manager POST:URL parameters:parameter success:nil failure:nil];
+    [operation waitUntilFinished];
+    if (operation.responseData != nil) {
+        ret = YES;
+        datas = [NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableContainers error:nil];
+    }
+    
     return ret;
 }
 
