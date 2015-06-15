@@ -10,7 +10,6 @@
 
 @interface SingleInstanceObject : NSObject
 
-
 @property (nonatomic, strong) NSString *Scityid;//站点
 @property (nonatomic, strong) NSString *ScityName;//名称
 @property (nonatomic, strong) NSString *SproxyUrl;//服务地址

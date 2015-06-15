@@ -15,5 +15,6 @@
 
 #define BG_COLOR [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1.0f]
 
-#define URL @"http://115.236.2.245:38019/data.ashx?"
+#define Site_URL @"http://115.236.2.245:38019/data.ashx?"
+#define URL @"http://115.236.169.28/webserca/Data.ashx?"
 #endif

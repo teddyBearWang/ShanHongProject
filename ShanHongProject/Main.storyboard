@@ -322,12 +322,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="40" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="BjP-OT-xse">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="40" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="BjP-OT-xse">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BjP-OT-xse" firstAttribute="leading" secondItem="wAz-Ps-ZrJ" secondAttribute="leading" id="Clz-Ki-FSP"/>
+                            <constraint firstItem="BjP-OT-xse" firstAttribute="top" secondItem="wAz-Ps-ZrJ" secondAttribute="top" id="Xhy-S5-FVf"/>
+                            <constraint firstAttribute="trailing" secondItem="BjP-OT-xse" secondAttribute="trailing" id="rsS-Gv-cyN"/>
+                            <constraint firstAttribute="bottom" secondItem="BjP-OT-xse" secondAttribute="bottom" id="yAY-y2-TkV"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="雨情信息" id="d8k-fc-QSJ"/>
                     <connections>
@@ -336,7 +342,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3t0-q3-58g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-820" y="-556"/>
+            <point key="canvasLocation" x="-715" y="-560"/>
         </scene>
         <!--水情信息-->
         <scene sceneID="Zrx-D7-PIV">
@@ -349,13 +355,28 @@
                     <view key="view" contentMode="scaleToFill" id="wsp-sp-TzN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Y63-an-B2M">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Y63-an-B2M" firstAttribute="leading" secondItem="wsp-sp-TzN" secondAttribute="leading" id="6mV-CH-Tb2"/>
+                            <constraint firstAttribute="bottom" secondItem="Y63-an-B2M" secondAttribute="bottom" id="9gR-nD-gWg"/>
+                            <constraint firstItem="Y63-an-B2M" firstAttribute="top" secondItem="wsp-sp-TzN" secondAttribute="top" id="Mqk-5A-hkJ"/>
+                            <constraint firstAttribute="trailing" secondItem="Y63-an-B2M" secondAttribute="trailing" id="xzo-eo-u3d"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="水情信息" id="xwl-sw-Yf4"/>
+                    <connections>
+                        <outlet property="myTableView" destination="Y63-an-B2M" id="Cyh-fg-HJM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ah7-Xv-I44" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-393" y="-556"/>
+            <point key="canvasLocation" x="-298" y="-545"/>
         </scene>
     </scenes>
     <resources>

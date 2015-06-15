@@ -8,10 +8,16 @@
 
 #import "RainViewController.h"
 #import "RainCell.h"
+#import "RainObject.h"
+#import "UIView+RootView.h"
+#import "SVProgressHUD.h"
+#import "CustomHeaderView.h"
 
 @interface RainViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSArray *listData;
+    NSMutableArray *sourceDatas;//所有数据
+    BOOL ret;
 }
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 
@@ -19,18 +25,76 @@
 
 @implementation RainViewController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    //强制屏幕横屏
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+        SEL selector = NSSelectorFromString(@"setOrientation:");
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
+        [invocation setSelector:selector];
+        [invocation setTarget:[UIDevice currentDevice]];
+        int val = UIInterfaceOrientationPortrait;
+        [invocation setArgument:&val atIndex:2];
+        [invocation invoke];
+    }
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"实时雨情";
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
     self.myTableView.rowHeight = 44;
+    
+    UIButton *selct_btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    selct_btn.frame = (CGRect){0,0,20,20};
+    [selct_btn setBackgroundColor:[UIColor redColor]];
+    [selct_btn setCorners:5.0];
+    [selct_btn setBackgroundImage:[UIImage imageNamed:@"filter"] forState:UIControlStateNormal];
+    [selct_btn addTarget:self action:@selector(filterAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:selct_btn];
+    self.navigationItem.rightBarButtonItem = item;
+
+    [self refresh];
     
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - private
+- (void)refresh
+{
+    [SVProgressHUD show];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if ([RainObject fetch:@"GetYqInfo"]) {
+           dispatch_async(dispatch_get_main_queue(), ^{
+               [SVProgressHUD dismissWithSuccess:@"加载成功"];
+               ret = YES;
+               listData = [RainObject requestData];
+               sourceDatas = [NSMutableArray arrayWithArray:listData];
+               [self.myTableView reloadData];
+           });
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismissWithError:@"加载失败"];
+                ret = NO;
+            });
+        }
+    });
+}
+
+
+
+- (void)filterAction:(UIButton *)btn
+{
+    NSLog(@"筛选~");
 }
 
 #pragma mark  - UITableViewDataSource
@@ -41,12 +105,23 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifier = @"MyCell";
-    RainCell *cell = (RainCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil) {
-        cell = (RainCell *)[[[NSBundle mainBundle] loadNibNamed:@"Rain" owner:nil options:nil] lastObject];
+    if (ret) {
+        static NSString *identifier = @"MyCell";
+        RainCell *cell = (RainCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
+        if (cell == nil) {
+            cell = (RainCell *)[[[NSBundle mainBundle] loadNibNamed:@"Rain" owner:nil options:nil] lastObject];
+        }
+        NSDictionary *dic = listData[indexPath.row];
+        cell.stationName.text = [[dic objectForKey:@"stnm"] isEqualToString:@""] ? @"--": [dic objectForKey:@"stnm"];
+        cell.oneHour.text = [[dic objectForKey:@"rain1h"] isEqualToString:@""] ? @"--": [dic objectForKey:@"rain1h"];
+        cell.threeHour.text = [[dic objectForKey:@"rain3h"] isEqualToString:@""] ? @"--": [dic objectForKey:@"rain3h"];
+        cell.today.text = [[dic objectForKey:@"raintoday"] isEqualToString:@""] ? @"--": [dic objectForKey:@"raintoday"];
+        return cell;
+    }else{
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+        return cell;
     }
-    return cell;
+  
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

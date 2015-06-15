@@ -1,25 +1,27 @@
 //
-//  SiteObject.m
+//  RainObject.m
 //  ShanHongProject
 //
-//  Created by teddy on 15/6/9.
+//  Created by teddy on 15/6/15.
 //  Copyright (c) 2015年 teddy. All rights reserved.
 //
 
-#import "SiteObject.h"
-#import "SingleInstanceObject.h"
+#import "RainObject.h"
 #import <AFNetworking.h>
 
-@implementation SiteObject
+//http://115.236.169.28/webserca/Data.ashx?t=GetYqInfo&returntype=json
 
-+ (BOOL)fetchSite
+@implementation RainObject
+
++ (BOOL)fetch:(NSString *)type
 {
-     BOOL ret = NO;
+    BOOL ret = NO;
+    NSDictionary *parameter = @{@"t":type,@"returntype":@"json"};
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer.timeoutInterval = 10; //设置超时时间
+    
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    NSDictionary *parameter = @{@"t":@"GetSite",
-                                @"returntype":@"json"};
-    AFHTTPRequestOperation *operation = [manager POST:Site_URL parameters:parameter success:nil failure:nil];
+    AFHTTPRequestOperation *operation = [manager POST:URL parameters:parameter success:nil failure:nil];
     [operation waitUntilFinished];
     if (operation.responseData != nil) {
         ret = YES;
@@ -28,8 +30,9 @@
     return ret;
 }
 
+
 static NSArray *datas = nil;
-+ (NSArray *)requestDatas
++ (NSArray *)requestData
 {
     return datas;
 }
