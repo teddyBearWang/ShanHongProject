@@ -7,10 +7,10 @@
 //
 
 #import "RainObject.h"
-#import <AFNetworking.h>
 
 //http://115.236.169.28/webserca/Data.ashx?t=GetYqInfo&returntype=json
 
+static  AFHTTPRequestOperation *_operation = nil;
 @implementation RainObject
 
 + (BOOL)fetch:(NSString *)type
@@ -21,13 +21,19 @@
     manager.requestSerializer.timeoutInterval = 10; //设置超时时间
     
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    AFHTTPRequestOperation *operation = [manager POST:URL parameters:parameter success:nil failure:nil];
-    [operation waitUntilFinished];
-    if (operation.responseData != nil) {
+    _operation = [manager POST:URL parameters:parameter success:nil failure:nil];
+    [_operation waitUntilFinished];
+    if (_operation.responseData != nil) {
         ret = YES;
-        datas = [NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableContainers error:nil];
+        datas = [NSJSONSerialization JSONObjectWithData:_operation.responseData options:NSJSONReadingMutableContainers error:nil];
     }
     return ret;
+    
+}
+
+- (AFHTTPRequestOperation *)getOperation
+{
+    return _operation;
 }
 
 
@@ -35,6 +41,14 @@ static NSArray *datas = nil;
 + (NSArray *)requestData
 {
     return datas;
+}
+
+//取消网络请求
++ (void)cancelRequest
+{
+    if (_operation != nil) {
+        [_operation cancel];
+    }
 }
 
 @end

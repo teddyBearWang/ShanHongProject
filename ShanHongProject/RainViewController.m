@@ -60,12 +60,20 @@
     self.navigationItem.rightBarButtonItem = item;
 
     [self refresh];
-    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound) {
+        //用户点击了返回按钮
+        [RainObject cancelRequest];
+    }
 }
 
 #pragma mark - private

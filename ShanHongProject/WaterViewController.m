@@ -57,6 +57,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound) {
+        //用户点击返回,取消用户请求
+        [RainObject cancelRequest];
+    }
+}
+
 - (void)refresh:(NSString *)type
 {
     [SVProgressHUD showWithStatus:@"加载中.."];

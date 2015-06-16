@@ -29,7 +29,7 @@
 {
     self.bar.translucent = NO;
     [self.bar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    self.bar.barTintColor = [UIColor blueColor];
+    self.bar.barTintColor = [UIColor colorWithRed:4/255.0 green:17/255.0 blue:49/255.0 alpha:1];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -69,7 +69,7 @@
     UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     MenuViewController *menu = (MenuViewController *)[story instantiateViewControllerWithIdentifier:@"menu"];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:menu];
-    nav.navigationBar.barTintColor = [UIColor blueColor];
+    nav.navigationBar.barTintColor = [UIColor colorWithRed:4/255.0 green:17/255.0 blue:49/255.0 alpha:1];
     nav.navigationBar.tintColor = [UIColor whiteColor];//修改返回按钮的颜色
    // nav.interactivePopGestureRecognizer.enabled = NO; 禁止左滑返回手势
     //设置标题颜色

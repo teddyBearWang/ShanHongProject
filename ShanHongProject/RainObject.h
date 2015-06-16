@@ -7,11 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AFNetworking.h>
 
 @interface RainObject : NSObject
 
 + (BOOL)fetch:(NSString *)type;
 
 + (NSArray *)requestData;
+
++ (void)cancelRequest;
 
 @end
