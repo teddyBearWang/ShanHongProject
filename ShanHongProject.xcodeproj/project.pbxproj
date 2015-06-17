@@ -62,6 +62,18 @@
 		9F3D625C1B26CFE30012D7CF /* CustomHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D625B1B26CFE30012D7CF /* CustomHeaderView.m */; };
 		9F3D62621B26D8130012D7CF /* SiteObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D62611B26D8130012D7CF /* SiteObject.m */; };
 		9F3D62651B26DA220012D7CF /* SingleInstanceObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D62641B26DA220012D7CF /* SingleInstanceObject.m */; };
+		9F45467F1B31162E005FACCC /* UUBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4546741B31162E005FACCC /* UUBar.m */; };
+		9F4546801B31162E005FACCC /* UUBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4546761B31162E005FACCC /* UUBarChart.m */; };
+		9F4546811B31162E005FACCC /* UUChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4546781B31162E005FACCC /* UUChart.m */; };
+		9F4546821B31162E005FACCC /* UUChartLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F45467A1B31162E005FACCC /* UUChartLabel.m */; };
+		9F4546831B31162E005FACCC /* UUColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F45467C1B31162E005FACCC /* UUColor.m */; };
+		9F4546841B31162E005FACCC /* UULineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F45467E1B31162E005FACCC /* UULineChart.m */; };
+		9F4546871B311660005FACCC /* ChartObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4546861B311660005FACCC /* ChartObject.m */; };
+		9F45468C1B311B25005FACCC /* ChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F45468B1B311B25005FACCC /* ChartViewController.m */; };
+		9F45468F1B314649005FACCC /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F45468D1B314649005FACCC /* left.png */; };
+		9F4546901B314649005FACCC /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F45468E1B314649005FACCC /* right.png */; };
+		9F4546921B3146EE005FACCC /* filter.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F4546911B3146EE005FACCC /* filter.png */; };
+		9F4546A01B314B73005FACCC /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F45469F1B314B73005FACCC /* FilterViewController.m */; };
 		9F4EA33D1B2EB3390025FEE9 /* RainObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4EA33C1B2EB3390025FEE9 /* RainObject.m */; };
 		9F4EA3401B2EB7940025FEE9 /* UIView+RootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4EA33F1B2EB7940025FEE9 /* UIView+RootView.m */; };
 		9F4EA3491B2EBA800025FEE9 /* CustomDateActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4EA3471B2EBA800025FEE9 /* CustomDateActionSheet.m */; };
@@ -160,6 +172,27 @@
 		9F3D62611B26D8130012D7CF /* SiteObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiteObject.m; sourceTree = "<group>"; };
 		9F3D62631B26DA220012D7CF /* SingleInstanceObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleInstanceObject.h; sourceTree = "<group>"; };
 		9F3D62641B26DA220012D7CF /* SingleInstanceObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleInstanceObject.m; sourceTree = "<group>"; };
+		9F4546731B31162E005FACCC /* UUBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBar.h; sourceTree = "<group>"; };
+		9F4546741B31162E005FACCC /* UUBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUBar.m; sourceTree = "<group>"; };
+		9F4546751B31162E005FACCC /* UUBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBarChart.h; sourceTree = "<group>"; };
+		9F4546761B31162E005FACCC /* UUBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUBarChart.m; sourceTree = "<group>"; };
+		9F4546771B31162E005FACCC /* UUChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUChart.h; sourceTree = "<group>"; };
+		9F4546781B31162E005FACCC /* UUChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUChart.m; sourceTree = "<group>"; };
+		9F4546791B31162E005FACCC /* UUChartLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUChartLabel.h; sourceTree = "<group>"; };
+		9F45467A1B31162E005FACCC /* UUChartLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUChartLabel.m; sourceTree = "<group>"; };
+		9F45467B1B31162E005FACCC /* UUColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUColor.h; sourceTree = "<group>"; };
+		9F45467C1B31162E005FACCC /* UUColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUColor.m; sourceTree = "<group>"; };
+		9F45467D1B31162E005FACCC /* UULineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UULineChart.h; sourceTree = "<group>"; };
+		9F45467E1B31162E005FACCC /* UULineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UULineChart.m; sourceTree = "<group>"; };
+		9F4546851B311660005FACCC /* ChartObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartObject.h; sourceTree = "<group>"; };
+		9F4546861B311660005FACCC /* ChartObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartObject.m; sourceTree = "<group>"; };
+		9F45468A1B311B25005FACCC /* ChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartViewController.h; sourceTree = "<group>"; };
+		9F45468B1B311B25005FACCC /* ChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartViewController.m; sourceTree = "<group>"; };
+		9F45468D1B314649005FACCC /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
+		9F45468E1B314649005FACCC /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right.png; sourceTree = "<group>"; };
+		9F4546911B3146EE005FACCC /* filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filter.png; sourceTree = "<group>"; };
+		9F45469E1B314B73005FACCC /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
+		9F45469F1B314B73005FACCC /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
 		9F4EA33B1B2EB3390025FEE9 /* RainObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainObject.h; sourceTree = "<group>"; };
 		9F4EA33C1B2EB3390025FEE9 /* RainObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainObject.m; sourceTree = "<group>"; };
 		9F4EA33E1B2EB7940025FEE9 /* UIView+RootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RootView.h"; sourceTree = "<group>"; };
@@ -257,6 +290,7 @@
 				9F3D62641B26DA220012D7CF /* SingleInstanceObject.m */,
 				9F91590B1B2576EE00CFA0DB /* items */,
 				9F35AAA91B1FEDA400D9D329 /* Images.xcassets */,
+				9F4546721B3115E0005FACCC /* Chart */,
 				9F4EA3451B2EBA590025FEE9 /* Until */,
 				9F3D624F1B26CF6C0012D7CF /* customCell */,
 				9F3D624A1B26CF310012D7CF /* xib */,
@@ -308,6 +342,9 @@
 				9F3AE1401B30153A005EFC86 /* tq.jpg */,
 				9F4EA34B1B2EBA9E0025FEE9 /* bg_023@2x.png */,
 				9F4EA34C1B2EBA9E0025FEE9 /* btn_020@2x.png */,
+				9F45468D1B314649005FACCC /* left.png */,
+				9F45468E1B314649005FACCC /* right.png */,
+				9F4546911B3146EE005FACCC /* filter.png */,
 				9F4EA34D1B2EBA9E0025FEE9 /* btn_021@2x.png */,
 				9F35AAF91B201FE300D9D329 /* contact_click.png */,
 				9F35AAFA1B201FE300D9D329 /* contact.png */,
@@ -400,6 +437,8 @@
 		9F3D625F1B26D7C00012D7CF /* https */ = {
 			isa = PBXGroup;
 			children = (
+				9F4546851B311660005FACCC /* ChartObject.h */,
+				9F4546861B311660005FACCC /* ChartObject.m */,
 				9F3D62601B26D8130012D7CF /* SiteObject.h */,
 				9F3D62611B26D8130012D7CF /* SiteObject.m */,
 				9F4EA33B1B2EB3390025FEE9 /* RainObject.h */,
@@ -412,11 +451,41 @@
 			name = https;
 			sourceTree = "<group>";
 		};
+		9F4546721B3115E0005FACCC /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				9F4546731B31162E005FACCC /* UUBar.h */,
+				9F4546741B31162E005FACCC /* UUBar.m */,
+				9F4546751B31162E005FACCC /* UUBarChart.h */,
+				9F4546761B31162E005FACCC /* UUBarChart.m */,
+				9F4546771B31162E005FACCC /* UUChart.h */,
+				9F4546781B31162E005FACCC /* UUChart.m */,
+				9F4546791B31162E005FACCC /* UUChartLabel.h */,
+				9F45467A1B31162E005FACCC /* UUChartLabel.m */,
+				9F45467B1B31162E005FACCC /* UUColor.h */,
+				9F45467C1B31162E005FACCC /* UUColor.m */,
+				9F45467D1B31162E005FACCC /* UULineChart.h */,
+				9F45467E1B31162E005FACCC /* UULineChart.m */,
+			);
+			name = Chart;
+			sourceTree = "<group>";
+		};
+		9F4546891B311B0E005FACCC /* chartView */ = {
+			isa = PBXGroup;
+			children = (
+				9F45468A1B311B25005FACCC /* ChartViewController.h */,
+				9F45468B1B311B25005FACCC /* ChartViewController.m */,
+			);
+			name = chartView;
+			sourceTree = "<group>";
+		};
 		9F4EA3411B2EBA040025FEE9 /* Rain */ = {
 			isa = PBXGroup;
 			children = (
 				9F91590F1B25772700CFA0DB /* RainViewController.h */,
 				9F9159101B25772700CFA0DB /* RainViewController.m */,
+				9F45469E1B314B73005FACCC /* FilterViewController.h */,
+				9F45469F1B314B73005FACCC /* FilterViewController.m */,
 			);
 			name = Rain;
 			sourceTree = "<group>";
@@ -434,6 +503,7 @@
 		9F91590B1B2576EE00CFA0DB /* items */ = {
 			isa = PBXGroup;
 			children = (
+				9F4546891B311B0E005FACCC /* chartView */,
 				9F3AE12F1B2FF0EF005EFC86 /* Weather */,
 				9F3AE12B1B2FF0B5005EFC86 /* QiXiang  */,
 				9F4EA3411B2EBA040025FEE9 /* Rain */,
@@ -547,6 +617,8 @@
 				9F35AB1A1B201FE300D9D329 /* qixiang.png in Resources */,
 				9F3AE1411B30153A005EFC86 /* cloudy.png in Resources */,
 				9F3AE1431B30153A005EFC86 /* rainy.png in Resources */,
+				9F45468F1B314649005FACCC /* left.png in Resources */,
+				9F4546921B3146EE005FACCC /* filter.png in Resources */,
 				9F3AE14A1B30153A005EFC86 /* tq.jpg in Resources */,
 				9F35AB141B201FE300D9D329 /* gis.png in Resources */,
 				9F3D624C1B26CF3C0012D7CF /* RainHeaderView.xib in Resources */,
@@ -554,6 +626,7 @@
 				9F35AB211B201FE300D9D329 /* water_click.png in Resources */,
 				9F35AB101B201FE300D9D329 /* contact.png in Resources */,
 				9F35AB0F1B201FE300D9D329 /* contact_click.png in Resources */,
+				9F4546901B314649005FACCC /* right.png in Resources */,
 				9F3D62591B26CFCE0012D7CF /* CustomHeaderView.xib in Resources */,
 				9F35AB1E1B201FE300D9D329 /* setting.png in Resources */,
 				9F35AB201B201FE300D9D329 /* typooh.png in Resources */,
@@ -626,12 +699,21 @@
 				9F4EA33D1B2EB3390025FEE9 /* RainObject.m in Sources */,
 				9F9159141B25841000CFA0DB /* LoginViewController.m in Sources */,
 				9F3AE12E1B2FF0CC005EFC86 /* QiXiangViewController.m in Sources */,
+				9F4546811B31162E005FACCC /* UUChart.m in Sources */,
+				9F4546871B311660005FACCC /* ChartObject.m in Sources */,
+				9F4546831B31162E005FACCC /* UUColor.m in Sources */,
 				9F9159111B25772700CFA0DB /* RainViewController.m in Sources */,
+				9F45467F1B31162E005FACCC /* UUBar.m in Sources */,
+				9F4546821B31162E005FACCC /* UUChartLabel.m in Sources */,
+				9F4546841B31162E005FACCC /* UULineChart.m in Sources */,
 				9F3AE1271B2FEE04005EFC86 /* WeatherObject.m in Sources */,
 				9F3D62491B26B6390012D7CF /* StationSelectController.m in Sources */,
 				9F4EA3491B2EBA800025FEE9 /* CustomDateActionSheet.m in Sources */,
+				9F4546801B31162E005FACCC /* UUBarChart.m in Sources */,
 				9F91590E1B2576FF00CFA0DB /* WaterViewController.m in Sources */,
 				9F3AE1321B2FF100005EFC86 /* WeatherViewController.m in Sources */,
+				9F45468C1B311B25005FACCC /* ChartViewController.m in Sources */,
+				9F4546A01B314B73005FACCC /* FilterViewController.m in Sources */,
 				9F3AE1351B2FF3C3005EFC86 /* QxDetailController.m in Sources */,
 				9F35AA9F1B1FEDA400D9D329 /* main.m in Sources */,
 				9F3CE9E91B27C6F60068EBA7 /* SVProgressHUD.m in Sources */,

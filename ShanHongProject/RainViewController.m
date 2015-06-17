@@ -12,6 +12,8 @@
 #import "UIView+RootView.h"
 #import "SVProgressHUD.h"
 #import "CustomHeaderView.h"
+#import "ChartViewController.h"
+#import "FilterViewController.h"
 
 @interface RainViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -51,7 +53,6 @@
     
     UIButton *selct_btn = [UIButton buttonWithType:UIButtonTypeCustom];
     selct_btn.frame = (CGRect){0,0,20,20};
-    [selct_btn setBackgroundColor:[UIColor redColor]];
     [selct_btn setCorners:5.0];
     [selct_btn setBackgroundImage:[UIImage imageNamed:@"filter"] forState:UIControlStateNormal];
     [selct_btn addTarget:self action:@selector(filterAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -102,7 +103,8 @@
 
 - (void)filterAction:(UIButton *)btn
 {
-    NSLog(@"筛选~");
+    FilterViewController *filter = [[FilterViewController alloc] init];
+    [self.navigationController pushViewController:filter animated:YES];
 }
 
 #pragma mark  - UITableViewDataSource
@@ -119,6 +121,7 @@
         if (cell == nil) {
             cell = (RainCell *)[[[NSBundle mainBundle] loadNibNamed:@"Rain" owner:nil options:nil] lastObject];
         }
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         NSDictionary *dic = listData[indexPath.row];
         cell.stationName.text = [[dic objectForKey:@"stnm"] isEqualToString:@""] ? @"--": [dic objectForKey:@"stnm"];
         cell.oneHour.text = [[dic objectForKey:@"rain1h"] isEqualToString:@""] ? @"--": [dic objectForKey:@"rain1h"];
@@ -137,6 +140,18 @@
     UIView *headView = (UIView *)[[[NSBundle mainBundle] loadNibNamed:@"RainHeaderView" owner:self options:nil] lastObject];
     headView.backgroundColor = BG_COLOR;
     return headView;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *dic = listData[indexPath.row];
+    ChartViewController *chart = [[ChartViewController alloc] init];
+    chart.title_name = dic[@"stnm"];
+    chart.stcd = dic[@"stcd"];
+    chart.requestType = @"GetStDayLjYl";
+    chart.chartType = 2; //表示柱状图
+    [self.navigationController pushViewController:chart animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

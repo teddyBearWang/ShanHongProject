@@ -11,6 +11,7 @@
 #import "WaterCell.h"
 #import "RainObject.h"
 #import "CustomHeaderView.h"
+#import "ChartViewController.h"
 
 @interface WaterViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -42,7 +43,6 @@
     [super viewDidLoad];
     self.title = @"实时水情";
     
-
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
     self.myTableView.rowHeight = 44;
@@ -118,6 +118,7 @@
 
 }
 
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     CustomHeaderView *view = [[CustomHeaderView alloc] initWithFirstLabel:@"测站" withSecond:@"最新(m)" withThree:@"超警(m)"];
@@ -129,6 +130,19 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 40;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *dic = listData[indexPath.row];
+    ChartViewController *chart = [[ChartViewController alloc] init];
+    chart.title_name = dic[@"stnm"];
+    chart.stcd = dic[@"stcd"];
+    chart.requestType = @"GetStDaySW";
+    chart.chartType = 2; //表示柱状图
+    [self.navigationController pushViewController:chart animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end
