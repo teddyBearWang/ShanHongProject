@@ -61,17 +61,13 @@
     }
 
     float level = (_yValueMax-_yValueMin) /4.0;
-    CGFloat chartCavanHeight = self.frame.size.height - UULabelHeight*3;
-    CGFloat levelHeight = chartCavanHeight /4.0;
+    CGFloat chartCavanHeight = self.frame.size.height - UULabelHeight*2;
+    CGFloat levelHeight = (chartCavanHeight ) /4.0;
 
     for (int i=0; i<5; i++) {
-       // UUChartLabel * label = [[UUChartLabel alloc] initWithFrame:CGRectMake(0.0,chartCavanHeight-i*levelHeight+5, UUYLabelwidth, UULabelHeight)];
          UUChartLabel * label = [[UUChartLabel alloc] initWithFrame:CGRectMake(0.0,chartCavanHeight-i*levelHeight+5, UUYLabelwidth, UULabelHeight)];
-        NSLog(@"%.2lf",chartCavanHeight-i*levelHeight);
-		//label.text = [NSString stringWithFormat:@"%.2lf",(int)(level * i+_yValueMin)];
         label.text = [NSString stringWithFormat:@"%.2lf",(level * i+_yValueMin)];
 
-        NSLog(@"y坐标的值%.2lf",(level * i+_yValueMin));
 		[self addSubview:label];
     }
     if ([super respondsToSelector:@selector(setMarkRange:)]) {
@@ -194,7 +190,7 @@
         UIBezierPath *progressline = [UIBezierPath bezierPath];
         CGFloat firstValue = [[childAry objectAtIndex:0] floatValue];
         CGFloat xPosition = (UUYLabelwidth + _xLabelWidth/2.0);
-        CGFloat chartCavanHeight = self.frame.size.height - UULabelHeight*3;
+        CGFloat chartCavanHeight = self.frame.size.height - UULabelHeight*2;
        
         
         float grade = ((float)firstValue-_yValueMin) / ((float)_yValueMax-_yValueMin);
@@ -241,7 +237,6 @@
                         isShow:isShowMaxAndMinPoint
                          value:[valueString floatValue]];
                 
-//                [progressline stroke];
             }
             index += 1;
         }
@@ -293,6 +288,7 @@
      view.backgroundColor = [_colors objectAtIndex:index]?[_colors objectAtIndex:index]:UUGreen;
     float y = point.y-UULabelHeight*2;
     float x = point.x-UUTagLabelwidth/2.0;
+    
     //判断是否足够位置显示数值
     if (y <= UULabelHeight) {
         //将这个点向右移动

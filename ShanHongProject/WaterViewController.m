@@ -140,7 +140,7 @@
     chart.title_name = dic[@"stnm"];
     chart.stcd = dic[@"stcd"];
     chart.requestType = @"GetStDaySW";
-    chart.chartType = 2; //表示柱状图
+    chart.chartType = 1; //表示柱状图
     [self.navigationController pushViewController:chart animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

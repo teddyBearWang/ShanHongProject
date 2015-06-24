@@ -11,6 +11,7 @@
 #import "WeatherObject.h"
 
 @interface WeatherViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *currentTemputer;
 @property (weak, nonatomic) IBOutlet UILabel *currentTime;
 @property (weak, nonatomic) IBOutlet UIImageView *currentImage;
@@ -30,6 +31,14 @@
 @end
 
 @implementation WeatherViewController
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound) {
+        [WeatherObject cancelRequest];
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

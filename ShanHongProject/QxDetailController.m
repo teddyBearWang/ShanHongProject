@@ -32,11 +32,6 @@
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -70,6 +65,7 @@
     [self.view addSubview:scrollView];
     
     [self getWebData];
+    
 }
 
 - (void)getWebData

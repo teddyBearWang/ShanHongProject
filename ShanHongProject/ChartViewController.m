@@ -56,8 +56,8 @@
         chartView = nil;
     }
     
-    chartView = [[UUChart alloc]initwithUUChartDataFrame:CGRectMake(10, 40,
-                                                                    screen_heiht, 240)
+    chartView = [[UUChart alloc]initwithUUChartDataFrame:CGRectMake(10, 20,
+                                                                    screen_heiht, 260)
                                               withSource:self
                                                withStyle:self.chartType == 1?UUChartLineStyle: UUChartBarStyle];
     [chartView showInView:self.view];
@@ -85,11 +85,12 @@
 - (void)getChartDataAction:(NSDate *)date
 {
     NSString *date_str = [self requestDate:date];
-    /*
+    
     NSDate *weekAgo = [self getWeekdaysAgo:date];
     NSString *weekAgo_str = [self requestDate:weekAgo];
-     */
-    NSString *results = [NSString stringWithFormat:@"%@$%@$%@",self.stcd,date_str];
+     
+    
+    NSString *results = [NSString stringWithFormat:@"%@$%@$%@",self.stcd,weekAgo_str,date_str];
     //表示折线图上单条线
     if ([ChartObject fetcChartDataWithType:self.requestType results:results]) {
         x_Labels = [NSArray arrayWithArray:[ChartObject requestXLables]];
@@ -170,6 +171,7 @@
 
     NSDate *date = [self requestDateFromString:_showTimeLabel.text];
     [self getChartDataAction:date];
+    [self initChartView];
 }
 
 #pragma mark - UUChartDataSource

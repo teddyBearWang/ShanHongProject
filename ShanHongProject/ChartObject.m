@@ -24,6 +24,7 @@
     __block BOOL ret = NO;
     
 
+    //http://115.236.169.28/webserca/Data.ashx?t=GetStDayLjYl&results=3407$2015-06-10$2015-06-17&returntype=json
     NSDictionary *parameters = @{@"t":type,
                                  @"results":result,
                                  @"returntype":@"json"};
@@ -37,6 +38,7 @@
     
     if (operation.responseData != nil) {
         ret = YES;
+        NSLog(@"%@",operation.responseString);
         NSArray *arr = [NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableLeaves error:nil];
         
         if (x_Labels == nil) {
