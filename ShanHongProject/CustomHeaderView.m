@@ -18,6 +18,7 @@
         self.firstLabel.text = first;
         self.secondLabel.text = second;
         self.thirdLabel.text = three;
+        self.backgroundColor = BG_COLOR;
     }
     
     return self;

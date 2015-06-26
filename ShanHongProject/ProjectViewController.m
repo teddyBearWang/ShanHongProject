@@ -27,7 +27,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.rowHeight = 44;
-    listData = @[@"水库",@"水闸",@"堤防",@"堰坝",@"水电站",@"山塘"];
+    listData = @[@"水库",@"闸门",@"堤防",@"水电站",@"山塘"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,14 +50,38 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ProjectListController *list = [[ProjectListController alloc] init];
-    [self.navigationController pushViewController:list animated:YES];
-    
-//    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
-//    backItem.title = @"返回";
-//    self.navigationItem.backBarButtonItem = backItem;
-    [tableView deselectRowAtIndexPath:indexPath
-                             animated:YES];
+    //listData = @[@"水库",@"水闸",@"堤防",@"堰坝",@"水电站",@"山塘"];
+    NSString *type = @"";
+    NSString *titleName = @"";
+    switch (indexPath.row) {
+        case 0:
+            type = @"sk";
+            titleName = @"水库信息";
+            break;
+        case 1:
+            type = @"sz";
+            titleName = @"闸门信息";
+            break;
+        case 2:
+            type = @"df";
+            titleName = @"堤防信息";
+            break;
+        case 3:
+            type = @"sdz";
+            titleName = @"水电站信息";
+            break;
+        case 4:
+            type = @"st";
+            titleName = @"山塘信息";
+            break;
+        default:
+            break;
+    }
+    ProjectListController *listCtrl = [[ProjectListController alloc] init];
+    listCtrl.projectType = type;
+    listCtrl.title_name = titleName;
+    [self.navigationController pushViewController:listCtrl animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

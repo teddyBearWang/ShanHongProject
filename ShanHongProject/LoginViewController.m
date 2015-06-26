@@ -19,6 +19,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *userName;
 @property (weak, nonatomic) IBOutlet UITextField *psw;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *user_image;
+
+@property (weak, nonatomic) IBOutlet UIImageView *psw_image;
+@property (weak, nonatomic) IBOutlet UIView *user_bg_view;
+@property (weak, nonatomic) IBOutlet UIView *psw_bg_view;
+
 - (IBAction)loginAction:(id)sender;
 
 @end
@@ -56,6 +62,18 @@
     nabigationItem.title = @"登陆";
     nabigationItem.rightBarButtonItem = item;
     [self.bar pushNavigationItem:nabigationItem animated:YES];
+    
+    self.user_bg_view.layer.cornerRadius = 5.0;
+    self.user_bg_view.layer.masksToBounds = YES;
+    self.user_image.image = [UIImage imageNamed:@"user"];
+    
+    self.psw_bg_view.layer.cornerRadius = 5.0;
+    self.psw_bg_view.layer.masksToBounds = YES;
+    self.psw.secureTextEntry = YES;
+    self.psw_image.image = [UIImage imageNamed:@"password"];
+    
+    self.loginBtn.layer.cornerRadius = 5.0f;
+    self.loginBtn.backgroundColor = [UIColor colorWithRed:56/255.0 green:131/255.0 blue:238/255.0 alpha:1.0];
 
 }
 

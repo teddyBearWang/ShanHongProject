@@ -8,6 +8,7 @@
 //
 
 #import "ProjectDetailController.h"
+#import "ProjectObject.h"
 
 @interface ProjectDetailController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -19,6 +20,14 @@
 
 @implementation ProjectDetailController
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound) {
+        [ProjectObject cancelRequest];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -27,11 +36,30 @@
     _table.delegate = self;
     _table.dataSource = self;
     [self.view addSubview:_table];
+    
+    self.title = [self.Object_dic objectForKey:@"RSNM"];
+    
+    [self fetch];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)fetch
+{
+    [SVProgressHUD show];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        if (<#condition#>) {
+//            <#statements#>
+//        }
+    });
+}
+
+- (void)updateUI
+{
+    
 }
 
 #pragma mark - UITableViewDataSource

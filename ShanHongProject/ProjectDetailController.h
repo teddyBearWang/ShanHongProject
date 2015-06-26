@@ -10,4 +10,6 @@
 
 @interface ProjectDetailController : UIViewController
 
+@property (nonatomic, strong) NSDictionary *Object_dic;
+
 @end

@@ -10,4 +10,8 @@
 
 @interface ProjectListController : UIViewController
 
+@property (nonatomic, strong) NSString *projectType;
+@property (nonatomic, strong) NSString *title_name;
+
+
 @end
