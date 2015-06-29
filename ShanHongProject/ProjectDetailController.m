@@ -9,6 +9,7 @@
 
 #import "ProjectDetailController.h"
 #import "ProjectObject.h"
+#import "QualityCell.h"
 
 @interface ProjectDetailController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -40,6 +41,8 @@
     self.title = [self.Object_dic objectForKey:@"RSNM"];
     
     [self fetch];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,16 +53,25 @@
 - (void)fetch
 {
     [SVProgressHUD show];
+    NSString *results = [NSString stringWithFormat:@"%@$%@",[self.Object_dic objectForKey:@"MyType"],[self.Object_dic objectForKey:@"RSCD"]];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//        if (<#condition#>) {
-//            <#statements#>
-//        }
+        if ([ProjectObject fetch:@"GetProjectsView" withProject:results]) {
+            [self updateUI];
+        }else{
+          dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismissWithError:@"加载失败"];
+          });
+        }
     });
 }
 
 - (void)updateUI
 {
-    
+    [SVProgressHUD dismissWithSuccess:nil];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        listData = (NSMutableArray *)[ProjectObject requestData];
+        [_table reloadData];
+    });
 }
 
 #pragma mark - UITableViewDataSource
@@ -71,12 +83,31 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"myCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    QualityCell *cell = (QualityCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[QualityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    
+    NSDictionary *dic = listData[indexPath.row];
+    [cell setKeyLabelText:[dic objectForKey:@"type"]];
+    cell.valueLabel.text = [[dic objectForKey:@"value"] isEqual:@""] ? @"--" : [dic objectForKey:@"value"];
     return cell;
+}
+
+//设置row的高度
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    QualityCell *cell  = (QualityCell *)[self tableView:_table cellForRowAtIndexPath:indexPath];
+    NSLog(@"cell的高度为;%lf",cell.frame.size.height);
+    if (cell.frame.size.height <= 44) {
+        return 44;
+    }else{
+        return cell.frame.size.height;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

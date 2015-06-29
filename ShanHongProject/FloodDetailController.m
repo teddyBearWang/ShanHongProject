@@ -9,10 +9,10 @@
 #import "FloodDetailController.h"
 
 @interface FloodDetailController ()<UITableViewDataSource,UITableViewDelegate>
-{
-    UITableView *_table;
-    NSArray *listData;
-}
+//{
+//    UITableView *_table;
+//    NSArray *listData;
+//}
 
 @end
 
@@ -29,13 +29,13 @@
 }
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return listData.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return nil;
-}
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    return listData.count;
+//}
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return nil;
+//}
 @end

@@ -9,6 +9,8 @@
 
 #import "ProjectViewController.h"
 #import "ProjectListController.h"
+#import "FilterViewController.h"
+#import "ProjectObject.h"
 
 @interface ProjectViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -28,6 +30,9 @@
     self.tableView.dataSource = self;
     self.tableView.rowHeight = 44;
     listData = @[@"水库",@"闸门",@"堤防",@"水电站",@"山塘"];
+    
+    UIBarButtonItem *filter = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(filterAction:)];
+    self.navigationItem.rightBarButtonItem = filter;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,6 +40,28 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)filterAction:(id)sender
+{
+    [SVProgressHUD show];
+    __block NSArray *filterDatas = nil;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if ([ProjectObject fetchFilterData]) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismissWithSuccess:nil];
+                filterDatas = [ProjectObject requestData];
+                FilterViewController *filter = [[FilterViewController alloc] init];
+                filter.data = filterDatas;//传递数据
+                filter.filterType =  ProjectFilter;
+                [self.navigationController pushViewController:filter animated:YES];
+            });
+        }else{
+            filterDatas = [NSArray array];
+        }
+    });
+    
+}
+
+#pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return listData.count;

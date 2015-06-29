@@ -10,9 +10,13 @@
 
 @interface ProjectObject : NSObject
 
+//请求工情服务
 + (BOOL)fetch:(NSString *)type withProject:(NSString *)project;
 
 + (NSArray *)requestData;
 
 + (void)cancelRequest;
+
+//请求筛选服务
++ (BOOL)fetchFilterData;
 @end

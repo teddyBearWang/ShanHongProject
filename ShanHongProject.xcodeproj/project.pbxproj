@@ -141,6 +141,8 @@
 		9F91590E1B2576FF00CFA0DB /* WaterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F91590D1B2576FF00CFA0DB /* WaterViewController.m */; };
 		9F9159111B25772700CFA0DB /* RainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9159101B25772700CFA0DB /* RainViewController.m */; };
 		9F9159141B25841000CFA0DB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9159131B25841000CFA0DB /* LoginViewController.m */; };
+		9FE4978E1B40D75C00E97B7C /* QualityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4978D1B40D75C00E97B7C /* QualityCell.m */; };
+		9FE497921B4120F400E97B7C /* FloodObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE497911B4120F400E97B7C /* FloodObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -329,6 +331,10 @@
 		9F9159101B25772700CFA0DB /* RainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainViewController.m; sourceTree = "<group>"; };
 		9F9159121B25841000CFA0DB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		9F9159131B25841000CFA0DB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		9FE4978C1B40D75000E97B7C /* QualityCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QualityCell.h; sourceTree = "<group>"; };
+		9FE4978D1B40D75C00E97B7C /* QualityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QualityCell.m; sourceTree = "<group>"; };
+		9FE497901B4120F400E97B7C /* FloodObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloodObject.h; sourceTree = "<group>"; };
+		9FE497911B4120F400E97B7C /* FloodObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloodObject.m; sourceTree = "<group>"; };
 		F43998246FF8AB027E1BE5BF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -559,6 +565,8 @@
 		9F3D624F1B26CF6C0012D7CF /* customCell */ = {
 			isa = PBXGroup;
 			children = (
+				9FE4978C1B40D75000E97B7C /* QualityCell.h */,
+				9FE4978D1B40D75C00E97B7C /* QualityCell.m */,
 				9F3D625A1B26CFE30012D7CF /* CustomHeaderView.h */,
 				9F3D625B1B26CFE30012D7CF /* CustomHeaderView.m */,
 				9F3D62551B26CFBB0012D7CF /* WaterCell.h */,
@@ -584,6 +592,8 @@
 				9F3AE1291B2FEEE4005EFC86 /* QiXiangObject.m */,
 				9F42942A1B3D27500071F461 /* ProjectObject.h */,
 				9F42942B1B3D27500071F461 /* ProjectObject.m */,
+				9FE497901B4120F400E97B7C /* FloodObject.h */,
+				9FE497911B4120F400E97B7C /* FloodObject.m */,
 			);
 			name = https;
 			sourceTree = "<group>";
@@ -962,6 +972,7 @@
 				9F3722671B39295A00E468AF /* ProjectListController.m in Sources */,
 				9F4EA33D1B2EB3390025FEE9 /* RainObject.m in Sources */,
 				9F9159141B25841000CFA0DB /* LoginViewController.m in Sources */,
+				9FE497921B4120F400E97B7C /* FloodObject.m in Sources */,
 				9F3AE12E1B2FF0CC005EFC86 /* QiXiangViewController.m in Sources */,
 				9F4546811B31162E005FACCC /* UUChart.m in Sources */,
 				9F4546871B311660005FACCC /* ChartObject.m in Sources */,
@@ -989,6 +1000,7 @@
 				9F4546A71B317D0A005FACCC /* FloodDetailController.m in Sources */,
 				9F3D62621B26D8130012D7CF /* SiteObject.m in Sources */,
 				9F3D62521B26CF7E0012D7CF /* RainCell.m in Sources */,
+				9FE4978E1B40D75C00E97B7C /* QualityCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

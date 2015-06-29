@@ -10,9 +10,14 @@
 
 @interface FilterViewController : UITableViewController
 {
-    NSArray *data;
+    NSArray *_data;
     NSArray *filterData;
     UISearchDisplayController *searchDisplayController;
 }
+
+@property (nonatomic, strong)NSArray *data;
+
+@property (nonatomic, assign) FILTERTYPE filterType;
+
 
 @end

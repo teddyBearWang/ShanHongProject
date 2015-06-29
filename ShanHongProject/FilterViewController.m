@@ -7,18 +7,21 @@
 //
 
 #import "FilterViewController.h"
+#import "ProjectDetailController.h"
 
-@interface FilterViewController ()
+@interface FilterViewController ()<UISearchBarDelegate>
 
 @end
 
 @implementation FilterViewController
+@synthesize data = _data;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title = @"工情搜索";
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:(CGRect){0,0,self.view.frame.size.width,44}];
     searchBar.placeholder = @"搜索";
+    searchBar.delegate = self;
     
     //添加searchBar到headerView上面
     self.tableView.tableHeaderView = searchBar;
@@ -41,11 +44,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView == self.tableView) {
-        return data.count;
+        return _data.count;
     }else{
-        //谓词搜索
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self contains [cd] %@",searchDisplayController.searchBar.text];
-        filterData = [[NSArray alloc] initWithArray:[data filteredArrayUsingPredicate:predicate]];
         return filterData.count;
     }
 }
@@ -58,65 +58,87 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     if (tableView == self.tableView) {
-        cell.textLabel.text = data[indexPath.row];
+        cell.textLabel.text = [_data[indexPath.row] objectForKey:@"RSNM"];
     }else{
-        cell.textLabel.text = filterData[indexPath.row];
+        cell.textLabel.text = [filterData[indexPath.row] objectForKey:@"RSNM"];
     }
     return cell;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView == self.tableView) {
+        //筛选前的数据，数据源为_data;
+    }else{
+       //筛选后的数据，数据源为 filterData;
+        switch (self.filterType) {
+            case 0:
+            {
+                //表示工情筛选
+                ProjectDetailController *detail = [[ProjectDetailController alloc] init];
+                detail.Object_dic = [filterData objectAtIndex:indexPath.row];
+                [self.navigationController pushViewController:detail animated:YES];
+            }
+                break;
+            case 1:
+                
+                break;
+            default:
+                break;
+        }
+    }
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] init];
+    item.title = @"返回";
+    self.navigationItem.backBarButtonItem = item;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
+#pragma mark -UISearchBarDelegate
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
+{
     return YES;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+// called when text ends editing，当searchBar释放第一响应者的时候开始搜索
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+    NSLog(@"结束了才开始搜索");
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar
+{
     return YES;
 }
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    //谓词搜索
+    /**< 模糊查找*/
+   // NSPredicate *predicateString = [NSPredicate predicateWithFormat:@"%K contains[cd] %@", keyName, searchText];
+    NSPredicate *predicate;
+    if ([self isAllNumber:searchDisplayController.searchBar.text]) {
+        //输入的是编号
+        predicate = [NSPredicate predicateWithFormat:@"%K contains[cd] %@",@"RSCD",searchText];
+    }else{
+        predicate = [NSPredicate predicateWithFormat:@"%K contains[cd] %@",@"MySearchName",searchDisplayController.searchBar.text];
+    }
+   
+//    NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"%K contains[cd] %@",@"MySearchName",searchDisplayController.searchBar.text];
+//    NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"%K contains [] %@",@"MyType",searchDisplayController.searchBar.text];
+//     NSPredicate *predicate3 = [NSPredicate predicateWithFormat:@"%K contains [] %@",@"rscd",searchDisplayController.searchBar.text];
+    filterData = [[NSArray alloc] initWithArray:[_data filteredArrayUsingPredicate:predicate]];
+    [self.tableView reloadData];
 }
-*/
+
+//判断是否为一个数字字符串
+- (BOOL)isAllNumber:(NSString *)text
+{
+    unichar c;
+    for (int i=0; i<text.length; i++) {
+        c = [text characterAtIndex:i];
+        if (!isdigit(c)) {
+            return NO;
+        }
+    }
+    return YES;
+}
 
 @end

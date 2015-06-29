@@ -19,4 +19,10 @@
 
 #define Site_URL @"http://115.236.2.245:38019/data.ashx?"
 #define URL @"http://115.236.169.28/webserca/Data.ashx?"
+
+//定义筛选类型的枚举
+typedef enum {
+    ProjectFilter = 0,
+    
+}FILTERTYPE;
 #endif
