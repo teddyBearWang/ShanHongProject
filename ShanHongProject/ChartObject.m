@@ -24,7 +24,7 @@
     __block BOOL ret = NO;
     
 
-    //http://115.236.169.28/webserca/Data.ashx?t=GetStDayLjYl&results=3407$2015-06-10$2015-06-17&returntype=json
+    //http://115.236.169.28/webserca/Data.ashx?t=GetStDayLjYl&results=2172$2015-06-23$2015-06-30&returntype=json
     NSDictionary *parameters = @{@"t":type,
                                  @"results":result,
                                  @"returntype":@"json"};

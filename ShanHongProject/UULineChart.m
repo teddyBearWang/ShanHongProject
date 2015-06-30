@@ -208,7 +208,6 @@
                  index:i
                 isShow:isShowMaxAndMinPoint
                  value:firstValue];
-        NSLog(@"第一点的竖坐标:%.2lf",chartCavanHeight - grade * chartCavanHeight+UULabelHeight);
         
         [progressline moveToPoint:CGPointMake(xPosition, chartCavanHeight - grade * chartCavanHeight+UULabelHeight)];
         [progressline setLineWidth:2.0];
@@ -222,7 +221,6 @@
                 
                 CGPoint point = CGPointMake(xPosition+index*_xLabelWidth, chartCavanHeight - grade * chartCavanHeight+UULabelHeight);
                 [progressline addLineToPoint:point];
-                NSLog(@"点的竖坐标:%.2lf",chartCavanHeight - grade * chartCavanHeight+UULabelHeight);
                 BOOL isShowMaxAndMinPoint = YES;
                 if (self.ShowMaxMinArray) {
                     if ([self.ShowMaxMinArray[i] intValue]>0) {
@@ -261,10 +259,10 @@
 
 - (void)addPoint:(CGPoint)point index:(NSInteger)index isShow:(BOOL)isHollow value:(CGFloat)value
 {
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(5, 5, 8, 8)];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(2, 2, 6, 6)];
     view.center = point;
     view.layer.masksToBounds = YES;
-    view.layer.cornerRadius = 4;
+    view.layer.cornerRadius = 3;
     view.layer.borderWidth = 2;
     view.layer.borderColor = [[_colors objectAtIndex:index] CGColor]?[[_colors objectAtIndex:index] CGColor]:UUGreen.CGColor;
     
@@ -285,6 +283,7 @@
     
     
      //显示点得数值
+    /*
      view.backgroundColor = [_colors objectAtIndex:index]?[_colors objectAtIndex:index]:UUGreen;
     float y = point.y-UULabelHeight*2;
     float x = point.x-UUTagLabelwidth/2.0;
@@ -301,7 +300,7 @@
      label.textColor = view.backgroundColor;
      label.text = [NSString stringWithFormat:@"%.1lf",value];
      [self addSubview:label];
-    
+    */
     
     [self addSubview:view];
 }

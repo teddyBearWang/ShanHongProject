@@ -28,7 +28,7 @@
     UINavigationBar *bar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, Bar_Height)];
     bar.translucent = NO;
     [bar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    bar.barTintColor = [UIColor blueColor];
+    bar.barTintColor = [UIColor colorWithRed:4/255.0 green:17/255.0 blue:49/255.0 alpha:1];
     [self.view addSubview:bar];
     
     UINavigationItem *navigationItem = [[UINavigationItem alloc] init];
@@ -58,7 +58,7 @@
     
     [self initNavBar];
     
-    myTableView = [[UITableView alloc] initWithFrame:(CGRect){0,Bar_Height,self.view.frame.size.width,self.view.frame.size.height - Bar_Height} style:UITableViewStyleGrouped];
+    myTableView = [[UITableView alloc] initWithFrame:(CGRect){0,Bar_Height,self.view.frame.size.width,self.view.frame.size.height - Bar_Height} style:UITableViewStylePlain];
     myTableView.delegate = self;
     myTableView.dataSource = self;
     [self.view addSubview:myTableView];

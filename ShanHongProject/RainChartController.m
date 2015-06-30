@@ -1,45 +1,38 @@
 //
-//  ChartViewController.m
-//  ZDWater2
-//
-//  Created by teddy on 15/6/3.
+//  RainChartController.m
+//  ShanHongProject
+//      ########水位折线图#############
+//  Created by teddy on 15/6/30.
 //  Copyright (c) 2015年 teddy. All rights reserved.
 //
 
-#import "ChartViewController.h"
+#import "RainChartController.h"
 #import "UUChart.h"
 #import "ChartObject.h"
 #import "SVProgressHUD.h"
 
-@interface ChartViewController ()<UUChartDataSource>
+@interface RainChartController ()<UUChartDataSource>
 {
     UUChart *chartView;
     NSArray *x_Labels;
     NSArray *y_Values;
     UILabel *_showTimeLabel;// 显示时间label
-    int screen_heiht; //屏幕高度
+    int chart_heiht; //屏幕高度
+    int chart_width; //高度
 }
+
 
 @end
 
-@implementation ChartViewController
+@implementation RainChartController
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    //强制屏幕横屏
-    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
-        SEL selector = NSSelectorFromString(@"setOrientation:");
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
-        [invocation setSelector:selector];
-        [invocation setTarget:[UIDevice currentDevice]];
-        int val = UIInterfaceOrientationLandscapeRight;
-        [invocation setArgument:&val atIndex:2];
-        [invocation invoke];
-    }
-    
     //保存下屏幕竖着的时候的高度
-    screen_heiht = self.view.frame.size.height;
+    chart_heiht = ([[UIScreen mainScreen] bounds].size.height-40)/2;
+    chart_width = [[UIScreen mainScreen] bounds].size.width - 10;
+    NSLog(@"图标高度:%d",chart_heiht);
     if (y_Values.count == 0 || x_Labels.count == 0) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前没有可以显示的图表数据" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alert show];
@@ -57,9 +50,9 @@
     }
     
     chartView = [[UUChart alloc]initwithUUChartDataFrame:CGRectMake(10, 20,
-                                                                    screen_heiht, 260)
+                                                                    chart_width, chart_heiht)
                                               withSource:self
-                                               withStyle:self.chartType == 1?UUChartLineStyle: UUChartBarStyle];
+                                               withStyle:UUChartLineStyle];
     [chartView showInView:self.view];
     
     
@@ -88,7 +81,7 @@
     
     NSDate *weekAgo = [self getWeekdaysAgo:date];
     NSString *weekAgo_str = [self requestDate:weekAgo];
-     
+    
     
     NSString *results = [NSString stringWithFormat:@"%@$%@$%@",self.stcd,weekAgo_str,date_str];
     //表示折线图上单条线
@@ -166,8 +159,8 @@
         NSDate *next_date = [current dateByAddingTimeInterval:60*60*24];
         _showTimeLabel.text = [self requestDate:next_date];
     }
-
-
+    
+    
     NSDate *date = [self requestDateFromString:_showTimeLabel.text];
     [self getChartDataAction:date];
     [self initChartView];
@@ -185,12 +178,12 @@
 - (NSArray *)UUChart_yValueArray:(UUChart *)chart
 {
     @try {
-//        if (self.functionType == FunctionDoubleChart) {
-//            return y_Values;
-//        }else{
-//            //单条线
-            return @[y_Values];
-       // }
+        //        if (self.functionType == FunctionDoubleChart) {
+        //            return y_Values;
+        //        }else{
+        //            //单条线
+        return @[y_Values];
+        // }
     }
     @catch (NSException *exception) {
         NSLog(@"%@",exception);
@@ -225,5 +218,7 @@
 {
     return @[UUGreen,UURed,UUBrown];
 }
+
+
 
 @end

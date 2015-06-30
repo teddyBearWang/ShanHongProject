@@ -14,6 +14,7 @@
 #import "CustomHeaderView.h"
 #import "ChartViewController.h"
 #import "FilterViewController.h"
+#import "CustomRainHeaderView.h"
 
 @interface RainViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -46,7 +47,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"实时雨情";
+    self.title = @"雨情信息";
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
     self.myTableView.rowHeight = 44;
@@ -122,7 +123,6 @@
         if (cell == nil) {
             cell = (RainCell *)[[[NSBundle mainBundle] loadNibNamed:@"Rain" owner:nil options:nil] lastObject];
         }
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         NSDictionary *dic = listData[indexPath.row];
         cell.stationName.text = [[dic objectForKey:@"stnm"] isEqualToString:@""] ? @"--": [dic objectForKey:@"stnm"];
         cell.oneHour.text = [[dic objectForKey:@"rain1h"] isEqualToString:@""] ? @"--": [dic objectForKey:@"rain1h"];
@@ -138,8 +138,8 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *headView = (UIView *)[[[NSBundle mainBundle] loadNibNamed:@"RainHeaderView" owner:self options:nil] lastObject];
-    headView.backgroundColor = BG_COLOR;
+    CustomRainHeaderView *headView = [[CustomRainHeaderView alloc] initWithFirstLabel:@"测站名称" withSecond:@"1h雨量" withThree:@"3h雨量" withForth:@"今日雨量"];
+   // headView.backgroundColor = BG_COLOR;
     return headView;
 }
 

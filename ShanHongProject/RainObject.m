@@ -16,6 +16,7 @@ static  AFHTTPRequestOperation *_operation = nil;
 + (BOOL)fetch:(NSString *)type
 {
     BOOL ret = NO;
+    //http://115.236.169.28/webserca/Data.ashx?t=GetYqInfo&returntype=json
     NSDictionary *parameter = @{@"t":type,@"returntype":@"json"};
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer.timeoutInterval = 10; //设置超时时间

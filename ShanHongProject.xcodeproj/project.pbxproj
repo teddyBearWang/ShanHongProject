@@ -137,6 +137,8 @@
 		9F4EA34E1B2EBA9E0025FEE9 /* bg_023@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F4EA34B1B2EBA9E0025FEE9 /* bg_023@2x.png */; };
 		9F4EA34F1B2EBA9E0025FEE9 /* btn_020@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F4EA34C1B2EBA9E0025FEE9 /* btn_020@2x.png */; };
 		9F4EA3501B2EBA9E0025FEE9 /* btn_021@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F4EA34D1B2EBA9E0025FEE9 /* btn_021@2x.png */; };
+		9F542B651B422FA500331933 /* CustomRainHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F542B641B422FA500331933 /* CustomRainHeaderView.m */; };
+		9F542B691B423CF800331933 /* RainChartController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F542B681B423CF800331933 /* RainChartController.m */; };
 		9F91590A1B25763800CFA0DB /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9159091B25763800CFA0DB /* MenuViewController.m */; };
 		9F91590E1B2576FF00CFA0DB /* WaterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F91590D1B2576FF00CFA0DB /* WaterViewController.m */; };
 		9F9159111B25772700CFA0DB /* RainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9159101B25772700CFA0DB /* RainViewController.m */; };
@@ -323,6 +325,10 @@
 		9F4EA34B1B2EBA9E0025FEE9 /* bg_023@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_023@2x.png"; sourceTree = "<group>"; };
 		9F4EA34C1B2EBA9E0025FEE9 /* btn_020@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_020@2x.png"; sourceTree = "<group>"; };
 		9F4EA34D1B2EBA9E0025FEE9 /* btn_021@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_021@2x.png"; sourceTree = "<group>"; };
+		9F542B631B422FA500331933 /* CustomRainHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomRainHeaderView.h; sourceTree = "<group>"; };
+		9F542B641B422FA500331933 /* CustomRainHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomRainHeaderView.m; sourceTree = "<group>"; };
+		9F542B671B423CF800331933 /* RainChartController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainChartController.h; sourceTree = "<group>"; };
+		9F542B681B423CF800331933 /* RainChartController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainChartController.m; sourceTree = "<group>"; };
 		9F9159081B25763800CFA0DB /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		9F9159091B25763800CFA0DB /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		9F91590C1B2576FF00CFA0DB /* WaterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterViewController.h; sourceTree = "<group>"; };
@@ -573,6 +579,8 @@
 				9F3D62561B26CFBB0012D7CF /* WaterCell.m */,
 				9F3D62501B26CF7E0012D7CF /* RainCell.h */,
 				9F3D62511B26CF7E0012D7CF /* RainCell.m */,
+				9F542B631B422FA500331933 /* CustomRainHeaderView.h */,
+				9F542B641B422FA500331933 /* CustomRainHeaderView.m */,
 			);
 			name = customCell;
 			sourceTree = "<group>";
@@ -720,17 +728,27 @@
 			name = Until;
 			sourceTree = "<group>";
 		};
+		9F542B661B423CD700331933 /* Water */ = {
+			isa = PBXGroup;
+			children = (
+				9F91590C1B2576FF00CFA0DB /* WaterViewController.h */,
+				9F91590D1B2576FF00CFA0DB /* WaterViewController.m */,
+				9F542B671B423CF800331933 /* RainChartController.h */,
+				9F542B681B423CF800331933 /* RainChartController.m */,
+			);
+			name = Water;
+			sourceTree = "<group>";
+		};
 		9F91590B1B2576EE00CFA0DB /* items */ = {
 			isa = PBXGroup;
 			children = (
+				9F542B661B423CD700331933 /* Water */,
 				9F3722611B39032900E468AF /* Project */,
 				9F4546A11B317927005FACCC /* flood */,
 				9F4546891B311B0E005FACCC /* chartView */,
 				9F3AE12F1B2FF0EF005EFC86 /* Weather */,
 				9F3AE12B1B2FF0B5005EFC86 /* QiXiang  */,
 				9F4EA3411B2EBA040025FEE9 /* Rain */,
-				9F91590C1B2576FF00CFA0DB /* WaterViewController.h */,
-				9F91590D1B2576FF00CFA0DB /* WaterViewController.m */,
 			);
 			name = items;
 			sourceTree = "<group>";
@@ -990,10 +1008,12 @@
 				9F91590E1B2576FF00CFA0DB /* WaterViewController.m in Sources */,
 				9F3AE1321B2FF100005EFC86 /* WeatherViewController.m in Sources */,
 				9F37229F1B39330E00E468AF /* ProjectDetailController.m in Sources */,
+				9F542B651B422FA500331933 /* CustomRainHeaderView.m in Sources */,
 				9F45468C1B311B25005FACCC /* ChartViewController.m in Sources */,
 				9F4546A01B314B73005FACCC /* FilterViewController.m in Sources */,
 				9F3AE1351B2FF3C3005EFC86 /* QxDetailController.m in Sources */,
 				9F35AA9F1B1FEDA400D9D329 /* main.m in Sources */,
+				9F542B691B423CF800331933 /* RainChartController.m in Sources */,
 				9F3CE9E91B27C6F60068EBA7 /* SVProgressHUD.m in Sources */,
 				9F3AE12A1B2FEEE4005EFC86 /* QiXiangObject.m in Sources */,
 				9F3D625C1B26CFE30012D7CF /* CustomHeaderView.m in Sources */,

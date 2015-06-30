@@ -8,10 +8,10 @@
 
 #import "WaterViewController.h"
 #import "SVProgressHUD.h"
-#import "WaterCell.h"
+#import "RainCell.h"
 #import "RainObject.h"
-#import "CustomHeaderView.h"
-#import "ChartViewController.h"
+#import "CustomRainHeaderView.h"
+#import "RainChartController.h"
 
 @interface WaterViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -41,7 +41,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"实时水情";
+    self.title = @"水情信息";
     
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
@@ -101,14 +101,15 @@
     if(ret)
     {
         //有数据的时候
-        WaterCell *cell = (WaterCell *)[tableView dequeueReusableCellWithIdentifier:@"WaterCell"];
+        RainCell *cell = (RainCell *)[tableView dequeueReusableCellWithIdentifier:@"RainCell"];
         if (cell == nil) {
-            cell = (WaterCell *)[[[NSBundle mainBundle] loadNibNamed:@"WaterCell" owner:self options:nil] lastObject];
+            cell = (RainCell *)[[[NSBundle mainBundle] loadNibNamed:@"Rain" owner:self options:nil] lastObject];
         }
         NSDictionary *dic = [listData objectAtIndex:indexPath.row];
         cell.stationName.text = [[dic objectForKey:@"stnm"] isEqual:@""] ? @"--" : [dic objectForKey:@"stnm"];
-        cell.lastestLevel.text = [[dic objectForKey:@"new"] isEqual:@""] ? @"--" : [dic objectForKey:@"new"];
-        cell.warnWater.text = [[dic objectForKey:@"max"] isEqual:@""] ? @"--" : [dic objectForKey:@"max"];
+        cell.oneHour.text = [[dic objectForKey:@"new"] isEqual:@""] ? @"--" : [dic objectForKey:@"new"];
+        cell.threeHour.text = [[dic objectForKey:@"max"] isEqual:@""] ? @"--" : [dic objectForKey:@"max"];
+        cell.today.text = @"10";
         return cell;
     }else{
         //无数据
@@ -121,8 +122,8 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    CustomHeaderView *view = [[CustomHeaderView alloc] initWithFirstLabel:@"测站" withSecond:@"最新(m)" withThree:@"超警(m)"];
-    view.backgroundColor = BG_COLOR;
+    CustomRainHeaderView *view = [[CustomRainHeaderView alloc] initWithFirstLabel:@"测站" withSecond:@"最新(m)" withThree:@"超警(m)" withForth:@"库容(万m³)"];
+
     return view;
     
 }
@@ -136,7 +137,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *dic = listData[indexPath.row];
-    ChartViewController *chart = [[ChartViewController alloc] init];
+    RainChartController *chart = [[RainChartController alloc] init];
     chart.title_name = dic[@"stnm"];
     chart.stcd = dic[@"stcd"];
     chart.requestType = @"GetStDaySW";
