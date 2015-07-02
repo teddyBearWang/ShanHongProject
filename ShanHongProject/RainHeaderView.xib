@@ -12,19 +12,19 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3h雨量" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdU-3G-T7b">
-                    <rect key="frame" x="180" y="9" width="60" height="21"/>
+                    <rect key="frame" x="170" y="9" width="60" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.070588235289999995" green="0.14901960780000001" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1h雨量" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0c-Xe-iLC">
-                    <rect key="frame" x="115" y="9" width="60" height="21"/>
+                    <rect key="frame" x="100" y="9" width="60" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.070588235294117646" green="0.14901960784313725" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="今日雨量" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gke-MT-i9b">
-                    <rect key="frame" x="245" y="9" width="75" height="21"/>
+                    <rect key="frame" x="240" y="9" width="75" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.070588235289999995" green="0.14901960780000001" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -47,7 +47,7 @@
                 <outlet property="secondLabel" destination="l0c-Xe-iLC" id="wLo-3b-ciL"/>
                 <outlet property="thirdLabel" destination="zdU-3G-T7b" id="9Zk-7l-iVG"/>
             </connections>
-            <point key="canvasLocation" x="494" y="223"/>
+            <point key="canvasLocation" x="14" y="230"/>
         </view>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -12,6 +12,7 @@
 @interface QiXiangViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSArray *listData;
+    NSArray *images;
 }
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 
@@ -27,6 +28,7 @@
     self.myTableView.rowHeight = 44;
     
     listData = @[@"一小时降水预报",@"三小时降水预报",@"卫星云图",@"气象雷达"];
+    images = @[@"rainYb",@"rainYb",@"wxyt",@"qxld"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,6 +49,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.textLabel.text = listData[indexPath.row];
+    cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }

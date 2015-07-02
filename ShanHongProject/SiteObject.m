@@ -10,6 +10,7 @@
 #import "SingleInstanceObject.h"
 #import <AFNetworking.h>
 
+static AFHTTPRequestOperation *operation = nil;
 @implementation SiteObject
 
 + (BOOL)fetchSite
@@ -19,7 +20,7 @@
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSDictionary *parameter = @{@"t":@"GetSite",
                                 @"returntype":@"json"};
-    AFHTTPRequestOperation *operation = [manager POST:Site_URL parameters:parameter success:nil failure:nil];
+    operation = [manager POST:Site_URL parameters:parameter success:nil failure:nil];
     [operation waitUntilFinished];
     if (operation.responseData != nil) {
         ret = YES;
@@ -32,6 +33,13 @@ static NSArray *datas = nil;
 + (NSArray *)requestDatas
 {
     return datas;
+}
+
++ (void)cancelRequest
+{
+    if (operation != nil) {
+        [operation cancel];
+    }
 }
 
 @end

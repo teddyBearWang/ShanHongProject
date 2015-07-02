@@ -105,11 +105,12 @@
         if (cell == nil) {
             cell = (RainCell *)[[[NSBundle mainBundle] loadNibNamed:@"Rain" owner:self options:nil] lastObject];
         }
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         NSDictionary *dic = [listData objectAtIndex:indexPath.row];
         cell.stationName.text = [[dic objectForKey:@"stnm"] isEqual:@""] ? @"--" : [dic objectForKey:@"stnm"];
         cell.oneHour.text = [[dic objectForKey:@"new"] isEqual:@""] ? @"--" : [dic objectForKey:@"new"];
         cell.threeHour.text = [[dic objectForKey:@"max"] isEqual:@""] ? @"--" : [dic objectForKey:@"max"];
-        cell.today.text = @"10";
+        cell.today.text = @"1000";
         return cell;
     }else{
         //无数据

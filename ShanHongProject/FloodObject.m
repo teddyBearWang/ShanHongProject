@@ -16,6 +16,7 @@ AFHTTPRequestOperation *operation = nil;
 + (BOOL)fetch
 {
     BOOL ret;
+    //http://115.236.169.28/webserca/Data.ashx?t=GetTodayList&returntype=json
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSDictionary *parameter = @{@"t":@"GetTodayList",@"returntype":@"json"};

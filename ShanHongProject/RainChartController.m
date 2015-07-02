@@ -7,13 +7,15 @@
 //
 
 #import "RainChartController.h"
-#import "UUChart.h"
+//#import "UUChart.h"
 #import "ChartObject.h"
 #import "SVProgressHUD.h"
+#import "WaterChartView.h"
 
-@interface RainChartController ()<UUChartDataSource>
+@interface RainChartController ()
 {
-    UUChart *chartView;
+  //  UUChart *chartView;
+    WaterChartView *chartView;
     NSArray *x_Labels;
     NSArray *y_Values;
     UILabel *_showTimeLabel;// 显示时间label
@@ -30,37 +32,28 @@
 {
     [super viewWillAppear:animated];
     //保存下屏幕竖着的时候的高度
-    chart_heiht = ([[UIScreen mainScreen] bounds].size.height-40)/2;
-    chart_width = [[UIScreen mainScreen] bounds].size.width - 10;
-    NSLog(@"图标高度:%d",chart_heiht);
+    chart_heiht = ([[UIScreen mainScreen] bounds].size.height)/2;
+    chart_width = [[UIScreen mainScreen] bounds].size.width ;
     if (y_Values.count == 0 || x_Labels.count == 0) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前没有可以显示的图表数据" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alert show];
     }
     [self initChartView];
-    
 }
+
 
 //创建chartVIew
 - (void)initChartView
 {
-    if (chartView) {
-        [chartView removeFromSuperview];
-        chartView = nil;
-    }
-    
-    chartView = [[UUChart alloc]initwithUUChartDataFrame:CGRectMake(10, 20,
-                                                                    chart_width, chart_heiht)
-                                              withSource:self
-                                               withStyle:UUChartLineStyle];
-    [chartView showInView:self.view];
-    
-    
+    chartView = [[WaterChartView alloc] initWithCustomFrame:(CGRect){0,0,chart_width,chart_heiht} withX_labels:x_Labels withY_values:@[y_Values]];
+    NSLog(@"图表的高度:%d 宽度:%d",chart_heiht,chart_width);
+    [self.view addSubview:chartView];
+
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     //设置标题
     self.title = self.title_name;
@@ -79,11 +72,7 @@
 {
     NSString *date_str = [self requestDate:date];
     
-    NSDate *weekAgo = [self getWeekdaysAgo:date];
-    NSString *weekAgo_str = [self requestDate:weekAgo];
-    
-    
-    NSString *results = [NSString stringWithFormat:@"%@$%@$%@",self.stcd,weekAgo_str,date_str];
+    NSString *results = [NSString stringWithFormat:@"%@$%@$%@",self.stcd,date_str,date_str];
     //表示折线图上单条线
     if ([ChartObject fetcChartDataWithType:self.requestType results:results]) {
         x_Labels = [NSArray arrayWithArray:[ChartObject requestXLables]];
@@ -143,7 +132,6 @@
     [formatter setDateFormat:@"yyyy-MM-dd"];
     NSDate *date = [formatter dateFromString:date_str];
     return date;
-    
 }
 
 //时间选择
@@ -165,60 +153,5 @@
     [self getChartDataAction:date];
     [self initChartView];
 }
-
-#pragma mark - UUChartDataSource
-
-//横坐标标题数组
-- (NSArray *)UUChart_xLableArray:(UUChart *)chart
-{
-    return x_Labels;
-}
-
-//数值多重数组
-- (NSArray *)UUChart_yValueArray:(UUChart *)chart
-{
-    @try {
-        //        if (self.functionType == FunctionDoubleChart) {
-        //            return y_Values;
-        //        }else{
-        //            //单条线
-        return @[y_Values];
-        // }
-    }
-    @catch (NSException *exception) {
-        NSLog(@"%@",exception);
-    }
-    
-}
-
-#pragma mark 折线图专享功能
-//判断显示横线条
-- (BOOL)UUChart:(UUChart *)chart ShowHorizonLineAtIndex:(NSInteger)index
-{
-    if (index == 4) {
-        return YES;
-    }else{
-        return NO;
-    }
-    
-}
-
-//判断显示竖线条
-- (BOOL)UUChart:(UUChart *)chart ShowVericationLineAtIndex:(NSInteger)index
-{
-    if (index == 0) {
-        return YES;
-    }else{
-        return NO;
-    }
-}
-
-//颜色数组
-- (NSArray *)UUChart_ColorArray:(UUChart *)chart
-{
-    return @[UUGreen,UURed,UUBrown];
-}
-
-
 
 @end

@@ -38,6 +38,14 @@
 		9F3722641B39033E00E468AF /* ProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3722631B39033E00E468AF /* ProjectViewController.m */; };
 		9F3722671B39295A00E468AF /* ProjectListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3722661B39295A00E468AF /* ProjectListController.m */; };
 		9F37229F1B39330E00E468AF /* ProjectDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F37229E1B39330E00E468AF /* ProjectDetailController.m */; };
+		9F39C7A21B44C9810067869B /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F39C7A11B44C9810067869B /* SettingViewController.m */; };
+		9F39C7A51B44DB980067869B /* sz.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F39C7A31B44DB980067869B /* sz.png */; };
+		9F39C7A61B44DB980067869B /* tf.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F39C7A41B44DB980067869B /* tf.png */; };
+		9F39C7A91B44DBB00067869B /* sz@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F39C7A71B44DBB00067869B /* sz@2x.png */; };
+		9F39C7AA1B44DBB00067869B /* tf@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F39C7A81B44DBB00067869B /* tf@2x.png */; };
+		9F39C7AD1B44DBBD0067869B /* sz@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F39C7AB1B44DBBD0067869B /* sz@3x.png */; };
+		9F39C7AE1B44DBBD0067869B /* tf@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F39C7AC1B44DBBD0067869B /* tf@3x.png */; };
+		9F39C7B51B4508A30067869B /* TyphoonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F39C7B41B4508A30067869B /* TyphoonViewController.m */; };
 		9F3AE1271B2FEE04005EFC86 /* WeatherObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3AE1261B2FEE04005EFC86 /* WeatherObject.m */; };
 		9F3AE12A1B2FEEE4005EFC86 /* QiXiangObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3AE1291B2FEEE4005EFC86 /* QiXiangObject.m */; };
 		9F3AE12E1B2FF0CC005EFC86 /* QiXiangViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3AE12D1B2FF0CC005EFC86 /* QiXiangViewController.m */; };
@@ -137,6 +145,40 @@
 		9F4EA34E1B2EBA9E0025FEE9 /* bg_023@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F4EA34B1B2EBA9E0025FEE9 /* bg_023@2x.png */; };
 		9F4EA34F1B2EBA9E0025FEE9 /* btn_020@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F4EA34C1B2EBA9E0025FEE9 /* btn_020@2x.png */; };
 		9F4EA3501B2EBA9E0025FEE9 /* btn_021@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F4EA34D1B2EBA9E0025FEE9 /* btn_021@2x.png */; };
+		9F5418801B43754300E8CEB0 /* WaterChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F54187F1B43754300E8CEB0 /* WaterChartView.m */; };
+		9F5418891B438B2900E8CEB0 /* df.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418811B438B2900E8CEB0 /* df.png */; };
+		9F54188A1B438B2900E8CEB0 /* qxld.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418821B438B2900E8CEB0 /* qxld.png */; };
+		9F54188B1B438B2900E8CEB0 /* rainYb.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418831B438B2900E8CEB0 /* rainYb.png */; };
+		9F54188C1B438B2900E8CEB0 /* sdz.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418841B438B2900E8CEB0 /* sdz.png */; };
+		9F54188D1B438B2900E8CEB0 /* sk.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418851B438B2900E8CEB0 /* sk.png */; };
+		9F54188E1B438B2900E8CEB0 /* st.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418861B438B2900E8CEB0 /* st.png */; };
+		9F54188F1B438B2900E8CEB0 /* wxyt.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418871B438B2900E8CEB0 /* wxyt.png */; };
+		9F5418901B438B2900E8CEB0 /* yb.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418881B438B2900E8CEB0 /* yb.png */; };
+		9F5418991B438B3900E8CEB0 /* df@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418911B438B3900E8CEB0 /* df@3x.png */; };
+		9F54189A1B438B3900E8CEB0 /* qxld@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418921B438B3900E8CEB0 /* qxld@3x.png */; };
+		9F54189B1B438B3900E8CEB0 /* rainYb@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418931B438B3900E8CEB0 /* rainYb@3x.png */; };
+		9F54189C1B438B3900E8CEB0 /* sdz@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418941B438B3900E8CEB0 /* sdz@3x.png */; };
+		9F54189D1B438B3900E8CEB0 /* sk@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418951B438B3900E8CEB0 /* sk@3x.png */; };
+		9F54189E1B438B3900E8CEB0 /* st@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418961B438B3900E8CEB0 /* st@3x.png */; };
+		9F54189F1B438B3900E8CEB0 /* wxyt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418971B438B3900E8CEB0 /* wxyt@3x.png */; };
+		9F5418A01B438B3900E8CEB0 /* yb@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418981B438B3900E8CEB0 /* yb@3x.png */; };
+		9F5418A91B438B4600E8CEB0 /* df@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418A11B438B4600E8CEB0 /* df@2x.png */; };
+		9F5418AA1B438B4600E8CEB0 /* qxld@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418A21B438B4600E8CEB0 /* qxld@2x.png */; };
+		9F5418AB1B438B4600E8CEB0 /* rainYb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418A31B438B4600E8CEB0 /* rainYb@2x.png */; };
+		9F5418AC1B438B4600E8CEB0 /* sdz@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418A41B438B4600E8CEB0 /* sdz@2x.png */; };
+		9F5418AD1B438B4600E8CEB0 /* sk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418A51B438B4600E8CEB0 /* sk@2x.png */; };
+		9F5418AE1B438B4600E8CEB0 /* st@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418A61B438B4600E8CEB0 /* st@2x.png */; };
+		9F5418AF1B438B4600E8CEB0 /* wxyt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418A71B438B4600E8CEB0 /* wxyt@2x.png */; };
+		9F5418B01B438B4600E8CEB0 /* yb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418A81B438B4600E8CEB0 /* yb@2x.png */; };
+		9F5418B41B43923D00E8CEB0 /* skz@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418B11B43923D00E8CEB0 /* skz@3x.png */; };
+		9F5418B51B43923D00E8CEB0 /* sw@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418B21B43923D00E8CEB0 /* sw@3x.png */; };
+		9F5418B61B43923D00E8CEB0 /* yl@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418B31B43923D00E8CEB0 /* yl@3x.png */; };
+		9F5418BA1B43924800E8CEB0 /* skz.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418B71B43924800E8CEB0 /* skz.png */; };
+		9F5418BB1B43924800E8CEB0 /* sw.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418B81B43924800E8CEB0 /* sw.png */; };
+		9F5418BC1B43924800E8CEB0 /* yl.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418B91B43924800E8CEB0 /* yl.png */; };
+		9F5418C01B43926000E8CEB0 /* skz@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418BD1B43926000E8CEB0 /* skz@2x.png */; };
+		9F5418C11B43926000E8CEB0 /* sw@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418BE1B43926000E8CEB0 /* sw@2x.png */; };
+		9F5418C21B43926000E8CEB0 /* yl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F5418BF1B43926000E8CEB0 /* yl@2x.png */; };
 		9F542B651B422FA500331933 /* CustomRainHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F542B641B422FA500331933 /* CustomRainHeaderView.m */; };
 		9F542B691B423CF800331933 /* RainChartController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F542B681B423CF800331933 /* RainChartController.m */; };
 		9F91590A1B25763800CFA0DB /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9159091B25763800CFA0DB /* MenuViewController.m */; };
@@ -198,6 +240,16 @@
 		9F3722661B39295A00E468AF /* ProjectListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectListController.m; sourceTree = "<group>"; };
 		9F37229D1B39330E00E468AF /* ProjectDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDetailController.h; sourceTree = "<group>"; };
 		9F37229E1B39330E00E468AF /* ProjectDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectDetailController.m; sourceTree = "<group>"; };
+		9F39C7A01B44C9810067869B /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		9F39C7A11B44C9810067869B /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		9F39C7A31B44DB980067869B /* sz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sz.png; sourceTree = "<group>"; };
+		9F39C7A41B44DB980067869B /* tf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tf.png; sourceTree = "<group>"; };
+		9F39C7A71B44DBB00067869B /* sz@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sz@2x.png"; sourceTree = "<group>"; };
+		9F39C7A81B44DBB00067869B /* tf@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tf@2x.png"; sourceTree = "<group>"; };
+		9F39C7AB1B44DBBD0067869B /* sz@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sz@3x.png"; sourceTree = "<group>"; };
+		9F39C7AC1B44DBBD0067869B /* tf@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tf@3x.png"; sourceTree = "<group>"; };
+		9F39C7B31B4508A30067869B /* TyphoonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonViewController.h; sourceTree = "<group>"; };
+		9F39C7B41B4508A30067869B /* TyphoonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonViewController.m; sourceTree = "<group>"; };
 		9F3AE1251B2FEE04005EFC86 /* WeatherObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherObject.h; sourceTree = "<group>"; };
 		9F3AE1261B2FEE04005EFC86 /* WeatherObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherObject.m; sourceTree = "<group>"; };
 		9F3AE1281B2FEEE4005EFC86 /* QiXiangObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiXiangObject.h; sourceTree = "<group>"; };
@@ -325,6 +377,41 @@
 		9F4EA34B1B2EBA9E0025FEE9 /* bg_023@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_023@2x.png"; sourceTree = "<group>"; };
 		9F4EA34C1B2EBA9E0025FEE9 /* btn_020@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_020@2x.png"; sourceTree = "<group>"; };
 		9F4EA34D1B2EBA9E0025FEE9 /* btn_021@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_021@2x.png"; sourceTree = "<group>"; };
+		9F54187E1B43754300E8CEB0 /* WaterChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterChartView.h; sourceTree = "<group>"; };
+		9F54187F1B43754300E8CEB0 /* WaterChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterChartView.m; sourceTree = "<group>"; };
+		9F5418811B438B2900E8CEB0 /* df.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = df.png; sourceTree = "<group>"; };
+		9F5418821B438B2900E8CEB0 /* qxld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qxld.png; sourceTree = "<group>"; };
+		9F5418831B438B2900E8CEB0 /* rainYb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rainYb.png; sourceTree = "<group>"; };
+		9F5418841B438B2900E8CEB0 /* sdz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sdz.png; sourceTree = "<group>"; };
+		9F5418851B438B2900E8CEB0 /* sk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sk.png; sourceTree = "<group>"; };
+		9F5418861B438B2900E8CEB0 /* st.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = st.png; sourceTree = "<group>"; };
+		9F5418871B438B2900E8CEB0 /* wxyt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wxyt.png; sourceTree = "<group>"; };
+		9F5418881B438B2900E8CEB0 /* yb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yb.png; sourceTree = "<group>"; };
+		9F5418911B438B3900E8CEB0 /* df@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "df@3x.png"; sourceTree = "<group>"; };
+		9F5418921B438B3900E8CEB0 /* qxld@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qxld@3x.png"; sourceTree = "<group>"; };
+		9F5418931B438B3900E8CEB0 /* rainYb@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rainYb@3x.png"; sourceTree = "<group>"; };
+		9F5418941B438B3900E8CEB0 /* sdz@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sdz@3x.png"; sourceTree = "<group>"; };
+		9F5418951B438B3900E8CEB0 /* sk@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sk@3x.png"; sourceTree = "<group>"; };
+		9F5418961B438B3900E8CEB0 /* st@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "st@3x.png"; sourceTree = "<group>"; };
+		9F5418971B438B3900E8CEB0 /* wxyt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wxyt@3x.png"; sourceTree = "<group>"; };
+		9F5418981B438B3900E8CEB0 /* yb@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yb@3x.png"; sourceTree = "<group>"; };
+		9F5418A11B438B4600E8CEB0 /* df@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "df@2x.png"; sourceTree = "<group>"; };
+		9F5418A21B438B4600E8CEB0 /* qxld@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qxld@2x.png"; sourceTree = "<group>"; };
+		9F5418A31B438B4600E8CEB0 /* rainYb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rainYb@2x.png"; sourceTree = "<group>"; };
+		9F5418A41B438B4600E8CEB0 /* sdz@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sdz@2x.png"; sourceTree = "<group>"; };
+		9F5418A51B438B4600E8CEB0 /* sk@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sk@2x.png"; sourceTree = "<group>"; };
+		9F5418A61B438B4600E8CEB0 /* st@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "st@2x.png"; sourceTree = "<group>"; };
+		9F5418A71B438B4600E8CEB0 /* wxyt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wxyt@2x.png"; sourceTree = "<group>"; };
+		9F5418A81B438B4600E8CEB0 /* yb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yb@2x.png"; sourceTree = "<group>"; };
+		9F5418B11B43923D00E8CEB0 /* skz@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "skz@3x.png"; sourceTree = "<group>"; };
+		9F5418B21B43923D00E8CEB0 /* sw@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sw@3x.png"; sourceTree = "<group>"; };
+		9F5418B31B43923D00E8CEB0 /* yl@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yl@3x.png"; sourceTree = "<group>"; };
+		9F5418B71B43924800E8CEB0 /* skz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skz.png; sourceTree = "<group>"; };
+		9F5418B81B43924800E8CEB0 /* sw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sw.png; sourceTree = "<group>"; };
+		9F5418B91B43924800E8CEB0 /* yl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yl.png; sourceTree = "<group>"; };
+		9F5418BD1B43926000E8CEB0 /* skz@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "skz@2x.png"; sourceTree = "<group>"; };
+		9F5418BE1B43926000E8CEB0 /* sw@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sw@2x.png"; sourceTree = "<group>"; };
+		9F5418BF1B43926000E8CEB0 /* yl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yl@2x.png"; sourceTree = "<group>"; };
 		9F542B631B422FA500331933 /* CustomRainHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomRainHeaderView.h; sourceTree = "<group>"; };
 		9F542B641B422FA500331933 /* CustomRainHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomRainHeaderView.m; sourceTree = "<group>"; };
 		9F542B671B423CF800331933 /* RainChartController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainChartController.h; sourceTree = "<group>"; };
@@ -462,6 +549,19 @@
 		9F35AAF81B201FD300D9D329 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				9F39C7A31B44DB980067869B /* sz.png */,
+				9F39C7A41B44DB980067869B /* tf.png */,
+				9F5418B71B43924800E8CEB0 /* skz.png */,
+				9F5418B81B43924800E8CEB0 /* sw.png */,
+				9F5418B91B43924800E8CEB0 /* yl.png */,
+				9F5418811B438B2900E8CEB0 /* df.png */,
+				9F5418821B438B2900E8CEB0 /* qxld.png */,
+				9F5418831B438B2900E8CEB0 /* rainYb.png */,
+				9F5418841B438B2900E8CEB0 /* sdz.png */,
+				9F5418851B438B2900E8CEB0 /* sk.png */,
+				9F5418861B438B2900E8CEB0 /* st.png */,
+				9F5418871B438B2900E8CEB0 /* wxyt.png */,
+				9F5418881B438B2900E8CEB0 /* yb.png */,
 				9F4294261B3CFE960071F461 /* password.png */,
 				9F4294271B3CFE960071F461 /* user.png */,
 				9F3AE1371B30153A005EFC86 /* cloudy.png */,
@@ -517,6 +617,24 @@
 				9F37229E1B39330E00E468AF /* ProjectDetailController.m */,
 			);
 			name = Project;
+			sourceTree = "<group>";
+		};
+		9F39C79F1B44C96B0067869B /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				9F39C7A01B44C9810067869B /* SettingViewController.h */,
+				9F39C7A11B44C9810067869B /* SettingViewController.m */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
+		9F39C7B21B4508840067869B /* typhoon */ = {
+			isa = PBXGroup;
+			children = (
+				9F39C7B31B4508A30067869B /* TyphoonViewController.h */,
+				9F39C7B41B4508A30067869B /* TyphoonViewController.m */,
+			);
+			name = typhoon;
 			sourceTree = "<group>";
 		};
 		9F3AE12B1B2FF0B5005EFC86 /* QiXiang  */ = {
@@ -609,6 +727,19 @@
 		9F4293651B3CDE7D0071F461 /* image@2x */ = {
 			isa = PBXGroup;
 			children = (
+				9F39C7A71B44DBB00067869B /* sz@2x.png */,
+				9F39C7A81B44DBB00067869B /* tf@2x.png */,
+				9F5418BD1B43926000E8CEB0 /* skz@2x.png */,
+				9F5418BE1B43926000E8CEB0 /* sw@2x.png */,
+				9F5418BF1B43926000E8CEB0 /* yl@2x.png */,
+				9F5418A11B438B4600E8CEB0 /* df@2x.png */,
+				9F5418A21B438B4600E8CEB0 /* qxld@2x.png */,
+				9F5418A31B438B4600E8CEB0 /* rainYb@2x.png */,
+				9F5418A41B438B4600E8CEB0 /* sdz@2x.png */,
+				9F5418A51B438B4600E8CEB0 /* sk@2x.png */,
+				9F5418A61B438B4600E8CEB0 /* st@2x.png */,
+				9F5418A71B438B4600E8CEB0 /* wxyt@2x.png */,
+				9F5418A81B438B4600E8CEB0 /* yb@2x.png */,
 				9F42941E1B3CFE6F0071F461 /* user@2x.png */,
 				9F4294221B3CFE850071F461 /* password@2x.png */,
 				9F4293EC1B3CEF7B0071F461 /* contact_click@2x.png */,
@@ -640,6 +771,19 @@
 		9F4293661B3CDE860071F461 /* image@3x */ = {
 			isa = PBXGroup;
 			children = (
+				9F39C7AB1B44DBBD0067869B /* sz@3x.png */,
+				9F39C7AC1B44DBBD0067869B /* tf@3x.png */,
+				9F5418B11B43923D00E8CEB0 /* skz@3x.png */,
+				9F5418B21B43923D00E8CEB0 /* sw@3x.png */,
+				9F5418B31B43923D00E8CEB0 /* yl@3x.png */,
+				9F5418911B438B3900E8CEB0 /* df@3x.png */,
+				9F5418921B438B3900E8CEB0 /* qxld@3x.png */,
+				9F5418931B438B3900E8CEB0 /* rainYb@3x.png */,
+				9F5418941B438B3900E8CEB0 /* sdz@3x.png */,
+				9F5418951B438B3900E8CEB0 /* sk@3x.png */,
+				9F5418961B438B3900E8CEB0 /* st@3x.png */,
+				9F5418971B438B3900E8CEB0 /* wxyt@3x.png */,
+				9F5418981B438B3900E8CEB0 /* yb@3x.png */,
 				9F42941F1B3CFE6F0071F461 /* user@3x.png */,
 				9F4294241B3CFE8B0071F461 /* password@3x.png */,
 				9F4293C01B3CEECE0071F461 /* contact_click@3x.png */,
@@ -735,6 +879,8 @@
 				9F91590D1B2576FF00CFA0DB /* WaterViewController.m */,
 				9F542B671B423CF800331933 /* RainChartController.h */,
 				9F542B681B423CF800331933 /* RainChartController.m */,
+				9F54187E1B43754300E8CEB0 /* WaterChartView.h */,
+				9F54187F1B43754300E8CEB0 /* WaterChartView.m */,
 			);
 			name = Water;
 			sourceTree = "<group>";
@@ -742,6 +888,8 @@
 		9F91590B1B2576EE00CFA0DB /* items */ = {
 			isa = PBXGroup;
 			children = (
+				9F39C7B21B4508840067869B /* typhoon */,
+				9F39C79F1B44C96B0067869B /* Setting */,
 				9F542B661B423CD700331933 /* Water */,
 				9F3722611B39032900E468AF /* Project */,
 				9F4546A11B317927005FACCC /* flood */,
@@ -835,6 +983,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F5418AB1B438B4600E8CEB0 /* rainYb@2x.png in Resources */,
 				9F4294141B3CEF7B0071F461 /* water_click@2x.png in Resources */,
 				9F4293EA1B3CEECE0071F461 /* weather_click@3x.png in Resources */,
 				9F4294021B3CEF7B0071F461 /* contact_click@2x.png in Resources */,
@@ -842,6 +991,8 @@
 				9F4294211B3CFE6F0071F461 /* user@3x.png in Resources */,
 				9F42940A1B3CEF7B0071F461 /* project_click@2x.png in Resources */,
 				9F4EA34F1B2EBA9E0025FEE9 /* btn_020@2x.png in Resources */,
+				9F5418BC1B43924800E8CEB0 /* yl.png in Resources */,
+				9F5418AC1B438B4600E8CEB0 /* sdz@2x.png in Resources */,
 				9F3D62541B26CFB20012D7CF /* WaterCell.xib in Resources */,
 				9F35AB121B201FE300D9D329 /* flood.png in Resources */,
 				9F35AB1F1B201FE300D9D329 /* typooh_click.png in Resources */,
@@ -849,12 +1000,15 @@
 				9F35AB181B201FE300D9D329 /* project.png in Resources */,
 				9F3CE9E81B27C6F60068EBA7 /* SVProgressHUD.bundle in Resources */,
 				9F4293DA1B3CEECE0071F461 /* gis_click@3x.png in Resources */,
+				9F54189E1B438B3900E8CEB0 /* st@3x.png in Resources */,
 				9F35AAAA1B1FEDA400D9D329 /* Images.xcassets in Resources */,
 				9F4293D71B3CEECE0071F461 /* contact@3x.png in Resources */,
 				9F35AB151B201FE300D9D329 /* plan_click.png in Resources */,
+				9F5418BB1B43924800E8CEB0 /* sw.png in Resources */,
 				9F42940B1B3CEF7B0071F461 /* project@2x.png in Resources */,
 				9F4293D91B3CEECE0071F461 /* flood@3x.png in Resources */,
 				9F4294101B3CEF7B0071F461 /* setting_click@2x.png in Resources */,
+				9F5418AA1B438B4600E8CEB0 /* qxld@2x.png in Resources */,
 				9F35AAC31B1FEE7C00D9D329 /* Main.storyboard in Resources */,
 				9F4294151B3CEF7B0071F461 /* water@2x.png in Resources */,
 				9F4293E41B3CEECE0071F461 /* setting_click@3x.png in Resources */,
@@ -863,28 +1017,38 @@
 				9F4294061B3CEF7B0071F461 /* gis_click@2x.png in Resources */,
 				9F4294291B3CFE960071F461 /* user.png in Resources */,
 				9F4293E51B3CEECE0071F461 /* setting@3x.png in Resources */,
+				9F54188F1B438B2900E8CEB0 /* wxyt.png in Resources */,
 				9F35AB1C1B201FE300D9D329 /* rain.png in Resources */,
 				9F3AE1441B30153A005EFC86 /* shady.png in Resources */,
 				9F35AB111B201FE300D9D329 /* flood_click.png in Resources */,
 				9F35AB131B201FE300D9D329 /* gis_click.png in Resources */,
+				9F5418C21B43926000E8CEB0 /* yl@2x.png in Resources */,
 				9F4293E81B3CEECE0071F461 /* water_click@3x.png in Resources */,
 				9F4294171B3CEF7B0071F461 /* weather@2x.png in Resources */,
+				9F5418B51B43923D00E8CEB0 /* sw@3x.png in Resources */,
 				9F4EA34A1B2EBA800025FEE9 /* CustomDateActionSheet.xib in Resources */,
 				9F4294251B3CFE8B0071F461 /* password@3x.png in Resources */,
 				9F4293E21B3CEECE0071F461 /* rain_click@3x.png in Resources */,
+				9F54188B1B438B2900E8CEB0 /* rainYb.png in Resources */,
 				9F3AE1421B30153A005EFC86 /* foggy.png in Resources */,
 				9F4294231B3CFE850071F461 /* password@2x.png in Resources */,
+				9F54189C1B438B3900E8CEB0 /* sdz@3x.png in Resources */,
 				9F35AB161B201FE300D9D329 /* plan.png in Resources */,
 				9F3AE1451B30153A005EFC86 /* showers.png in Resources */,
 				9F42940E1B3CEF7B0071F461 /* rain_click@2x.png in Resources */,
+				9F54189A1B438B3900E8CEB0 /* qxld@3x.png in Resources */,
+				9F54189B1B438B3900E8CEB0 /* rainYb@3x.png in Resources */,
 				9F4294071B3CEF7B0071F461 /* gis@2x.png in Resources */,
 				9F4293E61B3CEECE0071F461 /* typooh_click@3x.png in Resources */,
 				9F4293E01B3CEECE0071F461 /* qixiang_click@3x.png in Resources */,
 				9F4293E31B3CEECE0071F461 /* rain@3x.png in Resources */,
+				9F5418AE1B438B4600E8CEB0 /* st@2x.png in Resources */,
 				9F4294081B3CEF7B0071F461 /* plan_click@2x.png in Resources */,
 				9F35AB171B201FE300D9D329 /* project_click.png in Resources */,
 				9F35AB1A1B201FE300D9D329 /* qixiang.png in Resources */,
 				9F3AE1411B30153A005EFC86 /* cloudy.png in Resources */,
+				9F5418B41B43923D00E8CEB0 /* skz@3x.png in Resources */,
+				9F5418901B438B2900E8CEB0 /* yb.png in Resources */,
 				9F3AE1431B30153A005EFC86 /* rainy.png in Resources */,
 				9F45468F1B314649005FACCC /* left.png in Resources */,
 				9F4546921B3146EE005FACCC /* filter.png in Resources */,
@@ -894,25 +1058,39 @@
 				9F42940C1B3CEF7B0071F461 /* qixiang_click@2x.png in Resources */,
 				9F3AE14A1B30153A005EFC86 /* tq.jpg in Resources */,
 				9F4294121B3CEF7B0071F461 /* typooh_click@2x.png in Resources */,
+				9F5418A01B438B3900E8CEB0 /* yb@3x.png in Resources */,
+				9F39C7A51B44DB980067869B /* sz.png in Resources */,
+				9F54188E1B438B2900E8CEB0 /* st.png in Resources */,
 				9F35AB141B201FE300D9D329 /* gis.png in Resources */,
 				9F4293D81B3CEECE0071F461 /* flood_click@3x.png in Resources */,
 				9F3D624C1B26CF3C0012D7CF /* RainHeaderView.xib in Resources */,
 				9F4293DB1B3CEECE0071F461 /* gis@3x.png in Resources */,
+				9F5418C11B43926000E8CEB0 /* sw@2x.png in Resources */,
 				9F4294051B3CEF7B0071F461 /* flood@2x.png in Resources */,
 				9F3D624E1B26CF500012D7CF /* Rain.xib in Resources */,
+				9F39C7A61B44DB980067869B /* tf.png in Resources */,
 				9F4294201B3CFE6F0071F461 /* user@2x.png in Resources */,
+				9F5418B61B43923D00E8CEB0 /* yl@3x.png in Resources */,
+				9F5418BA1B43924800E8CEB0 /* skz.png in Resources */,
 				9F35AB211B201FE300D9D329 /* water_click.png in Resources */,
 				9F4294091B3CEF7B0071F461 /* plan@2x.png in Resources */,
 				9F35AB101B201FE300D9D329 /* contact.png in Resources */,
 				9F35AB0F1B201FE300D9D329 /* contact_click.png in Resources */,
+				9F5418AD1B438B4600E8CEB0 /* sk@2x.png in Resources */,
 				9F4546901B314649005FACCC /* right.png in Resources */,
+				9F54188D1B438B2900E8CEB0 /* sk.png in Resources */,
 				9F4294161B3CEF7B0071F461 /* weather_click@2x.png in Resources */,
 				9F4293DC1B3CEECE0071F461 /* plan_click@3x.png in Resources */,
+				9F39C7AA1B44DBB00067869B /* tf@2x.png in Resources */,
 				9F3D62591B26CFCE0012D7CF /* CustomHeaderView.xib in Resources */,
 				9F42940D1B3CEF7B0071F461 /* qixiang@2x.png in Resources */,
 				9F4293E11B3CEECE0071F461 /* qixiang@3x.png in Resources */,
+				9F54189F1B438B3900E8CEB0 /* wxyt@3x.png in Resources */,
+				9F54189D1B438B3900E8CEB0 /* sk@3x.png in Resources */,
 				9F4294111B3CEF7B0071F461 /* setting@2x.png in Resources */,
 				9F35AB1E1B201FE300D9D329 /* setting.png in Resources */,
+				9F54188C1B438B2900E8CEB0 /* sdz.png in Resources */,
+				9F5418A91B438B4600E8CEB0 /* df@2x.png in Resources */,
 				9F35AB201B201FE300D9D329 /* typooh.png in Resources */,
 				9F35AB191B201FE300D9D329 /* qixiang_click.png in Resources */,
 				9F3AE1471B30153A005EFC86 /* sun.png in Resources */,
@@ -921,14 +1099,23 @@
 				9F4293E91B3CEECE0071F461 /* water@3x.png in Resources */,
 				9F3AE1491B30153A005EFC86 /* sunTocloudy.png in Resources */,
 				9F35AB1D1B201FE300D9D329 /* setting_click.png in Resources */,
+				9F39C7AE1B44DBBD0067869B /* tf@3x.png in Resources */,
+				9F39C7A91B44DBB00067869B /* sz@2x.png in Resources */,
+				9F5418B01B438B4600E8CEB0 /* yb@2x.png in Resources */,
+				9F54188A1B438B2900E8CEB0 /* qxld.png in Resources */,
 				9F4EA34E1B2EBA9E0025FEE9 /* bg_023@2x.png in Resources */,
 				9F4293DD1B3CEECE0071F461 /* plan@3x.png in Resources */,
 				9F4293DE1B3CEECE0071F461 /* project_click@3x.png in Resources */,
 				9F4294131B3CEF7B0071F461 /* typooh@2x.png in Resources */,
+				9F5418991B438B3900E8CEB0 /* df@3x.png in Resources */,
+				9F39C7AD1B44DBBD0067869B /* sz@3x.png in Resources */,
 				9F35AB241B201FE300D9D329 /* weather.png in Resources */,
 				9F4EA3501B2EBA9E0025FEE9 /* btn_021@2x.png in Resources */,
+				9F5418C01B43926000E8CEB0 /* skz@2x.png in Resources */,
 				9F4293D61B3CEECE0071F461 /* contact_click@3x.png in Resources */,
 				9F4294041B3CEF7B0071F461 /* flood_click@2x.png in Resources */,
+				9F5418AF1B438B4600E8CEB0 /* wxyt@2x.png in Resources */,
+				9F5418891B438B2900E8CEB0 /* df.png in Resources */,
 				9F3AE1461B30153A005EFC86 /* snowy.png in Resources */,
 				9F35AB1B1B201FE300D9D329 /* rain_click.png in Resources */,
 			);
@@ -992,11 +1179,13 @@
 				9F9159141B25841000CFA0DB /* LoginViewController.m in Sources */,
 				9FE497921B4120F400E97B7C /* FloodObject.m in Sources */,
 				9F3AE12E1B2FF0CC005EFC86 /* QiXiangViewController.m in Sources */,
+				9F5418801B43754300E8CEB0 /* WaterChartView.m in Sources */,
 				9F4546811B31162E005FACCC /* UUChart.m in Sources */,
 				9F4546871B311660005FACCC /* ChartObject.m in Sources */,
 				9F3722641B39033E00E468AF /* ProjectViewController.m in Sources */,
 				9F4546A41B31794B005FACCC /* FloodViewController.m in Sources */,
 				9F4546831B31162E005FACCC /* UUColor.m in Sources */,
+				9F39C7A21B44C9810067869B /* SettingViewController.m in Sources */,
 				9F9159111B25772700CFA0DB /* RainViewController.m in Sources */,
 				9F45467F1B31162E005FACCC /* UUBar.m in Sources */,
 				9F4546821B31162E005FACCC /* UUChartLabel.m in Sources */,
@@ -1015,6 +1204,7 @@
 				9F35AA9F1B1FEDA400D9D329 /* main.m in Sources */,
 				9F542B691B423CF800331933 /* RainChartController.m in Sources */,
 				9F3CE9E91B27C6F60068EBA7 /* SVProgressHUD.m in Sources */,
+				9F39C7B51B4508A30067869B /* TyphoonViewController.m in Sources */,
 				9F3AE12A1B2FEEE4005EFC86 /* QiXiangObject.m in Sources */,
 				9F3D625C1B26CFE30012D7CF /* CustomHeaderView.m in Sources */,
 				9F4546A71B317D0A005FACCC /* FloodDetailController.m in Sources */,

@@ -88,7 +88,10 @@
 #pragma mark - private Method
 - (void)cancelAction:(UIButton *)btn
 {
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        [SiteObject cancelRequest];
+    }];
 }
 
 - (void)comfirmAction:(UIButton *)btn

@@ -15,6 +15,7 @@
 @interface ProjectViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSArray *listData;
+    NSArray *images;//存放图标
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -30,6 +31,7 @@
     self.tableView.dataSource = self;
     self.tableView.rowHeight = 44;
     listData = @[@"水库",@"闸门",@"堤防",@"水电站",@"山塘"];
+    images = @[@"sk",@"sz",@"df",@"sdz",@"st"];
     
     UIBarButtonItem *filter = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(filterAction:)];
     self.navigationItem.rightBarButtonItem = filter;
@@ -71,6 +73,7 @@
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     cell.textLabel.text = listData[indexPath.row];
+    cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
