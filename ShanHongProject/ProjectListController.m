@@ -80,11 +80,11 @@
     if (cell == nil) {
         cell = (WaterCell *)[[[NSBundle mainBundle] loadNibNamed:@"WaterCell" owner:self options:nil] lastObject];
     }
-    NSDictionary *dic = listData[indexPath.row];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.stationName.text = [[dic objectForKey:@"RSNM"] isEqualToString:@""] ? @"--" : [dic objectForKey:@"RSNM"];
-    cell.lastestLevel.text = [[dic objectForKey:@"CANM"] isEqualToString:@""] ? @"--" : [dic objectForKey:@"CANM"];
-    cell.warnWater.text = [[dic objectForKey:@"ADNM"] isEqualToString:@""] ? @"--" : [dic objectForKey:@"ADNM"];
+//    NSDictionary *dic = listData[indexPath.row];
+//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//    cell.stationName.text = [[dic objectForKey:@"RSNM"] isEqualToString:@""] ? @"--" : [dic objectForKey:@"RSNM"];
+//    cell.lastestLevel.text = [[dic objectForKey:@"CANM"] isEqualToString:@""] ? @"--" : [dic objectForKey:@"CANM"];
+//    cell.warnWater.text = [[dic objectForKey:@"ADNM"] isEqualToString:@""] ? @"--" : [dic objectForKey:@"ADNM"];
     return cell;
 
 }

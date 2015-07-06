@@ -31,7 +31,7 @@
                         <viewControllerLayoutGuide type="top" id="Bz3-t8-Bvd"/>
                         <viewControllerLayoutGuide type="bottom" id="S1b-go-DuR"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="4bS-ae-5dD">
+                    <view key="view" contentMode="scaleToFill" id="4bS-ae-5dD" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -103,6 +103,9 @@
                             <constraint firstAttribute="trailing" secondItem="wS6-uN-OV0" secondAttribute="trailing" constant="24" id="gsK-Jw-Gc2"/>
                             <constraint firstAttribute="trailing" secondItem="iK5-al-gkk" secondAttribute="trailing" constant="24" id="sBc-9N-5Bs"/>
                         </constraints>
+                        <connections>
+                            <action selector="tapBackground:" destination="lfa-S2-vBl" eventType="touchDown" id="OCs-Sx-jmF"/>
+                        </connections>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
@@ -132,7 +135,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eq2-bg-KAz">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eq2-bg-KAz">
                                 <rect key="frame" x="92" y="69" width="60" height="60"/>
                                 <state key="normal" image="rain.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -141,7 +144,7 @@
                                     <segue destination="GeZ-QL-Z5a" kind="push" id="V0O-WX-ozr"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8S-4f-XfO">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8S-4f-XfO">
                                 <rect key="frame" x="168" y="69" width="60" height="60"/>
                                 <state key="normal" image="water.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -150,7 +153,7 @@
                                     <segue destination="GH5-Kv-3s1" kind="push" id="VBK-B7-ss3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nID-8N-WAw">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nID-8N-WAw">
                                 <rect key="frame" x="244" y="69" width="60" height="60"/>
                                 <state key="normal" image="project.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -159,7 +162,7 @@
                                     <segue destination="lVu-jk-Bh9" kind="push" id="kme-0K-9o3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8kf-qc-t48">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8kf-qc-t48">
                                 <rect key="frame" x="16" y="69" width="60" height="60"/>
                                 <state key="normal" image="flood.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -168,7 +171,7 @@
                                     <segue destination="Pyl-QX-Mm5" kind="push" id="rnN-wk-SmO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lXH-D2-fwt">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lXH-D2-fwt">
                                 <rect key="frame" x="92" y="179" width="60" height="60"/>
                                 <state key="normal" image="weather.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -177,7 +180,7 @@
                                     <segue destination="xhf-d4-SH3" kind="push" id="KhF-gD-K84"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gX1-kg-mH5">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gX1-kg-mH5">
                                 <rect key="frame" x="168" y="179" width="60" height="60"/>
                                 <state key="normal" image="qixiang.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -186,25 +189,25 @@
                                     <segue destination="MRU-so-iVw" kind="push" id="8da-ie-sc0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOw-zL-w8P">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOw-zL-w8P">
                                 <rect key="frame" x="244" y="179" width="60" height="60"/>
                                 <state key="normal" image="gis.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0u-L4-btI">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0u-L4-btI">
                                 <rect key="frame" x="16" y="289" width="60" height="60"/>
                                 <state key="normal" image="contact.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJL-Sg-SZr">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJL-Sg-SZr">
                                 <rect key="frame" x="92" y="289" width="60" height="60"/>
                                 <state key="normal" image="plan.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YpB-M9-PgK">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YpB-M9-PgK">
                                 <rect key="frame" x="168" y="289" width="60" height="60"/>
                                 <state key="normal" image="setting.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -267,7 +270,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLd-6Y-6k1">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLd-6Y-6k1">
                                 <rect key="frame" x="16" y="179" width="60" height="60"/>
                                 <state key="normal" image="typooh.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -276,7 +279,7 @@
                                     <segue destination="dOY-EG-Y2O" kind="push" id="gPC-mW-NeA"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="台风" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="22p-5W-fyt">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="台风" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="22p-5W-fyt">
                                 <rect key="frame" x="16" y="247" width="60" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -712,26 +715,11 @@
                     <view key="view" contentMode="scaleToFill" id="wAz-Ps-ZrJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="40" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="BjP-OT-xse">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="BjP-OT-xse" firstAttribute="leading" secondItem="wAz-Ps-ZrJ" secondAttribute="leading" id="Clz-Ki-FSP"/>
-                            <constraint firstItem="BjP-OT-xse" firstAttribute="top" secondItem="wAz-Ps-ZrJ" secondAttribute="top" id="Xhy-S5-FVf"/>
-                            <constraint firstAttribute="trailing" secondItem="BjP-OT-xse" secondAttribute="trailing" id="rsS-Gv-cyN"/>
-                            <constraint firstAttribute="bottom" secondItem="BjP-OT-xse" secondAttribute="bottom" id="yAY-y2-TkV"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="雨情信息" id="d8k-fc-QSJ">
                         <barButtonItem key="backBarButtonItem" title="返回" id="bgf-nD-bHc"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="myTableView" destination="BjP-OT-xse" id="pWV-pV-Tzx"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3t0-q3-58g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -748,26 +736,11 @@
                     <view key="view" contentMode="scaleToFill" id="wsp-sp-TzN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Y63-an-B2M">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Y63-an-B2M" firstAttribute="leading" secondItem="wsp-sp-TzN" secondAttribute="leading" id="6mV-CH-Tb2"/>
-                            <constraint firstAttribute="bottom" secondItem="Y63-an-B2M" secondAttribute="bottom" id="9gR-nD-gWg"/>
-                            <constraint firstItem="Y63-an-B2M" firstAttribute="top" secondItem="wsp-sp-TzN" secondAttribute="top" id="Mqk-5A-hkJ"/>
-                            <constraint firstAttribute="trailing" secondItem="Y63-an-B2M" secondAttribute="trailing" id="xzo-eo-u3d"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="水情信息" id="xwl-sw-Yf4">
                         <barButtonItem key="backBarButtonItem" title="返回" id="RNu-3c-JDT"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="myTableView" destination="Y63-an-B2M" id="Cyh-fg-HJM"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ah7-Xv-I44" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

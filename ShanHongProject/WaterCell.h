@@ -10,8 +10,11 @@
 
 @interface WaterCell : UITableViewCell
 
-@property (nonatomic, strong) IBOutlet UILabel *stationName; //测站
 @property (nonatomic, strong) IBOutlet UILabel *lastestLevel; //最新水位
 @property (nonatomic, strong) IBOutlet UILabel *warnWater; //预警水位
+@property (nonatomic, strong) IBOutlet UILabel *capacity; //库容
+@property (weak, nonatomic) IBOutlet UILabel *maxTime; //最大时间
+@property (weak, nonatomic) IBOutlet UILabel *floodWarn; //汛戒
+
 
 @end

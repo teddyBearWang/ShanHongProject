@@ -58,7 +58,7 @@
     
     [self initNavBar];
     
-    myTableView = [[UITableView alloc] initWithFrame:(CGRect){0,Bar_Height,self.view.frame.size.width,self.view.frame.size.height - Bar_Height} style:UITableViewStylePlain];
+    myTableView = [[UITableView alloc] initWithFrame:(CGRect){0,Bar_Height,[UIScreen mainScreen].bounds.size.width,[UIScreen mainScreen].bounds.size.height - Bar_Height} style:UITableViewStylePlain];
     myTableView.delegate = self;
     myTableView.dataSource = self;
     [self.view addSubview:myTableView];
@@ -88,7 +88,7 @@
 #pragma mark - private Method
 - (void)cancelAction:(UIButton *)btn
 {
-    
+    [SVProgressHUD dismiss];
     [self dismissViewControllerAnimated:YES completion:^{
         [SiteObject cancelRequest];
     }];
@@ -133,6 +133,8 @@ static NSInteger _selectRow;
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     _selectRow = indexPath.row;
+    
+    //将所选的站点的信息赋值给单例保存
     NSDictionary *dic = listData[indexPath.row];
     selectArea = [dic objectForKey:@"ScityName"];
     SingleInstanceObject *instance = [SingleInstanceObject defaultInstance];

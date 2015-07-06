@@ -25,7 +25,10 @@
 @property (weak, nonatomic) IBOutlet UIView *user_bg_view;
 @property (weak, nonatomic) IBOutlet UIView *psw_bg_view;
 
+//登陆
 - (IBAction)loginAction:(id)sender;
+//单机背景取消键盘
+- (IBAction)tapBackground:(id)sender;
 
 @end
 
@@ -110,6 +113,12 @@
     StationSelectController *station = [[StationSelectController alloc] init];
     station.delegate = self;
     [self presentViewController:station animated:YES completion:NULL];
+}
+
+- (IBAction)tapBackground:(id)sender
+{
+    [self.userName resignFirstResponder];
+    [self.psw resignFirstResponder];
 }
 
 #pragma mark - SelectStationDelegate

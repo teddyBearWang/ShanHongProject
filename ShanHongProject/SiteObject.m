@@ -16,6 +16,7 @@ static AFHTTPRequestOperation *operation = nil;
 + (BOOL)fetchSite
 {
      BOOL ret = NO;
+    //http://115.236.2.245:38019/data.ashx?t=GetSite&returntype=json
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSDictionary *parameter = @{@"t":@"GetSite",

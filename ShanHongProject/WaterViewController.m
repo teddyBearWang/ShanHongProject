@@ -8,18 +8,26 @@
 
 #import "WaterViewController.h"
 #import "SVProgressHUD.h"
-#import "RainCell.h"
+#import "WaterCell.h"
 #import "RainObject.h"
 #import "CustomRainHeaderView.h"
 #import "RainChartController.h"
+#import "MyTimeView.h"
+#import "HeaderView.h"
 
 @interface WaterViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSArray *listData;//数据源
-    BOOL ret;
+    UITableView *_myTableView;
+    NSArray *_headers;// 列表头部视图的字段
+    NSMutableArray *_stations;//站点tableVIew的数据源
+    
+    NSUInteger _kCount;
 }
 
-@property (weak, nonatomic) IBOutlet UITableView *myTableView;
+@property (strong, nonatomic)  UIView *myTableViewHeaderView;
+
+@property (nonatomic, strong) MyTimeView *myTimeView;
 @end
 
 @implementation WaterViewController
@@ -39,13 +47,45 @@
     }
 }
 
+- (void)initDatas
+{
+    _headers = @[@"最新(m)",@"超警(m)",@"库容(万m³)",@"最大时间",@"汛戒"];
+    _kCount = _headers.count;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"水情信息";
+    self.view.backgroundColor = BG_COLOR;
     
-    self.myTableView.delegate = self;
-    self.myTableView.dataSource = self;
-    self.myTableView.rowHeight = 44;
+    [self initDatas];
+    
+    UIView *tableHeaderView = [[UIView alloc] initWithFrame:(CGRect){0,0,_kCount * kWidth, kHeight}];
+    tableHeaderView.backgroundColor = BG_COLOR;
+    self.myTableViewHeaderView = tableHeaderView;
+    
+    for (int i=0; i<_kCount; i++) {
+        HeaderView *header = [[HeaderView alloc] initWithFrame:CGRectMake(i*kWidth, 0, kWidth, kHeight)];
+        header.num = _headers[i];
+        [tableHeaderView addSubview:header];
+    }
+    
+    _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.myTableViewHeaderView.frame.size.width, kScreen_height) style:UITableViewStylePlain];
+    _myTableView.delegate = self;
+    _myTableView.dataSource = self;
+    _myTableView.bounces = NO;
+    
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(kWidth, 0, kScreen_Width - kWidth, kScreen_height)];
+    [scrollView addSubview:_myTableView];
+    scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.bounces = NO;
+    scrollView.contentSize = CGSizeMake(self.myTableViewHeaderView.frame.size.width, 0);
+    [self.view addSubview:scrollView];
+    
+    self.myTimeView = [[MyTimeView alloc] initWithFrame:CGRectMake(0, 0, kWidth, kScreen_height)];
+    self.myTimeView.listData = _stations;
+    self.myTimeView.headTitle = @"站点";
+    [self.view addSubview:self.myTimeView];
     
     [self refresh:@"GetSqInfo"];
     
@@ -85,9 +125,13 @@
 {
     [SVProgressHUD dismissWithSuccess:@"加载成功"];
     dispatch_async(dispatch_get_main_queue(), ^{
-        ret = YES;
         listData = [RainObject requestData];
-        [self.myTableView reloadData];
+        _stations = [NSMutableArray arrayWithCapacity:listData.count];
+        for (NSDictionary *dic in listData) {
+            [_stations addObject:[dic objectForKey:@"stnm"]];
+        }
+        [_myTableView reloadData];
+        [self.myTimeView refrushTableView:_stations];
     });
 }
 #pragma mark - UITableViewDataSOurce
@@ -98,42 +142,37 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(ret)
-    {
-        //有数据的时候
-        RainCell *cell = (RainCell *)[tableView dequeueReusableCellWithIdentifier:@"RainCell"];
-        if (cell == nil) {
-            cell = (RainCell *)[[[NSBundle mainBundle] loadNibNamed:@"Rain" owner:self options:nil] lastObject];
-        }
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        NSDictionary *dic = [listData objectAtIndex:indexPath.row];
-        cell.stationName.text = [[dic objectForKey:@"stnm"] isEqual:@""] ? @"--" : [dic objectForKey:@"stnm"];
-        cell.oneHour.text = [[dic objectForKey:@"new"] isEqual:@""] ? @"--" : [dic objectForKey:@"new"];
-        cell.threeHour.text = [[dic objectForKey:@"max"] isEqual:@""] ? @"--" : [dic objectForKey:@"max"];
-        cell.today.text = @"1000";
-        return cell;
-    }else{
-        //无数据
-        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-        return cell;
+   
+    //有数据的时候
+    WaterCell *cell = (WaterCell *)[tableView dequeueReusableCellWithIdentifier:@"RainCell"];
+    if (cell == nil) {
+        cell = ( WaterCell*)[[[NSBundle mainBundle] loadNibNamed:@"WaterCell" owner:self options:nil] lastObject];
+       // cell = [(MyCell *)[MyCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RainCell"];
     }
-
+   // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    NSDictionary *dic = [listData objectAtIndex:indexPath.row];
+    cell.lastestLevel.text = [[dic objectForKey:@"new"] isEqual:@""] ? @"--" : [dic objectForKey:@"new"];
+    cell.warnWater.text = [[dic objectForKey:@"max"] isEqual:@""] ? @"--" : [dic objectForKey:@"max"];
+    cell.capacity.text = @"10000";
+    cell.maxTime.text = [[dic objectForKey:@"maxTime"] isEqual:@""] ? @"--" : [dic objectForKey:@"maxTime"];
+    cell.floodWarn.text = @"10000";
+    return cell;
 }
-
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    CustomRainHeaderView *view = [[CustomRainHeaderView alloc] initWithFirstLabel:@"测站" withSecond:@"最新(m)" withThree:@"超警(m)" withForth:@"库容(万m³)"];
-
-    return view;
-    
+    return self.myTableViewHeaderView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 40;
+    return kHeight;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return kHeight;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -145,6 +184,18 @@
     chart.chartType = 1; //表示柱状图
     [self.navigationController pushViewController:chart animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat offSetY = _myTableView.contentOffset.y;//_myTableView的Y向偏移量
+    
+    CGPoint timeViewOffSet = self.myTimeView.myTableView.contentOffset;
+    timeViewOffSet.y = offSetY;
+    self.myTimeView.myTableView.contentOffset = timeViewOffSet;
+    if (offSetY == 0) {
+        self.myTimeView.myTableView.contentOffset = timeViewOffSet;
+    }
 }
 
 @end

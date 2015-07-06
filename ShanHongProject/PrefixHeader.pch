@@ -16,6 +16,8 @@
 
 
 #define BG_COLOR [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1.0f]
+#define HeaderView_BGCOLOR [UIColor colorWithRed:241/255.0 green:241/255.0 blue:241/255.0 alpha:1.0]
+#define Font_BGCOLOR [UIColor colorWithRed:20/255.0 green:42/255.0 blue:72/255.0 alpha:1.0]
 
 #define Site_URL @"http://115.236.2.245:38019/data.ashx?"
 #define URL @"http://115.236.169.28/webserca/Data.ashx?"
@@ -25,4 +27,14 @@ typedef enum {
     ProjectFilter = 0,
     
 }FILTERTYPE;
+
+
+#define kWidth 100
+#define kHeight 40
+#define kWidthMargin 1
+#define kHeightMargin 3
+
+#define kScreen_Width [[UIScreen mainScreen] bounds].size.width
+#define kScreen_height [[UIScreen mainScreen] bounds].size.height
+
 #endif

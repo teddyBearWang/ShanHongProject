@@ -15,6 +15,7 @@ static    AFHTTPRequestOperation *operation = nil;
 + (BOOL)fetchWithType:(NSString *)type
 {
     BOOL ret;
+    //http://115.236.169.28/webserca/Data.ashx?t=GetHtmlSource&results=wxyt$&returntype=json
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSDictionary *parameter = @{@"t":@"GetHtmlSource",@"results":type,@"returntype":@"json"};
