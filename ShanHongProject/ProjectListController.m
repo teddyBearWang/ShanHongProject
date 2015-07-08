@@ -11,7 +11,7 @@
 #import "ProjectObject.h"
 #import "SVProgressHUD.h"
 #import "CustomHeaderView.h"
-#import "WaterCell.h"
+#import "ProjectCell.h"
 
 @interface ProjectListController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -76,15 +76,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WaterCell *cell = (WaterCell *)[tableView dequeueReusableCellWithIdentifier:@"WaterCell"];
+    ProjectCell *cell = (ProjectCell *)[tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
     if (cell == nil) {
-        cell = (WaterCell *)[[[NSBundle mainBundle] loadNibNamed:@"WaterCell" owner:self options:nil] lastObject];
+        cell = (ProjectCell *)[[[NSBundle mainBundle] loadNibNamed:@"ProjectCell" owner:self options:nil] lastObject];
     }
-//    NSDictionary *dic = listData[indexPath.row];
-//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//    cell.stationName.text = [[dic objectForKey:@"RSNM"] isEqualToString:@""] ? @"--" : [dic objectForKey:@"RSNM"];
-//    cell.lastestLevel.text = [[dic objectForKey:@"CANM"] isEqualToString:@""] ? @"--" : [dic objectForKey:@"CANM"];
-//    cell.warnWater.text = [[dic objectForKey:@"ADNM"] isEqualToString:@""] ? @"--" : [dic objectForKey:@"ADNM"];
+    NSDictionary *dic = listData[indexPath.row];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.nameLabel.text = [[dic objectForKey:@"RSNM"] isEqualToString:@""] ? @"--" : [dic objectForKey:@"RSNM"];
+    cell.areaLabel.text = [[dic objectForKey:@"CANM"] isEqualToString:@""] ? @"--" : [dic objectForKey:@"CANM"];
+    cell.townLabel.text = [[dic objectForKey:@"ADNM"] isEqualToString:@""] ? @"--" : [dic objectForKey:@"ADNM"];
     return cell;
 
 }

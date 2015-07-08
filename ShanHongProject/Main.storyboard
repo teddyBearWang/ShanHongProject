@@ -206,6 +206,9 @@
                                 <state key="normal" image="plan.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="mvF-D0-ebX" kind="push" id="y5x-Ns-jp4"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YpB-M9-PgK">
                                 <rect key="frame" x="168" y="289" width="60" height="60"/>
@@ -372,6 +375,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KcE-d4-xgY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-425" y="107"/>
+        </scene>
+        <!--防汛预案-->
+        <scene sceneID="WNU-pS-YgP">
+            <objects>
+                <viewController id="mvF-D0-ebX" customClass="PlanViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZyM-qb-FMe"/>
+                        <viewControllerLayoutGuide type="bottom" id="EmN-6G-Qcm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UyR-9A-Duk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="防汛预案" id="rNI-eb-obZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l8Y-Ov-sQp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="37" y="806"/>
         </scene>
         <!--台风信息-->
         <scene sceneID="Z7J-uW-TOu">

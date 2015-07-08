@@ -127,6 +127,10 @@
 		9F4294281B3CFE960071F461 /* password.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F4294261B3CFE960071F461 /* password.png */; };
 		9F4294291B3CFE960071F461 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F4294271B3CFE960071F461 /* user.png */; };
 		9F42942C1B3D27500071F461 /* ProjectObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F42942B1B3D27500071F461 /* ProjectObject.m */; };
+		9F429E6B1B4B5F9A005A877F /* ProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F429E6A1B4B5F9A005A877F /* ProjectCell.xib */; };
+		9F429E6E1B4B605F005A877F /* ProjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F429E6D1B4B605F005A877F /* ProjectCell.m */; };
+		9F429EA61B4B6ECE005A877F /* PlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F429EA51B4B6ECE005A877F /* PlanViewController.m */; };
+		9F429EA91B4B6F4E005A877F /* PdfReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F429EA81B4B6F4E005A877F /* PdfReaderViewController.m */; };
 		9F45467F1B31162E005FACCC /* UUBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4546741B31162E005FACCC /* UUBar.m */; };
 		9F4546801B31162E005FACCC /* UUBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4546761B31162E005FACCC /* UUBarChart.m */; };
 		9F4546811B31162E005FACCC /* UUChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4546781B31162E005FACCC /* UUChart.m */; };
@@ -351,6 +355,13 @@
 		9F4294271B3CFE960071F461 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		9F42942A1B3D27500071F461 /* ProjectObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectObject.h; sourceTree = "<group>"; };
 		9F42942B1B3D27500071F461 /* ProjectObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectObject.m; sourceTree = "<group>"; };
+		9F429E6A1B4B5F9A005A877F /* ProjectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectCell.xib; sourceTree = "<group>"; };
+		9F429E6C1B4B605F005A877F /* ProjectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectCell.h; sourceTree = "<group>"; };
+		9F429E6D1B4B605F005A877F /* ProjectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectCell.m; sourceTree = "<group>"; };
+		9F429EA41B4B6ECE005A877F /* PlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanViewController.h; sourceTree = "<group>"; };
+		9F429EA51B4B6ECE005A877F /* PlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanViewController.m; sourceTree = "<group>"; };
+		9F429EA71B4B6F4E005A877F /* PdfReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PdfReaderViewController.h; sourceTree = "<group>"; };
+		9F429EA81B4B6F4E005A877F /* PdfReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PdfReaderViewController.m; sourceTree = "<group>"; };
 		9F4546731B31162E005FACCC /* UUBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBar.h; sourceTree = "<group>"; };
 		9F4546741B31162E005FACCC /* UUBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUBar.m; sourceTree = "<group>"; };
 		9F4546751B31162E005FACCC /* UUBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBarChart.h; sourceTree = "<group>"; };
@@ -692,6 +703,7 @@
 				9F3D62531B26CFB20012D7CF /* WaterCell.xib */,
 				9F3D624D1B26CF500012D7CF /* Rain.xib */,
 				9F3D624B1B26CF3C0012D7CF /* RainHeaderView.xib */,
+				9F429E6A1B4B5F9A005A877F /* ProjectCell.xib */,
 			);
 			name = xib;
 			sourceTree = "<group>";
@@ -709,6 +721,8 @@
 				9F3D62511B26CF7E0012D7CF /* RainCell.m */,
 				9F542B631B422FA500331933 /* CustomRainHeaderView.h */,
 				9F542B641B422FA500331933 /* CustomRainHeaderView.m */,
+				9F429E6C1B4B605F005A877F /* ProjectCell.h */,
+				9F429E6D1B4B605F005A877F /* ProjectCell.m */,
 			);
 			name = customCell;
 			sourceTree = "<group>";
@@ -835,6 +849,17 @@
 			name = "image@3x";
 			sourceTree = "<group>";
 		};
+		9F429EA31B4B6EB4005A877F /* Plan */ = {
+			isa = PBXGroup;
+			children = (
+				9F429EA41B4B6ECE005A877F /* PlanViewController.h */,
+				9F429EA51B4B6ECE005A877F /* PlanViewController.m */,
+				9F429EA71B4B6F4E005A877F /* PdfReaderViewController.h */,
+				9F429EA81B4B6F4E005A877F /* PdfReaderViewController.m */,
+			);
+			name = Plan;
+			sourceTree = "<group>";
+		};
 		9F4546721B3115E0005FACCC /* Chart */ = {
 			isa = PBXGroup;
 			children = (
@@ -911,6 +936,7 @@
 		9F91590B1B2576EE00CFA0DB /* items */ = {
 			isa = PBXGroup;
 			children = (
+				9F429EA31B4B6EB4005A877F /* Plan */,
 				9F39C7B21B4508840067869B /* typhoon */,
 				9F39C79F1B44C96B0067869B /* Setting */,
 				9F542B661B423CD700331933 /* Water */,
@@ -1021,6 +1047,7 @@
 				9F35AB1F1B201FE300D9D329 /* typooh_click.png in Resources */,
 				9F35AB231B201FE300D9D329 /* weather_click.png in Resources */,
 				9F35AB181B201FE300D9D329 /* project.png in Resources */,
+				9F429E6B1B4B5F9A005A877F /* ProjectCell.xib in Resources */,
 				9F3CE9E81B27C6F60068EBA7 /* SVProgressHUD.bundle in Resources */,
 				9F4293DA1B3CEECE0071F461 /* gis_click@3x.png in Resources */,
 				9F54189E1B438B3900E8CEB0 /* st@3x.png in Resources */,
@@ -1216,6 +1243,7 @@
 				9F4546841B31162E005FACCC /* UULineChart.m in Sources */,
 				9F3AE1271B2FEE04005EFC86 /* WeatherObject.m in Sources */,
 				9F41B17F1B4A222000C2C5EC /* MyCell.m in Sources */,
+				9F429EA61B4B6ECE005A877F /* PlanViewController.m in Sources */,
 				9F3D62491B26B6390012D7CF /* StationSelectController.m in Sources */,
 				9F4EA3491B2EBA800025FEE9 /* CustomDateActionSheet.m in Sources */,
 				9F4546801B31162E005FACCC /* UUBarChart.m in Sources */,
@@ -1234,6 +1262,8 @@
 				9F3AE12A1B2FEEE4005EFC86 /* QiXiangObject.m in Sources */,
 				9F3D625C1B26CFE30012D7CF /* CustomHeaderView.m in Sources */,
 				9F4546A71B317D0A005FACCC /* FloodDetailController.m in Sources */,
+				9F429EA91B4B6F4E005A877F /* PdfReaderViewController.m in Sources */,
+				9F429E6E1B4B605F005A877F /* ProjectCell.m in Sources */,
 				9F3D62621B26D8130012D7CF /* SiteObject.m in Sources */,
 				9F3D62521B26CF7E0012D7CF /* RainCell.m in Sources */,
 				9FE4978E1B40D75C00E97B7C /* QualityCell.m in Sources */,

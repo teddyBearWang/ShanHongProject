@@ -1,12 +1,13 @@
 //
 //  TyphoonViewController.m
 //  ShanHongProject
-//
+//  ***********台风***********
 //  Created by teddy on 15/7/2.
 //  Copyright (c) 2015年 teddy. All rights reserved.
 //
 
 #import "TyphoonViewController.h"
+#import "SVProgressHUD.h"
 
 @interface TyphoonViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *typhoonView;
@@ -18,7 +19,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self loadWebView];
+    
+    [SVProgressHUD show];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self loadWebView];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismissWithSuccess:nil];
+        });
+    });
+    
 }
 
 - (void)didReceiveMemoryWarning {
