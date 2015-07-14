@@ -57,7 +57,6 @@
     statusBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     statusBtn.frame = (CGRect){0,0,50,30};
     statusBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [statusBtn setTitle:@"站点" forState:UIControlStateNormal];
     [statusBtn addTarget:self action:@selector(stationSelectAction:) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:statusBtn];
@@ -79,6 +78,9 @@
     
     self.loginBtn.layer.cornerRadius = 5.0f;
     self.loginBtn.backgroundColor = [UIColor colorWithRed:56/255.0 green:131/255.0 blue:238/255.0 alpha:1.0];
+    
+    //获取本地的数值
+    [self getInfo];
 
 }
 
@@ -106,6 +108,7 @@
         if ([LoginToken fetchWithUserName:self.userName.text Psw:self.psw.text Version:@"1.1.2" CityName:statusBtn.currentTitle]) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [SVProgressHUD dismissWithSuccess:@"登陆成功"];
+                [self saveInfo];
                 [self pushView];
             });
         }else{
@@ -114,6 +117,29 @@
             });
         }
     });
+}
+
+//本地储存
+- (void)saveInfo
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:self.userName.text forKey:@"username"];
+    [defaults setObject:self.psw.text forKey:@"psw"];
+    [defaults setObject:statusBtn.currentTitle forKey:@"site"];
+    [defaults synchronize];
+}
+
+- (void)getInfo
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.userName.text = [defaults objectForKey:@"username"];
+    self.psw.text = [defaults objectForKey:@"psw"];
+    if ([defaults objectForKey:@"site"] == nil) {
+        //没有值
+        [statusBtn setTitle:@"站点" forState:UIControlStateNormal];
+    }else{
+        [statusBtn setTitle:[defaults objectForKey:@"site"] forState:UIControlStateNormal];
+    }
 }
 
 

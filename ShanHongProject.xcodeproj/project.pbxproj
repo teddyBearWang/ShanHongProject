@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		5C3C29CD4A9D827AF1CF80AC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75FBA64C4CA6E22B7197017E /* libPods.a */; };
 		9F35AA9F1B1FEDA400D9D329 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F35AA9E1B1FEDA400D9D329 /* main.m */; };
-		9F35AAA21B1FEDA400D9D329 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F35AAA11B1FEDA400D9D329 /* AppDelegate.m */; };
+		9F35AAA21B1FEDA400D9D329 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9F35AAA11B1FEDA400D9D329 /* AppDelegate.mm */; };
 		9F35AAAA1B1FEDA400D9D329 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F35AAA91B1FEDA400D9D329 /* Images.xcassets */; };
 		9F35AAB91B1FEDA400D9D329 /* ShanHongProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F35AAB81B1FEDA400D9D329 /* ShanHongProjectTests.m */; };
 		9F35AAC31B1FEE7C00D9D329 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F35AAC21B1FEE7C00D9D329 /* Main.storyboard */; };
@@ -136,6 +136,17 @@
 		9F429E6E1B4B605F005A877F /* ProjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F429E6D1B4B605F005A877F /* ProjectCell.m */; };
 		9F429EA61B4B6ECE005A877F /* PlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F429EA51B4B6ECE005A877F /* PlanViewController.m */; };
 		9F429EA91B4B6F4E005A877F /* PdfReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F429EA81B4B6F4E005A877F /* PdfReaderViewController.m */; };
+		9F4343901B54A52D00EC3B00 /* PlanObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F43438F1B54A52D00EC3B00 /* PlanObject.m */; };
+		9F4343931B54B12C00EC3B00 /* PlanDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4343921B54B12C00EC3B00 /* PlanDetailController.m */; };
+		9F4343951B54F27F00EC3B00 /* BaiduMapAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4343941B54F27F00EC3B00 /* BaiduMapAPI.framework */; };
+		9F4343991B54F2D200EC3B00 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9F4343981B54F2D200EC3B00 /* mapapi.bundle */; };
+		9F43439B1B54F2E800EC3B00 /* bnavi_icon_location_fixed.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F43439A1B54F2E800EC3B00 /* bnavi_icon_location_fixed.png */; };
+		9F43439E1B54F30300EC3B00 /* MapViewBaseDemoViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9F43439D1B54F30300EC3B00 /* MapViewBaseDemoViewController.mm */; };
+		9F4343A11B54F3D100EC3B00 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4343A01B54F3D100EC3B00 /* MessageUI.framework */; };
+		9F4343A31B54F3DD00EC3B00 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4343A21B54F3DD00EC3B00 /* OpenGLES.framework */; };
+		9F4343A51B54F3F900EC3B00 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4343A41B54F3F900EC3B00 /* QuartzCore.framework */; };
+		9F4343A71B54F40A00EC3B00 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4343A61B54F40A00EC3B00 /* CoreLocation.framework */; };
+		9F4343A91B54F41600EC3B00 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4343A81B54F41600EC3B00 /* UIKit.framework */; };
 		9F45467F1B31162E005FACCC /* UUBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4546741B31162E005FACCC /* UUBar.m */; };
 		9F4546801B31162E005FACCC /* UUBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4546761B31162E005FACCC /* UUBarChart.m */; };
 		9F4546811B31162E005FACCC /* UUChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4546781B31162E005FACCC /* UUChart.m */; };
@@ -218,7 +229,7 @@
 		9F35AA9D1B1FEDA400D9D329 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F35AA9E1B1FEDA400D9D329 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9F35AAA01B1FEDA400D9D329 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		9F35AAA11B1FEDA400D9D329 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9F35AAA11B1FEDA400D9D329 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		9F35AAA91B1FEDA400D9D329 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9F35AAB21B1FEDA400D9D329 /* ShanHongProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShanHongProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F35AAB71B1FEDA400D9D329 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -376,6 +387,20 @@
 		9F429EA51B4B6ECE005A877F /* PlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanViewController.m; sourceTree = "<group>"; };
 		9F429EA71B4B6F4E005A877F /* PdfReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PdfReaderViewController.h; sourceTree = "<group>"; };
 		9F429EA81B4B6F4E005A877F /* PdfReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PdfReaderViewController.m; sourceTree = "<group>"; };
+		9F43438E1B54A52D00EC3B00 /* PlanObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanObject.h; sourceTree = "<group>"; };
+		9F43438F1B54A52D00EC3B00 /* PlanObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanObject.m; sourceTree = "<group>"; };
+		9F4343911B54B12C00EC3B00 /* PlanDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanDetailController.h; sourceTree = "<group>"; };
+		9F4343921B54B12C00EC3B00 /* PlanDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanDetailController.m; sourceTree = "<group>"; };
+		9F4343941B54F27F00EC3B00 /* BaiduMapAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI.framework; path = "../../../../../../山洪预警/BaiduMapAPI.framework"; sourceTree = "<group>"; };
+		9F4343981B54F2D200EC3B00 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = mapapi.bundle; sourceTree = "<group>"; };
+		9F43439A1B54F2E800EC3B00 /* bnavi_icon_location_fixed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bnavi_icon_location_fixed.png; sourceTree = "<group>"; };
+		9F43439C1B54F30300EC3B00 /* MapViewBaseDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewBaseDemoViewController.h; sourceTree = "<group>"; };
+		9F43439D1B54F30300EC3B00 /* MapViewBaseDemoViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MapViewBaseDemoViewController.mm; sourceTree = "<group>"; };
+		9F4343A01B54F3D100EC3B00 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		9F4343A21B54F3DD00EC3B00 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		9F4343A41B54F3F900EC3B00 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9F4343A61B54F40A00EC3B00 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9F4343A81B54F41600EC3B00 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9F4546731B31162E005FACCC /* UUBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBar.h; sourceTree = "<group>"; };
 		9F4546741B31162E005FACCC /* UUBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUBar.m; sourceTree = "<group>"; };
 		9F4546751B31162E005FACCC /* UUBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBarChart.h; sourceTree = "<group>"; };
@@ -470,6 +495,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F4343A91B54F41600EC3B00 /* UIKit.framework in Frameworks */,
+				9F4343A71B54F40A00EC3B00 /* CoreLocation.framework in Frameworks */,
+				9F4343A51B54F3F900EC3B00 /* QuartzCore.framework in Frameworks */,
+				9F4343A31B54F3DD00EC3B00 /* OpenGLES.framework in Frameworks */,
+				9F4343A11B54F3D100EC3B00 /* MessageUI.framework in Frameworks */,
+				9F4343951B54F27F00EC3B00 /* BaiduMapAPI.framework in Frameworks */,
 				5C3C29CD4A9D827AF1CF80AC /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,6 +518,12 @@
 		647AF06A6808673660DD8345 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9F4343A81B54F41600EC3B00 /* UIKit.framework */,
+				9F4343A61B54F40A00EC3B00 /* CoreLocation.framework */,
+				9F4343A41B54F3F900EC3B00 /* QuartzCore.framework */,
+				9F4343A21B54F3DD00EC3B00 /* OpenGLES.framework */,
+				9F4343A01B54F3D100EC3B00 /* MessageUI.framework */,
+				9F4343941B54F27F00EC3B00 /* BaiduMapAPI.framework */,
 				75FBA64C4CA6E22B7197017E /* libPods.a */,
 			);
 			name = Frameworks;
@@ -524,10 +561,11 @@
 		9F35AA9B1B1FEDA400D9D329 /* ShanHongProject */ = {
 			isa = PBXGroup;
 			children = (
+				9F4343961B54F29400EC3B00 /* Baidu */,
 				9F3CE9E31B27C6E80068EBA7 /* Until */,
 				9F3D625F1B26D7C00012D7CF /* https */,
 				9F35AAA01B1FEDA400D9D329 /* AppDelegate.h */,
-				9F35AAA11B1FEDA400D9D329 /* AppDelegate.m */,
+				9F35AAA11B1FEDA400D9D329 /* AppDelegate.mm */,
 				9F4EA33E1B2EB7940025FEE9 /* UIView+RootView.h */,
 				9F4EA33F1B2EB7940025FEE9 /* UIView+RootView.m */,
 				9F35AAC21B1FEE7C00D9D329 /* Main.storyboard */,
@@ -765,6 +803,8 @@
 				9F3DD3B11B4E11DE00DE201E /* FilterObject.m */,
 				9F3DD3B41B4E507A00DE201E /* LoginToken.h */,
 				9F3DD3B51B4E507A00DE201E /* LoginToken.m */,
+				9F43438E1B54A52D00EC3B00 /* PlanObject.h */,
+				9F43438F1B54A52D00EC3B00 /* PlanObject.m */,
 			);
 			name = https;
 			sourceTree = "<group>";
@@ -884,10 +924,31 @@
 			children = (
 				9F429EA41B4B6ECE005A877F /* PlanViewController.h */,
 				9F429EA51B4B6ECE005A877F /* PlanViewController.m */,
+				9F4343911B54B12C00EC3B00 /* PlanDetailController.h */,
+				9F4343921B54B12C00EC3B00 /* PlanDetailController.m */,
 				9F429EA71B4B6F4E005A877F /* PdfReaderViewController.h */,
 				9F429EA81B4B6F4E005A877F /* PdfReaderViewController.m */,
 			);
 			name = Plan;
+			sourceTree = "<group>";
+		};
+		9F4343961B54F29400EC3B00 /* Baidu */ = {
+			isa = PBXGroup;
+			children = (
+				9F43439C1B54F30300EC3B00 /* MapViewBaseDemoViewController.h */,
+				9F43439D1B54F30300EC3B00 /* MapViewBaseDemoViewController.mm */,
+				9F43439A1B54F2E800EC3B00 /* bnavi_icon_location_fixed.png */,
+				9F4343971B54F2C100EC3B00 /* Resources */,
+			);
+			name = Baidu;
+			sourceTree = "<group>";
+		};
+		9F4343971B54F2C100EC3B00 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9F4343981B54F2D200EC3B00 /* mapapi.bundle */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		9F4546721B3115E0005FACCC /* Chart */ = {
@@ -1121,6 +1182,7 @@
 				9F54189A1B438B3900E8CEB0 /* qxld@3x.png in Resources */,
 				9F54189B1B438B3900E8CEB0 /* rainYb@3x.png in Resources */,
 				9F4294071B3CEF7B0071F461 /* gis@2x.png in Resources */,
+				9F43439B1B54F2E800EC3B00 /* bnavi_icon_location_fixed.png in Resources */,
 				9F4293E61B3CEECE0071F461 /* typooh_click@3x.png in Resources */,
 				9F4293E01B3CEECE0071F461 /* qixiang_click@3x.png in Resources */,
 				9F4293E31B3CEECE0071F461 /* rain@3x.png in Resources */,
@@ -1132,6 +1194,7 @@
 				9F5418B41B43923D00E8CEB0 /* skz@3x.png in Resources */,
 				9F5418901B438B2900E8CEB0 /* yb.png in Resources */,
 				9F3AE1431B30153A005EFC86 /* rainy.png in Resources */,
+				9F4343991B54F2D200EC3B00 /* mapapi.bundle in Resources */,
 				9F45468F1B314649005FACCC /* left.png in Resources */,
 				9F4546921B3146EE005FACCC /* filter.png in Resources */,
 				9F4294281B3CFE960071F461 /* password.png in Resources */,
@@ -1251,7 +1314,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F42942C1B3D27500071F461 /* ProjectObject.m in Sources */,
-				9F35AAA21B1FEDA400D9D329 /* AppDelegate.m in Sources */,
+				9F4343931B54B12C00EC3B00 /* PlanDetailController.m in Sources */,
+				9F35AAA21B1FEDA400D9D329 /* AppDelegate.mm in Sources */,
 				9F4EA3401B2EB7940025FEE9 /* UIView+RootView.m in Sources */,
 				9F3D62571B26CFBB0012D7CF /* WaterCell.m in Sources */,
 				9F91590A1B25763800CFA0DB /* MenuViewController.m in Sources */,
@@ -1277,9 +1341,11 @@
 				9F4546821B31162E005FACCC /* UUChartLabel.m in Sources */,
 				9F4546841B31162E005FACCC /* UULineChart.m in Sources */,
 				9F3AE1271B2FEE04005EFC86 /* WeatherObject.m in Sources */,
+				9F4343901B54A52D00EC3B00 /* PlanObject.m in Sources */,
 				9F41B17F1B4A222000C2C5EC /* MyCell.m in Sources */,
 				9F429EA61B4B6ECE005A877F /* PlanViewController.m in Sources */,
 				9F3D62491B26B6390012D7CF /* StationSelectController.m in Sources */,
+				9F43439E1B54F30300EC3B00 /* MapViewBaseDemoViewController.mm in Sources */,
 				9F4EA3491B2EBA800025FEE9 /* CustomDateActionSheet.m in Sources */,
 				9F4546801B31162E005FACCC /* UUBarChart.m in Sources */,
 				9F91590E1B2576FF00CFA0DB /* WaterViewController.m in Sources */,
@@ -1412,10 +1478,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: roger ace (W6A2225E87)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/teddy/Desktop/山洪预警",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ShanHongProject/PrefixHeader.pch";
 				INFOPLIST_FILE = ShanHongProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c170e487-2b4c-4c20-8c31-74e79e864c95";
@@ -1431,10 +1501,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: roger ace (W6A2225E87)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: roger ace (W6A2225E87)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/teddy/Desktop/山洪预警",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ShanHongProject/PrefixHeader.pch";
 				INFOPLIST_FILE = ShanHongProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c170e487-2b4c-4c20-8c31-74e79e864c95";

@@ -1,25 +1,25 @@
 //
-//  PlanViewController.m
+//  PlanDetailController.m
 //  ShanHongProject
 //
-//  Created by teddy on 15/7/7.
+//  Created by teddy on 15/7/14.
 //  Copyright (c) 2015年 teddy. All rights reserved.
 //
 
-#import "PlanViewController.h"
-#import "SVProgressHUD.h"
-#import "PlanObject.h"
 #import "PlanDetailController.h"
+#import "PlanObject.h"
+#import "SVProgressHUD.h"
 
-@interface PlanViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface PlanDetailController ()<UITableViewDataSource,UITableViewDelegate>
 {
-    NSArray *_listData;//数据源
+    NSArray *_listData;
 }
-@property (weak, nonatomic) IBOutlet UITableView *myTableView;
+
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
-@implementation PlanViewController
+@implementation PlanDetailController
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -32,12 +32,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = [self.dic objectForKey:@"Sname"];
     
-    self.myTableView.delegate = self;
-    self.myTableView.dataSource = self;
+    self.tableView = [[UITableView alloc] initWithFrame:(CGRect){0,0,kScreen_Width,kScreen_height} style:UITableViewStyleGrouped];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self.view addSubview:self.tableView];
     
     [self requestHttp];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,7 +52,7 @@
 {
     [SVProgressHUD showWithStatus:@"加载中.."];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        if ([PlanObject fetchWithType:@"GetFxPlanTree" level:@"0" sicd:@""]) {
+        if ([PlanObject fetchWithType:@"GetFxPlanTree" level:@"1" sicd:[self.dic objectForKey:@"Sid"]]) {
             [self updateUI];
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -66,9 +68,10 @@
     [SVProgressHUD dismissWithSuccess:@"加载成功"];
     dispatch_async(dispatch_get_main_queue(), ^{
         _listData = [PlanObject requestDatas];
-        [self.myTableView reloadData];
+        [self.tableView reloadData];
     });
 }
+
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -84,7 +87,6 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    
     NSDictionary *dic = _listData[indexPath.row];
     cell.textLabel.text = [dic objectForKey:@"Sname"];
     return cell;
@@ -92,15 +94,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PlanDetailController *detail = [[PlanDetailController alloc] init];
-    detail.dic = _listData[indexPath.row];
-    
-    UIBarButtonItem *back = [[UIBarButtonItem alloc] init];
-    back.title = @"返回";
-    self.navigationItem.backBarButtonItem = back;
-    [self.navigationController pushViewController:detail animated:YES];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
 
 @end
