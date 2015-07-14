@@ -11,6 +11,7 @@
 #import "ProjectListController.h"
 #import "FilterViewController.h"
 #import "ProjectObject.h"
+#import "FilterObject.h"
 
 @interface ProjectViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -47,13 +48,14 @@
     [SVProgressHUD show];
     __block NSArray *filterDatas = nil;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        if ([ProjectObject fetchFilterData]) {
+        if ([FilterObject fetchFilterDataWithType:@"GetProjectsSearch"]) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [SVProgressHUD dismissWithSuccess:nil];
-                filterDatas = [ProjectObject requestData];
+                filterDatas = [FilterObject requestData];
                 FilterViewController *filter = [[FilterViewController alloc] init];
                 filter.data = filterDatas;//传递数据
                 filter.filterType =  ProjectFilter;
+                filter.title_name = @"工情搜索";
                 [self.navigationController pushViewController:filter animated:YES];
             });
         }else{

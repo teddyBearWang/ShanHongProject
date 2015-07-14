@@ -14,6 +14,9 @@
 #import "RainChartController.h"
 #import "MyTimeView.h"
 #import "HeaderView.h"
+#import "UIView+RootView.h"
+#import "FilterViewController.h"
+#import "FilterObject.h"
 
 @interface WaterViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -49,7 +52,7 @@
 
 - (void)initDatas
 {
-    _headers = @[@"最新(m)",@"超警(m)",@"库容(万m³)",@"最大时间",@"汛戒"];
+    _headers = @[@"最新(m)",@"最新时间",@"超警(m)",@"库容(万m³)",@"最大值(m)",@"最大时间",@"汛线"];
     _kCount = _headers.count;
 }
 
@@ -87,6 +90,15 @@
     self.myTimeView.headTitle = @"站点";
     [self.view addSubview:self.myTimeView];
     
+    UIButton *selct_btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    selct_btn.frame = (CGRect){0,0,20,20};
+    [selct_btn setCorners:5.0];
+    [selct_btn setBackgroundImage:[UIImage imageNamed:@"filter"] forState:UIControlStateNormal];
+    [selct_btn addTarget:self action:@selector(filterAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:selct_btn];
+    self.navigationItem.rightBarButtonItem = item;
+    
     [self refresh:@"GetSqInfo"];
     
     
@@ -104,6 +116,27 @@
         //用户点击返回,取消用户请求
         [RainObject cancelRequest];
     }
+}
+
+- (void)filterAction:(id)sender
+{
+    [SVProgressHUD show];
+    __block NSArray *filterDatas = nil;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if ([FilterObject fetchFilterDataWithType:@"GetSqInfoSearch"]) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismissWithSuccess:nil];
+                filterDatas = [FilterObject requestData];
+                FilterViewController *filter = [[FilterViewController alloc] init];
+                filter.data = filterDatas;//传递数据
+                filter.filterType =  WaterStationFilter;
+                filter.title_name = @"水情站点搜索";
+                [self.navigationController pushViewController:filter animated:YES];
+            });
+        }else{
+            filterDatas = [NSArray array];
+        }
+    });
 }
 
 - (void)refresh:(NSString *)type
@@ -147,13 +180,14 @@
     WaterCell *cell = (WaterCell *)[tableView dequeueReusableCellWithIdentifier:@"RainCell"];
     if (cell == nil) {
         cell = ( WaterCell*)[[[NSBundle mainBundle] loadNibNamed:@"WaterCell" owner:self options:nil] lastObject];
-       // cell = [(MyCell *)[MyCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RainCell"];
     }
-   // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     NSDictionary *dic = [listData objectAtIndex:indexPath.row];
     cell.lastestLevel.text = [[dic objectForKey:@"new"] isEqual:@""] ? @"--" : [dic objectForKey:@"new"];
+    NSLog(@"得到的最新时间:%@",[dic objectForKey:@"newTime"]);
+    cell.lastestTime.text = [[dic objectForKey:@"newTime"] isEqual:@""] ? @"--" : [dic objectForKey:@"newTime"];
     cell.warnWater.text = [[dic objectForKey:@"max"] isEqual:@""] ? @"--" : [dic objectForKey:@"max"];
     cell.capacity.text = @"10000";
+    cell.maxLevel.text = [[dic objectForKey:@"max"] isEqual:@""] ? @"--" : [dic objectForKey:@"max"];
     cell.maxTime.text = [[dic objectForKey:@"maxTime"] isEqual:@""] ? @"--" : [dic objectForKey:@"maxTime"];
     cell.floodWarn.text = @"10000";
     return cell;

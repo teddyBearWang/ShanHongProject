@@ -32,6 +32,23 @@ static  AFHTTPRequestOperation *_operation = nil;
     
 }
 
+//请求筛选服务
++ (BOOL)fetchFilterData
+{
+    BOOL ret;
+    //http://115.236.169.28/webserca/Data.ashx?t=GetYqInfoSearch&returntype=json
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSDictionary *parameter = @{@"t":@"GetProjectsSearch",@"returntype":@"json"};
+    _operation = [manager POST:URL parameters:parameter success:nil failure:nil];
+    [_operation waitUntilFinished];
+    if (_operation.responseData != 0) {
+        ret = YES;
+        datas = [NSJSONSerialization JSONObjectWithData:_operation.responseData options:NSJSONReadingMutableContainers error:nil];
+    }
+    return ret;
+}
+
 - (AFHTTPRequestOperation *)getOperation
 {
     return _operation;

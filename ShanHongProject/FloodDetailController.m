@@ -9,10 +9,10 @@
 #import "FloodDetailController.h"
 
 @interface FloodDetailController ()<UITableViewDataSource,UITableViewDelegate>
-//{
-//    UITableView *_table;
-//    NSArray *listData;
-//}
+{
+    UITableView *_table;
+    NSArray *listData;
+}
 
 @end
 
@@ -21,6 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    _table = [[UITableView alloc] initWithFrame:(CGRect){0,0,kScreen_Width,kScreen_height} style:UITableViewStyleGrouped];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,13 +31,18 @@
 }
 
 
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//    return listData.count;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return nil;
-//}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return self.sections.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return listData.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return nil;
+}
 @end

@@ -97,7 +97,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     QualityCell *cell  = (QualityCell *)[self tableView:_table cellForRowAtIndexPath:indexPath];
-    NSLog(@"cell的高度为;%lf",cell.frame.size.height);
     if (cell.frame.size.height <= 44) {
         return 44;
     }else{

@@ -18,5 +18,5 @@
 + (void)cancelRequest;
 
 //请求筛选服务
-+ (BOOL)fetchFilterData;
+//+ (BOOL)fetchFilterData;
 @end

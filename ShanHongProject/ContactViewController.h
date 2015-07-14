@@ -1,14 +1,14 @@
 //
-//  FilterViewController.h
+//  ContactViewController.h
 //  ShanHongProject
 //
-//  Created by teddy on 15/6/17.
+//  Created by teddy on 15/7/9.
 //  Copyright (c) 2015年 teddy. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface FilterViewController : UITableViewController
+@interface ContactViewController : UITableViewController
 {
     NSArray *_data;
     NSArray *filterData;
@@ -16,10 +16,5 @@
 }
 
 @property (nonatomic, strong)NSArray *data;
-
-@property (nonatomic, strong) NSString *title_name;//标题
-
-@property (nonatomic, assign) FILTERTYPE filterType;
-
 
 @end

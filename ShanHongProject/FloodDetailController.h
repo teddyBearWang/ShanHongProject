@@ -10,4 +10,8 @@
 
 @interface FloodDetailController : UIViewController
 
+@property (nonatomic, strong) NSMutableArray *sections; //sections 数组
+
+
+
 @end

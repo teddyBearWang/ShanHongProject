@@ -24,7 +24,9 @@
 
 //定义筛选类型的枚举
 typedef enum {
-    ProjectFilter = 0,
+    ProjectFilter = 0, //工情搜索
+    RainStationFilter = 1, //雨情站点搜索
+    WaterStationFilter = 2, //水情站点搜索
     
 }FILTERTYPE;
 

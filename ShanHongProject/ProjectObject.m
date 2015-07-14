@@ -30,6 +30,7 @@ static    AFHTTPRequestOperation *operation = nil;
 }
 
 //请求筛选服务
+/*
 + (BOOL)fetchFilterData
 {
     BOOL ret;
@@ -45,6 +46,7 @@ static    AFHTTPRequestOperation *operation = nil;
     }
     return ret;
 }
+ */
 
 static NSArray *datas = nil;
 + (NSArray *)requestData

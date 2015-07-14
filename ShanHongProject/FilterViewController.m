@@ -8,6 +8,8 @@
 
 #import "FilterViewController.h"
 #import "ProjectDetailController.h"
+#import "ChartViewController.h"
+#import "RainChartController.h"
 
 @interface FilterViewController ()<UISearchBarDelegate>
 
@@ -18,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"工情搜索";
+    self.title = self.title_name;
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:(CGRect){0,0,self.view.frame.size.width,44}];
     searchBar.placeholder = @"搜索";
     searchBar.delegate = self;
@@ -81,8 +83,28 @@
             }
                 break;
             case 1:
+            {
+                //进入雨量柱状图
+                NSDictionary *dic = filterData[indexPath.row];
+                ChartViewController *chart = [[ChartViewController alloc] init];
+                chart.title_name = [NSString stringWithFormat:@"%@ 最近7日雨情",dic[@"stnm"]];
+                chart.stcd = dic[@"stcd"];
+                chart.requestType = @"GetStDayLjYl";
+                chart.chartType = 2; //表示柱状图
+                [self.navigationController pushViewController:chart animated:YES];
+            }
                 
                 break;
+            case 2:
+            {
+                NSDictionary *dic = filterData[indexPath.row];
+                RainChartController *chart = [[RainChartController alloc] init];
+                chart.title_name = dic[@"stnm"];
+                chart.stcd = dic[@"stcd"];
+                chart.requestType = @"GetStDaySW";
+                chart.chartType = 1; //表示柱状图
+                [self.navigationController pushViewController:chart animated:YES];
+            }
             default:
                 break;
         }
@@ -121,9 +143,6 @@
         predicate = [NSPredicate predicateWithFormat:@"%K contains[cd] %@",@"MySearchName",searchDisplayController.searchBar.text];
     }
    
-//    NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"%K contains[cd] %@",@"MySearchName",searchDisplayController.searchBar.text];
-//    NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"%K contains [] %@",@"MyType",searchDisplayController.searchBar.text];
-//     NSPredicate *predicate3 = [NSPredicate predicateWithFormat:@"%K contains [] %@",@"rscd",searchDisplayController.searchBar.text];
     filterData = [[NSArray alloc] initWithArray:[_data filteredArrayUsingPredicate:predicate]];
     [self.tableView reloadData];
 }

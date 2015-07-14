@@ -164,7 +164,8 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8kf-qc-t48">
                                 <rect key="frame" x="16" y="69" width="60" height="60"/>
-                                <state key="normal" image="flood.png">
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -200,6 +201,9 @@
                                 <state key="normal" image="contact.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="contactSelectAction:" destination="dSu-9C-diG" eventType="touchUpInside" id="11f-ma-egy"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJL-Sg-SZr">
                                 <rect key="frame" x="92" y="289" width="60" height="60"/>
@@ -442,13 +446,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ggn-ww-2On">
-                                <rect key="frame" x="65" y="500" width="190" height="30"/>
+                                <rect key="frame" x="65" y="239" width="190" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Tpd-je-ZZa"/>
                                 </constraints>
                                 <state key="normal" title="退出当前账号">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -458,7 +462,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qcX-Nj-kvU" firstAttribute="top" secondItem="ggn-ww-2On" secondAttribute="bottom" constant="38" id="0YJ-Mq-2XE"/>
+                            <constraint firstItem="qcX-Nj-kvU" firstAttribute="top" secondItem="ggn-ww-2On" secondAttribute="bottom" constant="299" id="0YJ-Mq-2XE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ggn-ww-2On" secondAttribute="trailing" constant="49" id="cZi-Mm-6wF"/>
                             <constraint firstItem="ggn-ww-2On" firstAttribute="leading" secondItem="Z8l-2m-Zsu" secondAttribute="leadingMargin" constant="49" id="yaN-iW-6eE"/>
                         </constraints>
@@ -771,7 +775,6 @@
     </scenes>
     <resources>
         <image name="contact.png" width="60" height="60"/>
-        <image name="flood.png" width="60" height="60"/>
         <image name="gis.png" width="60" height="60"/>
         <image name="plan.png" width="60" height="60"/>
         <image name="project.png" width="60" height="60"/>

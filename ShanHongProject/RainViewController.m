@@ -18,6 +18,7 @@
 #import "MyCell.h"
 #import "HeaderView.h"
 #import "MyTimeView.h"
+#import "FilterObject.h"
 
 @interface RainViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -150,8 +151,23 @@
 
 - (void)filterAction:(UIButton *)btn
 {
-    FilterViewController *filter = [[FilterViewController alloc] init];
-    [self.navigationController pushViewController:filter animated:YES];
+    [SVProgressHUD show];
+    __block NSArray *filterDatas = nil;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if ([FilterObject fetchFilterDataWithType:@"GetYqInfoSearch"]) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismissWithSuccess:nil];
+                filterDatas = [FilterObject requestData];
+                FilterViewController *filter = [[FilterViewController alloc] init];
+                filter.data = filterDatas;//传递数据
+                filter.filterType =  RainStationFilter;
+                filter.title_name = @"雨情站点搜索";
+                [self.navigationController pushViewController:filter animated:YES];
+            });
+        }else{
+            filterDatas = [NSArray array];
+        }
+    });
 }
 
 #pragma mark  - UITableViewDataSource
@@ -177,7 +193,7 @@
 - (NSMutableArray *)selectValues:(NSDictionary *)dic
 {
     NSMutableArray *values = [NSMutableArray arrayWithCapacity:8];
-    NSArray *keys = @[@"rain1h",@"rain3h",@"raintoday"];
+    NSArray *keys = @[@"rain1h",@"rain3h",@"raintoday",@"rain6h",@"rain12h",@"rain24h",@"rain48h",@"rain72h"];
     for (NSString *key in keys) {
         NSString *value = [[dic objectForKey:key] isEqualToString:@""] ? @"--" : [dic objectForKey:key];
         [values addObject:value];

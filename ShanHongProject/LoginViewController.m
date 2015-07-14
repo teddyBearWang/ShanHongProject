@@ -10,6 +10,8 @@
 #import "MenuViewController.h"
 #import "StationSelectController.h"
 #import "SingleInstanceObject.h"
+#import "LoginToken.h"
+#import "SVProgressHUD.h"
 
 @interface LoginViewController ()<selectDelegate>
 {
@@ -87,24 +89,55 @@
 
 - (IBAction)loginAction:(id)sender
 {
+    if ([statusBtn.currentTitle isEqualToString:@"站点"]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"请选择站点" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
+    if (self.userName.text.length == 0 || self.psw.text.length == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"用户名或密码不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
+    [SVProgressHUD showWithStatus:@"登录中..."];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if ([LoginToken fetchWithUserName:self.userName.text Psw:self.psw.text Version:@"1.1.2" CityName:statusBtn.currentTitle]) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismissWithSuccess:@"登陆成功"];
+                [self pushView];
+            });
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismissWithError:@"登陆失败"];
+            });
+        }
+    });
+}
+
+
+//push到下一个界面
+- (void)pushView
+{
     UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     MenuViewController *menu = (MenuViewController *)[story instantiateViewControllerWithIdentifier:@"menu"];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:menu];
     nav.navigationBar.barTintColor = [UIColor colorWithRed:4/255.0 green:17/255.0 blue:49/255.0 alpha:1];
     nav.navigationBar.tintColor = [UIColor whiteColor];//修改返回按钮的颜色
-   // nav.interactivePopGestureRecognizer.enabled = NO; 禁止左滑返回手势
+    // nav.interactivePopGestureRecognizer.enabled = NO; 禁止左滑返回手势
     //设置标题颜色
     [nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     nav.navigationBar.translucent = NO;
     
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.5];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:self.view cache:YES];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft
+                           forView:self.view cache:YES];
     [self presentViewController:nav animated:YES completion:NULL];
     
     [UIView commitAnimations];
-    
 }
 
 //站点选择

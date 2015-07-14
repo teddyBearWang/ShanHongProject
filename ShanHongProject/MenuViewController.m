@@ -7,8 +7,10 @@
 //
 
 #import "MenuViewController.h"
+#import "ContactViewController.h"
 
 @interface MenuViewController ()
+- (IBAction)contactSelectAction:(id)sender;
 
 @end
 
@@ -31,4 +33,9 @@
 
 
 
+- (IBAction)contactSelectAction:(id)sender
+{
+    ContactViewController *contact = [[ContactViewController alloc] init];
+    [self.navigationController pushViewController:contact animated:YES];
+}
 @end
