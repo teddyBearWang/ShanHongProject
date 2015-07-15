@@ -26,16 +26,17 @@
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:(CGRect){0,0,kScreen_Width,kScreen_height}];
     scrollView.bounces = NO;
     scrollView.delegate = self;
-    scrollView.contentSize = CGSizeMake(kScreen_Width*2, kScreen_height*2);
+    scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.contentSize = CGSizeMake(kScreen_Width, kScreen_height*2);
     scrollView.maximumZoomScale = 2.0;
     scrollView.minimumZoomScale = 0.5;
     [self.view addSubview:scrollView];
     
-    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, scrollView.frame.size.width, scrollView.frame.size.width)];
+    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, scrollView.frame.size.width, scrollView.frame.size.height)];
     [scrollView addSubview:_webView];
     
     //加载PDF
-    [self loadPdfWithDocument:self.pdfName inView:_webView];
+    [self loadPdf];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,14 +44,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)loadPdfWithDocument:(NSString *)document inView:(UIWebView *)webView
+- (void)loadPdf
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:document ofType:@"pdf"];//获取文件的路劲
+
+   // NSString *path = [[NSBundle mainBundle] pathForResource:@"Swift" ofType:@"pdf"];
     
-    NSURL *url = [NSURL fileURLWithPath:path];
+    NSURL *url = [NSURL fileURLWithPath:self.pdfName];
     
     //将文件加载到webView上面
-    [webView loadRequest:[NSURLRequest requestWithURL:url]];
+    [_webView loadRequest:[NSURLRequest requestWithURL:url]];
 }
 
 #pragma mark - UIScrollViewDelegate

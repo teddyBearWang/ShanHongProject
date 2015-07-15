@@ -77,6 +77,7 @@
     cell.textLabel.text = listData[indexPath.row];
     cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.textLabel.font = [UIFont systemFontOfSize:14];
     return cell;
 }
 

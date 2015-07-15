@@ -14,6 +14,9 @@
 
 + (NSArray *)requestData;
 
+//获取汛情详情
++ (BOOL)fetchWithType:(NSString *)type;
+
 + (void)cancelRequest;
 
 @end

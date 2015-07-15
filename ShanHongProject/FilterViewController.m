@@ -18,6 +18,21 @@
 @implementation FilterViewController
 @synthesize data = _data;
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    //强制屏幕横屏
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+        SEL selector = NSSelectorFromString(@"setOrientation:");
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
+        [invocation setSelector:selector];
+        [invocation setTarget:[UIDevice currentDevice]];
+        int val = UIInterfaceOrientationPortrait;
+        [invocation setArgument:&val atIndex:2];
+        [invocation invoke];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = self.title_name;
@@ -71,6 +86,45 @@
 {
     if (tableView == self.tableView) {
         //筛选前的数据，数据源为_data;
+        
+        //筛选后的数据，数据源为 filterData;
+        switch (self.filterType) {
+            case 0:
+            {
+                //表示工情筛选
+                ProjectDetailController *detail = [[ProjectDetailController alloc] init];
+                detail.Object_dic = [_data objectAtIndex:indexPath.row];
+                [self.navigationController pushViewController:detail animated:YES];
+            }
+                break;
+            case 1:
+            {
+                //进入雨量柱状图
+                NSDictionary *dic = _data[indexPath.row];
+                ChartViewController *chart = [[ChartViewController alloc] init];
+                chart.title_name = [NSString stringWithFormat:@"%@ 最近7日雨情",dic[@"stnm"]];
+                chart.stcd = dic[@"stcd"];
+                chart.requestType = @"GetStDayLjYl";
+                chart.chartType = 2; //表示柱状图
+                [self.navigationController pushViewController:chart animated:YES];
+            }
+                
+                break;
+            case 2:
+            {
+                NSDictionary *dic = _data[indexPath.row];
+                RainChartController *chart = [[RainChartController alloc] init];
+                chart.title_name = dic[@"stnm"];
+                chart.stcd = dic[@"stcd"];
+                chart.requestType = @"GetStDaySW";
+                chart.chartType = 1; //表示柱状图
+                [self.navigationController pushViewController:chart animated:YES];
+            }
+            default:
+                break;
+        }
+
+        
     }else{
        //筛选后的数据，数据源为 filterData;
         switch (self.filterType) {

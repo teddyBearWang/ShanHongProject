@@ -10,6 +10,14 @@
 #import "UUColor.h"
 #import "UUChartLabel.h"
 
+
+@interface UULineChart()
+{
+    
+}
+
+@end
+
 @implementation UULineChart
 
 - (id)initWithFrame:(CGRect)frame
@@ -45,15 +53,15 @@
             }
         }
     }
-    if (max < 6) {
-        max = 6;
-    }
+//    if (max < 6) {
+//        max = 6;
+//    }
     if (self.showRange) {
         _yValueMin = min;
     }else{
         _yValueMin = 0;
     }
-    _yValueMax = (int)max;
+    _yValueMax = (int)max * (1+0.3);
     
     if (_chooseRange.max!=_chooseRange.min) {
         _yValueMax = _chooseRange.max;

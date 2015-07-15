@@ -10,6 +10,8 @@
 
 @interface ContactCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *userImg;
+
 @property (nonatomic, strong) IBOutlet UILabel *name; //姓名
 
 @property (nonatomic, strong) IBOutlet UILabel *phoneNumber; //电话

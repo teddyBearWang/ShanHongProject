@@ -16,6 +16,7 @@
     self.phoneNumber.text = [[dic objectForKey:@"Mobile"] isEqualToString:@""] ? @"--" : [dic objectForKey:@"Mobile"];
     self.position.text = [[dic objectForKey:@"Position"] isEqualToString:@""] ? @"--" : [dic objectForKey:@"Position"];
     self.town.text = [[dic objectForKey:@"ADNM"] isEqualToString:@""] ? @"--" : [dic objectForKey:@"ADNM"];
+    self.userImg.image = [UIImage imageNamed:@"man"];
 }
 
 @end

@@ -52,7 +52,7 @@
 
 - (void)initDatas
 {
-    _headers = @[@"最新(m)",@"最新时间",@"超警(m)",@"库容(万m³)",@"最大值(m)",@"最大时间",@"汛线"];
+    _headers = @[@"最新水位(m)",@"最新时间",@"当日最大(m)",@"最大时间",@"警戒(汛限)",@"超警戒(超汛限)",@"库容"];
     _kCount = _headers.count;
 }
 
@@ -183,13 +183,17 @@
     }
     NSDictionary *dic = [listData objectAtIndex:indexPath.row];
     cell.lastestLevel.text = [[dic objectForKey:@"new"] isEqual:@""] ? @"--" : [dic objectForKey:@"new"];
-    NSLog(@"得到的最新时间:%@",[dic objectForKey:@"newTime"]);
     cell.lastestTime.text = [[dic objectForKey:@"newTime"] isEqual:@""] ? @"--" : [dic objectForKey:@"newTime"];
-    cell.warnWater.text = [[dic objectForKey:@"max"] isEqual:@""] ? @"--" : [dic objectForKey:@"max"];
-    cell.capacity.text = @"10000";
+    cell.warnWater.text = [[dic objectForKey:@"STThreshold"] isEqual:@""] ? @"--" : [dic objectForKey:@"STThreshold"];
+    cell.capacity.text = [[dic objectForKey:@"kr"] isEqual:@""] ? @"--" : [dic objectForKey:@"kr"];
     cell.maxLevel.text = [[dic objectForKey:@"max"] isEqual:@""] ? @"--" : [dic objectForKey:@"max"];
     cell.maxTime.text = [[dic objectForKey:@"maxTime"] isEqual:@""] ? @"--" : [dic objectForKey:@"maxTime"];
-    cell.floodWarn.text = @"10000";
+    if ([[dic objectForKey:@"jjsw"] isEqual:@""]) {
+        cell.floodWarn.text = @"--";
+    }else{
+        cell.floodWarn.text = [dic objectForKey:@"jjsw"];
+        cell.floodWarn.textColor = [UIColor redColor];
+    }
     return cell;
 }
 

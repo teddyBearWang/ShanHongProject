@@ -88,7 +88,7 @@
     }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     NSDictionary *dic = [listData lastObject];
-    cell.textLabel.font = [UIFont systemFontOfSize:13];
+    cell.textLabel.font = [UIFont systemFontOfSize:14];
     switch (indexPath.row) {
         case 0:
             if ([[dic objectForKey:@"RainCount"] floatValue] > 0.0) {
@@ -142,9 +142,91 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FloodDetailController *detail = [[FloodDetailController alloc] init];
-    [self.navigationController pushViewController:detail animated:YES];
+//    FloodDetailController *detail = [[FloodDetailController alloc] init];
+//    [self.navigationController pushViewController:detail animated:YES];
+    NSString *type = @"";
+    switch (indexPath.row) {
+        case 0:
+            type = @"yl";
+            break;
+        case 1:
+            type = @"sw";
+            break;
+        case 2:
+            type = @"sigleylmax";
+            break;
+        case 3:
+            type = @"sigleyl1hmax";
+            break;
+        case 4:
+            type = @"tf";
+            break;
+            
+        default:
+            break;
+    }
+    [self getFloodDetailWith:type];
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - 获取汛情详情
+
+- (void)getFloodDetailWith:(NSString *)type
+{
+    [SVProgressHUD showWithStatus:@"加载中.."];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //加载
+        if ([FloodObject fetchWithType:type]) {
+            //updateUI
+            [self pushViewAction];
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //失败
+                [SVProgressHUD dismissWithError:@"加载失败"];
+            });
+        }
+    });
+}
+
+//push to next controllers
+- (void)pushViewAction
+{
+    [SVProgressHUD dismissWithSuccess:@"加载成功"];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSArray *data = [FloodObject requestData];
+        FloodDetailController *detail = [[FloodDetailController alloc] init];
+        detail.sections = [self dealWithSeactions:data];
+        detail.listDatas = [self dealWithRows:data];
+        [self.navigationController pushViewController:detail animated:YES];
+    });
+}
+
+//得到seactions数组
+- (NSMutableArray *)dealWithSeactions:(NSArray *)array
+{
+    NSMutableArray *seactions = [NSMutableArray array];
+    for (int i=0; i<array.count; i++) {
+        NSDictionary *dic = [array objectAtIndex:i];
+        [seactions addObject:[dic objectForKey:@"typename"]];
+    }
+    return seactions;
+}
+
+
+- (NSMutableArray *)dealWithRows:(NSArray *)array
+{
+    NSMutableArray *rows = [NSMutableArray array];
+    for (int i=0; i<array.count; i++) {
+        NSDictionary *dic = [array objectAtIndex:i];
+        NSArray *values = [dic objectForKey:@"values"];
+        NSMutableArray *rowForSeaction = [NSMutableArray arrayWithCapacity:values.count];
+        for (NSDictionary *dic in values) {
+            [rowForSeaction addObject:dic];
+        }
+        [rows addObject:rowForSeaction];
+    }
+    return rows;
 }
 
 @end

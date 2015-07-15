@@ -12,6 +12,8 @@
 
 @property (nonatomic, strong) NSMutableArray *sections; //sections 数组
 
+@property (nonatomic, strong) NSMutableArray *listDatas; //数据源,里面包含每个seaction的数组
+
 
 
 @end

@@ -16,6 +16,7 @@
 @interface LoginViewController ()<selectDelegate>
 {
     UIButton *statusBtn;//站点
+    SingleInstanceObject *_single;
 }
 @property (weak, nonatomic) IBOutlet UINavigationBar *bar; //导航栏
 @property (weak, nonatomic) IBOutlet UITextField *userName;
@@ -51,6 +52,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //创建单例
+    _single = [SingleInstanceObject defaultInstance];
     self.view.backgroundColor = BG_COLOR;
     [self initNavBar];
     
@@ -110,6 +114,9 @@
                 [SVProgressHUD dismissWithSuccess:@"登陆成功"];
                 [self saveInfo];
                 [self pushView];
+                NSString *url = _single.SproxyUrl;
+
+
             });
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
