@@ -52,7 +52,7 @@
 
 - (void)initDatas
 {
-    _headers = @[@"最新水位(m)",@"最新时间",@"当日最大(m)",@"最大时间",@"警戒(汛限)",@"超警戒(超汛限)",@"库容"];
+    _headers = @[@"警戒(汛限)",@"超警戒(超汛限)",@"实时水位(m)",@"最新时间",@"当日最大(m)",@"最大时间",@"库容"];
     _kCount = _headers.count;
 }
 
@@ -87,7 +87,7 @@
     
     self.myTimeView = [[MyTimeView alloc] initWithFrame:CGRectMake(0, 0, kWidth, kScreen_height)];
     self.myTimeView.listData = _stations;
-    self.myTimeView.headTitle = @"站点";
+    self.myTimeView.headTitle = @"站点名称";
     [self.view addSubview:self.myTimeView];
     
     UIButton *selct_btn = [UIButton buttonWithType:UIButtonTypeCustom];

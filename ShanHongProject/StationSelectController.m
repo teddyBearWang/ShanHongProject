@@ -136,6 +136,8 @@ static NSInteger _selectRow;
     
     //将所选的站点的信息赋值给单例保存
     NSDictionary *dic = listData[indexPath.row];
+    //将站点信息保存在本地
+    [self saveInfo:dic];
     selectArea = [dic objectForKey:@"ScityName"];
     SingleInstanceObject *instance = [SingleInstanceObject defaultInstance];
     instance.Scityid = [dic objectForKey:@"Scityid"];
@@ -145,6 +147,14 @@ static NSInteger _selectRow;
     instance.ScenterLat = [dic objectForKey:@"ScenterLat"];
     instance.ScenterZoom = [dic objectForKey:@"ScenterZoom"];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+//本地化
+- (void)saveInfo:(NSDictionary *)dic
+{
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    [user setObject:dic forKey:STATION];
+    [user synchronize];
 }
 
 @end

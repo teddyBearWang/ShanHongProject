@@ -10,4 +10,6 @@
 
 @interface MenuViewController : UIViewController
 
+@property (nonatomic, strong) NSDictionary *loginDic;//登陆成功传进来的数据
+
 @end

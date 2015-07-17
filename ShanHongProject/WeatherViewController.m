@@ -43,7 +43,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self getWeatherData:@"淳安"];
+    
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSDictionary *dic = [user objectForKey:STATION];
+    
+    [self getWeatherData:[dic objectForKey:@"ScityName"]];
 }
 
 - (void)didReceiveMemoryWarning {

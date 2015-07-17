@@ -8,10 +8,12 @@
 //
 
 #import "ChartObject.h"
+#import "UntilObject.h"
 #import <AFNetworking.h>
 
 //http://115.236.2.245:38027/data.ashx?t=GetStDayYL&results=8217$2015-04-27%2016:35:25
 
+static  NSString *_url = nil;
 @implementation ChartObject
 
 /*
@@ -23,6 +25,7 @@
 {
     __block BOOL ret = NO;
     
+    _url = [UntilObject getWebURL];
 
     //http://115.236.169.28/webserca/Data.ashx?t=GetStDayLjYl&results=2172$2015-06-23$2015-06-30&returntype=json
     NSDictionary *parameters = @{@"t":type,
@@ -31,7 +34,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    AFHTTPRequestOperation *operation = [manager POST:URL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    AFHTTPRequestOperation *operation = [manager POST:_url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //成功
     } failure:nil];
     [operation waitUntilFinished];

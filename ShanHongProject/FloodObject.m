@@ -7,20 +7,22 @@
 //
 
 #import "FloodObject.h"
-#import "SVProgressHUD.h"
 #import <AFNetworking.h>
+#import "UntilObject.h"
 
-AFHTTPRequestOperation *operation = nil;
+static AFHTTPRequestOperation *operation = nil;
+static NSString *_url= nil;
 @implementation FloodObject
 
 + (BOOL)fetch
 {
     BOOL ret;
+    _url = [UntilObject getWebURL];
     //http://115.236.169.28/webserca/Data.ashx?t=GetTodayList&returntype=json
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSDictionary *parameter = @{@"t":@"GetTodayList",@"returntype":@"json"};
-    operation = [manager POST:URL parameters:parameter success:nil failure:nil];
+    operation = [manager POST:_url parameters:parameter success:nil failure:nil];
     [operation waitUntilFinished];
     if (operation.responseData != nil) {
         ret = YES;
@@ -34,6 +36,7 @@ AFHTTPRequestOperation *operation = nil;
 + (BOOL)fetchWithType:(NSString *)type
 {
     BOOL ret = NO;
+    _url = [UntilObject getWebURL];
    // http://115.236.169.28/webserca/Data.ashx?t=GetTodayView&results=yl&returntype=json
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -46,7 +49,7 @@ AFHTTPRequestOperation *operation = nil;
     if (data != nil) {
         data = nil;
     }
-    operation = [manager POST:URL parameters:parameter success:nil failure:nil];
+    operation = [manager POST:_url parameters:parameter success:nil failure:nil];
     [operation waitUntilFinished];
     if (operation.responseData != nil) {
         ret = YES;

@@ -57,7 +57,7 @@
 
 - (void)initData
 {
-    _headers = @[@"1h雨量",@"3h雨量",@"今日雨量",@"6h雨量",@"12h雨量",@"24h雨量",@"48h雨量",@"72h雨量"];
+    _headers = @[@"1h雨量(mm)",@"3h雨量(mm)",@"今日雨量(mm)",@"6h雨量(mm)",@"12h雨量(mm)",@"24h雨量(mm)",@"48h雨量(mm)",@"72h雨量(mm)"];
     _kCount = _headers.count;
 }
 
@@ -91,7 +91,7 @@
     
     self.myTimeView = [[MyTimeView alloc] initWithFrame:(CGRect){0,0,kWidth,kScreen_height}];
     self.myTimeView.listData = _stations;
-    self.myTimeView.headTitle = @"站点";
+    self.myTimeView.headTitle = @"站点名称";
     [self.view addSubview:self.myTimeView];
     
     UIButton *selct_btn = [UIButton buttonWithType:UIButtonTypeCustom];

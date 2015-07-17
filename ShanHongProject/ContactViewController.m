@@ -12,6 +12,9 @@
 #import "ContactCell.h"
 
 @interface ContactViewController ()<UISearchBarDelegate>
+{
+    UISearchBar *searchBar;
+}
 
 
 @end
@@ -26,8 +29,8 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:(CGRect){0,0,self.view.frame.size.width,44}];
-    searchBar.placeholder = @"搜索";
+    searchBar = [[UISearchBar alloc] initWithFrame:(CGRect){0,0,self.view.frame.size.width,44}];
+    searchBar.placeholder = @"可以根据手机号码、职位、姓名搜索";
     searchBar.delegate = self;
     
     //添加searchBar到headerView上面
@@ -135,6 +138,18 @@
 }
 
 #pragma mark -UISearchBarDelegate
+
+//将cancel按钮修改"取消"（或者自定义）
+- (void) searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
+{
+    [searchBar setShowsCancelButton:YES];
+    for (UIView *view in searchBar.subviews) {
+        if ([view isKindOfClass:[UIButton class]]) {
+            //得到button
+            [(UIButton *)view setTitle:@"取消" forState:UIControlStateNormal];
+        }
+    }
+}
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
     return YES;

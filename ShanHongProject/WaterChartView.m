@@ -42,6 +42,7 @@
                                               withSource:self
                                                withStyle:UUChartLineStyle];
     [chartView showInView:self];
+    
 }
 
 - (void)refreshChart

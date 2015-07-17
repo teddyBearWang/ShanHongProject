@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define KTapStationNotification @"tapStationNotificaton"
+
 @interface FilterViewController : UITableViewController
 {
     NSArray *_data;

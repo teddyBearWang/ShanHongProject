@@ -8,8 +8,11 @@
 
 #import "LoginToken.h"
 #import <AFNetworking.h>
+#import "UntilObject.h"
 
 static AFHTTPRequestOperation *operation;
+
+static NSString *_url = nil;
 @implementation LoginToken
 
 
@@ -17,7 +20,7 @@ static AFHTTPRequestOperation *operation;
 {
     //http://115.236.169.28/webserca/Data.ashx?t=Login&results=dcxxadmin$123456$1.1.2$淳安&returntype=json
     BOOL ret = NO;
-    
+    _url = [UntilObject getWebURL];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
@@ -25,7 +28,7 @@ static AFHTTPRequestOperation *operation;
     NSDictionary *paramters = @{@"t":@"Login",
                                 @"results":user,
                                 @"returntype":@"json"};
-    operation = [manager POST:URL parameters:paramters success:nil failure:nil];
+    operation = [manager POST:_url parameters:paramters success:nil failure:nil];
     [operation waitUntilFinished];
     if (operation.responseData != nil) {
         ret = YES;

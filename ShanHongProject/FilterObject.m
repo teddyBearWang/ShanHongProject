@@ -8,9 +8,10 @@
 
 #import "FilterObject.h"
 #import <AFNetworking.h>
+#import "UntilObject.h"
 
 static    AFHTTPRequestOperation *operation = nil;
-
+static NSString *_url = nil;
 @implementation FilterObject
 
 
@@ -18,11 +19,12 @@ static    AFHTTPRequestOperation *operation = nil;
 + (BOOL)fetchFilterDataWithType:(NSString *)type
 {
     BOOL ret;
+    _url = [UntilObject getWebURL];
     //http://115.236.169.28/webserca/Data.ashx?t=GetProjects&results=sk&returntype=json
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSDictionary *parameter = @{@"t":type,@"returntype":@"json"};
-    operation = [manager POST:URL parameters:parameter success:nil failure:nil];
+    operation = [manager POST:_url parameters:parameter success:nil failure:nil];
     [operation waitUntilFinished];
     if (operation.responseData != 0) {
         ret = YES;

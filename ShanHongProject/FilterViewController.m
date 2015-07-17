@@ -11,7 +11,11 @@
 #import "ChartViewController.h"
 #import "RainChartController.h"
 
+
 @interface FilterViewController ()<UISearchBarDelegate>
+{
+    UISearchBar *searchBar; //搜索bar
+}
 
 @end
 
@@ -36,8 +40,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = self.title_name;
-    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:(CGRect){0,0,self.view.frame.size.width,44}];
-    searchBar.placeholder = @"搜索";
+    searchBar = [[UISearchBar alloc] initWithFrame:(CGRect){0,0,self.view.frame.size.width,44}];
+    searchBar.placeholder = @"根据站名、编号搜索";
     searchBar.delegate = self;
     
     //添加searchBar到headerView上面
@@ -120,6 +124,26 @@
                 chart.chartType = 1; //表示柱状图
                 [self.navigationController pushViewController:chart animated:YES];
             }
+                break;
+            case 3:
+            {
+                NSDictionary *dic = filterData[indexPath.row];
+                if ([[dic objectForKey:@"X"] isEqualToString:@""] && [[dic objectForKey:@"X"] isEqualToString:@""])
+                {
+                    [self ShowAlert];
+                    return;
+                }else{
+                    if ([[dic objectForKey:@"X"] floatValue] != 0 || [[dic objectForKey:@"Y"] floatValue] != 0)
+                    {
+                        [[NSNotificationCenter defaultCenter] postNotificationName:KTapStationNotification object:dic];
+                    }else{
+                        [self ShowAlert];
+                    }
+                }
+                //返回
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+                break;
             default:
                 break;
         }
@@ -159,6 +183,27 @@
                 chart.chartType = 1; //表示柱状图
                 [self.navigationController pushViewController:chart animated:YES];
             }
+                break;
+            case 3:
+            {
+                NSDictionary *dic = filterData[indexPath.row];
+                
+                if ([[dic objectForKey:@"X"] isEqualToString:@""] && [[dic objectForKey:@"X"] isEqualToString:@""])
+                {
+                    [self ShowAlert];
+                    return;
+                }else{
+                    if ([[dic objectForKey:@"X"] floatValue] != 0 || [[dic objectForKey:@"Y"] floatValue] != 0)
+                    {
+                        [[NSNotificationCenter defaultCenter] postNotificationName:KTapStationNotification object:dic];
+                    }else{
+                        [self ShowAlert];
+                    }
+                }
+                //返回
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+                break;
             default:
                 break;
         }
@@ -169,7 +214,24 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (void)ShowAlert
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"你选择的站点当前无经纬度信息" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [alert show];
+}
+
 #pragma mark -UISearchBarDelegate
+
+- (void) searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
+{
+    [searchBar setShowsCancelButton:YES];
+    for (UIView *view in searchBar.subviews) {
+        if ([view isKindOfClass:[UIButton class]]) {
+            [(UIButton *)view setTitle:@"取消" forState:UIControlStateNormal];
+        }
+    }
+}
+
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
     return YES;

@@ -17,6 +17,7 @@
 {
     UIButton *statusBtn;//站点
     SingleInstanceObject *_single;
+    NSArray *data;//得到的数据
 }
 @property (weak, nonatomic) IBOutlet UINavigationBar *bar; //导航栏
 @property (weak, nonatomic) IBOutlet UITextField *userName;
@@ -112,8 +113,9 @@
         if ([LoginToken fetchWithUserName:self.userName.text Psw:self.psw.text Version:@"1.1.2" CityName:statusBtn.currentTitle]) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [SVProgressHUD dismissWithSuccess:@"登陆成功"];
+                data = [LoginToken requestDatas];
                 [self saveInfo];
-                [self pushView];
+                [self pushView:[data lastObject]];
                 NSString *url = _single.SproxyUrl;
 
 
@@ -130,31 +132,32 @@
 - (void)saveInfo
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self.userName.text forKey:@"username"];
-    [defaults setObject:self.psw.text forKey:@"psw"];
-    [defaults setObject:statusBtn.currentTitle forKey:@"site"];
+    [defaults setObject:self.userName.text forKey:USERNAME];
+    [defaults setObject:self.psw.text forKey:PASSWORD];
+    [defaults setObject:statusBtn.currentTitle forKey:SITE];
     [defaults synchronize];
 }
 
 - (void)getInfo
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.userName.text = [defaults objectForKey:@"username"];
-    self.psw.text = [defaults objectForKey:@"psw"];
-    if ([defaults objectForKey:@"site"] == nil) {
+    self.userName.text = [defaults objectForKey:USERNAME];
+    self.psw.text = [defaults objectForKey:PASSWORD];
+    if ([defaults objectForKey:SITE] == nil) {
         //没有值
         [statusBtn setTitle:@"站点" forState:UIControlStateNormal];
     }else{
-        [statusBtn setTitle:[defaults objectForKey:@"site"] forState:UIControlStateNormal];
+        [statusBtn setTitle:[defaults objectForKey:SITE] forState:UIControlStateNormal];
     }
 }
 
 
 //push到下一个界面
-- (void)pushView
+- (void)pushView:(NSDictionary *)dic
 {
     UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     MenuViewController *menu = (MenuViewController *)[story instantiateViewControllerWithIdentifier:@"menu"];
+    menu.loginDic = dic;//完成数值的传递
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:menu];
     nav.navigationBar.barTintColor = [UIColor colorWithRed:4/255.0 green:17/255.0 blue:49/255.0 alpha:1];
     nav.navigationBar.tintColor = [UIColor whiteColor];//修改返回按钮的颜色

@@ -20,11 +20,14 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - AMap3DMap (2.5.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.4)
+  - AMap3DMap (~> 2.5.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  AMap3DMap: 63349e4f7b6f097bce63853b24fe92ea0603a8f8
 
 COCOAPODS: 0.37.2

@@ -11,6 +11,7 @@
 
 static DownloadFile *downloadFile = nil;
 
+
 @implementation DownloadFile
 
 #pragma mark - 单例
@@ -84,6 +85,7 @@ static DownloadFile *downloadFile = nil;
 - (void)loadFileFromUrl:(NSString *)url
 {
     //URL= http://115.236.169.28/xjxly/FileDoc/12345.pdf
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     AFHTTPRequestOperation *operation = [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {

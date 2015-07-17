@@ -8,8 +8,10 @@
 
 #import "PlanObject.h"
 #import <AFNetworking.h>
+#import "UntilObject.h"
 
 static AFHTTPRequestOperation *operation = nil;
+static NSString *_url = nil;
 @implementation PlanObject
 
 
@@ -17,6 +19,7 @@ static AFHTTPRequestOperation *operation = nil;
 {
     BOOL ret = NO;
     //http://115.236.169.28/webserca/data.ashx?&t=GetFxPlanTree&results=name$0$$false&returntype=json
+    _url = [UntilObject getWebURL];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
@@ -24,7 +27,7 @@ static AFHTTPRequestOperation *operation = nil;
     NSDictionary *parameters = @{@"t":type,
                                  @"results":str,
                                  @"returntype":@"json"};
-    operation = [manager POST:URL parameters:parameters success:nil failure:nil];
+    operation = [manager POST:_url parameters:parameters success:nil failure:nil];
     [operation waitUntilFinished];
     if (operation.responseData != nil) {
         ret = YES;

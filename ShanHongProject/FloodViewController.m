@@ -93,18 +93,18 @@
         case 0:
             if ([[dic objectForKey:@"RainCount"] floatValue] > 0.0) {
                 cell.textLabel.textColor = [UIColor redColor];
-                cell.textLabel.text = [NSString stringWithFormat:@"雨量站超警戒 %@个",[dic objectForKey:@"RainCount"]];
+                cell.textLabel.text = [NSString stringWithFormat:@"雨量站超预警 %@个",[dic objectForKey:@"RainCount"]];
             }else{
-                cell.textLabel.text = [NSString stringWithFormat:@"雨量站超警戒 0个"];
+                cell.textLabel.text = [NSString stringWithFormat:@"雨量站超预警 0个"];
             }
             cell.imageView.image = [UIImage imageNamed:@"yl"];
             break;
         case 1:
             if ([[dic objectForKey:@"WaterCount"] floatValue] > 0) {
                 cell.textLabel.textColor = [UIColor redColor];
-                cell.textLabel.text = [NSString stringWithFormat:@"水位超警戒 %@个",[dic objectForKey:@"WaterCount"]];
+                cell.textLabel.text = [NSString stringWithFormat:@"水位超预警 %@个",[dic objectForKey:@"WaterCount"]];
             }else{
-                cell.textLabel.text = [NSString stringWithFormat:@"水位超警戒 0个"];
+                cell.textLabel.text = [NSString stringWithFormat:@"水位超预警 0个"];
             }
             cell.imageView.image = [UIImage imageNamed:@"sw"];
             break;
@@ -119,9 +119,9 @@
             break;
         case 3:
             if ([[dic objectForKey:@"Maxr1hValue"] floatValue] > 0.0) {
-                cell.textLabel.text = [NSString stringWithFormat:@"单站当日最大1小时最大降雨量 %@mm",[dic objectForKey:@"Maxr1hValue"]];
+                cell.textLabel.text = [NSString stringWithFormat:@"单站当日1小时最大降雨量 %@mm",[dic objectForKey:@"Maxr1hValue"]];
             }else{
-                cell.textLabel.text = [NSString stringWithFormat:@"单站当日最大1小时最大降雨量 0 mm"];
+                cell.textLabel.text = [NSString stringWithFormat:@"单站当日1小时最大降雨量 0 mm"];
             }
             cell.imageView.image = [UIImage imageNamed:@"yl"];
             break;

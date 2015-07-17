@@ -15,7 +15,9 @@
 @property (nonatomic, strong) NSString *SproxyUrl;//服务地址
 @property (nonatomic, strong) NSString *ScenterLng;//地图默认定位精度
 @property (nonatomic, strong) NSString *ScenterLat;//地图默认定位纬度
-@property (nonatomic, strong) NSString *ScenterZoom;//地图默认方法级别 
+@property (nonatomic, strong) NSString *ScenterZoom;//地图默认方法级别
+
+@property (nonatomic, strong) NSMutableArray *selectArray;//GIS中站点的显示的站点类别
 + (SingleInstanceObject *)defaultInstance;
 
 @end

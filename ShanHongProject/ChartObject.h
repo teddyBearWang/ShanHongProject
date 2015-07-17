@@ -10,6 +10,7 @@
 
 @interface ChartObject : NSObject
 
+
 /*
  *type: 请求方式
  *results:凭借字段

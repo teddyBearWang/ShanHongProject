@@ -7,22 +7,26 @@
 //
 
 #import "RainObject.h"
+#import "UntilObject.h"
 
 //http://115.236.169.28/webserca/Data.ashx?t=GetYqInfo&returntype=json
 
 static  AFHTTPRequestOperation *_operation = nil;
+static NSString *_url = nil;
 @implementation RainObject
 
 + (BOOL)fetch:(NSString *)type
 {
     BOOL ret = NO;
+    
+    _url = [UntilObject getWebURL];
     //http://115.236.169.28/webserca/Data.ashx?t=GetYqInfo&returntype=json
     NSDictionary *parameter = @{@"t":type,@"returntype":@"json"};
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer.timeoutInterval = 10; //设置超时时间
     
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    _operation = [manager POST:URL parameters:parameter success:nil failure:nil];
+    _operation = [manager POST:_url parameters:parameter success:nil failure:nil];
     [_operation waitUntilFinished];
     if (_operation.responseData != nil) {
         ret = YES;
@@ -37,10 +41,11 @@ static  AFHTTPRequestOperation *_operation = nil;
 {
     BOOL ret;
     //http://115.236.169.28/webserca/Data.ashx?t=GetYqInfoSearch&returntype=json
+    _url = [UntilObject getWebURL];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSDictionary *parameter = @{@"t":@"GetProjectsSearch",@"returntype":@"json"};
-    _operation = [manager POST:URL parameters:parameter success:nil failure:nil];
+    _operation = [manager POST:_url parameters:parameter success:nil failure:nil];
     [_operation waitUntilFinished];
     if (_operation.responseData != 0) {
         ret = YES;

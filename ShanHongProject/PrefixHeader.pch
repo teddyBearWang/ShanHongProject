@@ -20,13 +20,14 @@
 #define Font_BGCOLOR [UIColor colorWithRed:20/255.0 green:42/255.0 blue:72/255.0 alpha:1.0]
 
 #define Site_URL @"http://115.236.2.245:38019/data.ashx?"
-#define URL @"http://115.236.169.28/webserca/Data.ashx?"
+//#define URL @"http://115.236.169.28/webserca/Data.ashx?"
 
 //定义筛选类型的枚举
 typedef enum {
     ProjectFilter = 0, //工情搜索
     RainStationFilter = 1, //雨情站点搜索
     WaterStationFilter = 2, //水情站点搜索
+    GISFilter = 3,//GIS搜索
     
 }FILTERTYPE;
 
@@ -38,5 +39,17 @@ typedef enum {
 
 #define kScreen_Width [[UIScreen mainScreen] bounds].size.width
 #define kScreen_height [[UIScreen mainScreen] bounds].size.height
+
+//站点信息
+#define  STATION @"station"
+
+//用户名
+#define  USERNAME @"username"
+
+//密码
+#define PASSWORD @"password"
+
+//站名
+#define SITE @"site"
 
 #endif

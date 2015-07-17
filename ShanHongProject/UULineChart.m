@@ -96,7 +96,7 @@
             shapeLayer.path = path.CGPath;
             shapeLayer.strokeColor = [[[UIColor blackColor] colorWithAlphaComponent:0.1] CGColor];
             shapeLayer.fillColor = [[UIColor whiteColor] CGColor];
-            shapeLayer.lineWidth = 1;
+            shapeLayer.lineWidth = 2;
             [self.layer addSublayer:shapeLayer];
         }
     }
@@ -133,7 +133,7 @@
             shapeLayer.path = path.CGPath;
             shapeLayer.strokeColor = [[[UIColor blackColor] colorWithAlphaComponent:0.1] CGColor];
             shapeLayer.fillColor = [[UIColor whiteColor] CGColor];
-            shapeLayer.lineWidth = 1;
+            shapeLayer.lineWidth = 2;
             [self.layer addSublayer:shapeLayer];
         }
     }
