@@ -202,22 +202,24 @@
 //判断显示横线条
 - (BOOL)UUChart:(UUChart *)chart ShowHorizonLineAtIndex:(NSInteger)index
 {
-    if (index == 4) {
-        return YES;
-    }else{
-        return NO;
-    }
+   // if (index == 4) {
+      //  return YES;
+//    }else{
+//        return NO;
+//    }
+    
+    return YES;
     
 }
 
 //判断显示竖线条
 - (BOOL)UUChart:(UUChart *)chart ShowVericationLineAtIndex:(NSInteger)index
 {
-    if (index == 0) {
+   // if (index == 0) {
         return YES;
-    }else{
-        return NO;
-    }
+//    }else{
+//        return NO;
+//    }
 }
 
 //颜色数组

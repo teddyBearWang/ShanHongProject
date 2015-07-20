@@ -11,26 +11,14 @@
             <rect key="frame" x="0.0" y="0.0" width="160" height="40"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="雨量测站：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQ6-ob-QQ0">
-                    <rect key="frame" x="0.0" y="0.0" width="67" height="20"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" red="0.070588235289999995" green="0.14901960780000001" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1h雨量：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ex-QK-rEd">
-                    <rect key="frame" x="0.0" y="20" width="67" height="20"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" red="0.070588235289999995" green="0.14901960780000001" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="千岛湖镇" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7x-ds-HxX">
-                    <rect key="frame" x="67" y="0.0" width="85" height="20"/>
+                    <rect key="frame" x="5" y="0.0" width="150" height="20"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="0.070588235289999995" green="0.14901960780000001" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.0mm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AB2-CO-Pew">
-                    <rect key="frame" x="67" y="20" width="85" height="20"/>
+                    <rect key="frame" x="5" y="20" width="120" height="20"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="0.070588235289999995" green="0.14901960780000001" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -40,12 +28,10 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="levelLabel" destination="9ex-QK-rEd" id="Rve-wz-RVH"/>
-                <outlet property="namelabel" destination="m7x-ds-HxX" id="e9C-Pm-3wM"/>
-                <outlet property="stationlabel" destination="tQ6-ob-QQ0" id="Fzu-ZG-6Lg"/>
-                <outlet property="valueLabel" destination="AB2-CO-Pew" id="ajn-6s-c5M"/>
+                <outlet property="stationLabel" destination="m7x-ds-HxX" id="5xw-6d-pHC"/>
+                <outlet property="valueLabel" destination="AB2-CO-Pew" id="0KV-GR-V3X"/>
             </connections>
-            <point key="canvasLocation" x="474" y="448"/>
+            <point key="canvasLocation" x="489" y="448"/>
         </view>
     </objects>
 </document>

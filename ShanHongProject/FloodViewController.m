@@ -36,6 +36,7 @@
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
     self.myTableView.rowHeight = 44;
+    self.myTableView.allowsSelection = NO;
     
     UILabel *textLabel = [[UILabel alloc] initWithFrame:(CGRect){20,0,self.view.frame.size.width,44}];
     textLabel.text = @"  汛情概要";
@@ -53,6 +54,7 @@
 - (void)getWebData
 {
     [SVProgressHUD show];
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         if ([FloodObject fetch]) {
             [self updateUI];
@@ -69,6 +71,7 @@
     [SVProgressHUD dismissWithSuccess:@"加载成功"];
     dispatch_async(dispatch_get_main_queue(), ^{
         listData = [FloodObject requestData];
+        self.myTableView.allowsSelection = YES;
         [self.myTableView reloadData];
     });
 }
@@ -89,6 +92,7 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     NSDictionary *dic = [listData lastObject];
     cell.textLabel.font = [UIFont systemFontOfSize:14];
+   
     switch (indexPath.row) {
         case 0:
             if ([[dic objectForKey:@"RainCount"] floatValue] > 0.0) {

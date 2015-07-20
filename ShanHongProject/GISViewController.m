@@ -15,13 +15,13 @@
 #import "FilterViewController.h"
 #import "SelectViewController.h"
 #import "StationType.h"
-#import "CustomCalloutView.h"
 #import "FilterViewController.h"
+#import "CustomAnnotationView.h"
 
 //右边barItemView的宽度
-#define RIGHTVIEWWIDTH 80
+#define RIGHTVIEWWIDTH 100
 //右边barItemView的高度
-#define RIGHTVIEWHEIHGT 30
+#define RIGHTVIEWHEIHGT 45
 
 @interface GISViewController ()<MAMapViewDelegate>
 {
@@ -54,6 +54,10 @@
     
     //初始化单例，并将默认显示的类型设置为"水位站"
     _segton = [SingleInstanceObject defaultInstance];
+    //若是存在数据，先清空
+    if (_segton.selectArray.count != 0) {
+        [_segton.selectArray removeAllObjects];
+    }
     StationType *station = [[StationType alloc] init];
     station.title = @"水位站";
     station.type = @"sw";
@@ -137,7 +141,7 @@
     NSDictionary *userDic = [user objectForKey:STATION];
     
     _mapVIew = [[MAMapView alloc] initWithFrame:(CGRect){0,0,kScreen_Width,kScreen_height}];
-    _mapVIew.mapType = MAMapTypeSatellite;
+    _mapVIew.mapType = MAMapTypeStandard;
     _mapVIew.delegate = self;
     _mapVIew.showsScale = NO;//不显示比例尺
     _mapVIew.showsCompass = NO;//不显示罗盘
@@ -165,15 +169,15 @@
                 CustomAnnotation *annotation = [[CustomAnnotation alloc] init];
                 annotation.coordinate = CLLocationCoordinate2DMake([[dic objectForKey:@"Y"] floatValue], [[dic objectForKey:@"X"] floatValue]);
                 annotation.type = [dic objectForKey:@"MyType"];
+                annotation.stationName = [dic objectForKey:@"STNM"];
+                annotation.valueName = [dic objectForKey:@"VALUE1"];
                 [annotations addObject:annotation];
-                //默认将气泡弹出
-              //  [_mapVIew selectAnnotation:annotation animated:YES];
             }
             
         }
     }
     
-    [_segton.selectArray removeAllObjects];//清除单例中保存的
+   // [_segton.selectArray removeAllObjects];//清除单例中保存的
     
     return annotations;
 }
@@ -216,7 +220,7 @@
     
 }
 
-//删选数据
+//筛选数据
 - (void)filterSourceData
 {
     NSArray *array = [NSArray array];
@@ -248,9 +252,9 @@
     CustomAnnotation *annotation = [[CustomAnnotation alloc] init];
     annotation.coordinate = CLLocationCoordinate2DMake([[dic objectForKey:@"Y"] floatValue], [[dic objectForKey:@"X"] floatValue]);
     annotation.type = [dic objectForKey:@"MyType"];
+    annotation.stationName = [dic objectForKey:@"STNM"];
+    annotation.valueName = [dic objectForKey:@"VALUE1"];
     [_mapVIew addAnnotation:annotation];
-            //默认将旗袍弹出
-    [_mapVIew selectAnnotation:annotation animated:YES];
 }
 
 
@@ -267,87 +271,60 @@
     
     if ([ann isKindOfClass:[MAPointAnnotation class]]) {
         static NSString *identifer = @"Annotation";
-        MAAnnotationView *annotationView = (MAAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identifer];
+        CustomAnnotationView *annotationView = (CustomAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identifer];
         if (annotationView == nil) {
-            annotationView = [[MAAnnotationView alloc] init];
+            annotationView = [[CustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifer];
         }
-        annotationView.calloutOffset = CGPointMake(5, 0);//向右偏移
-        annotationView.canShowCallout = NO;//弹出自定义气泡
+        annotationView.calloutOffset = CGPointMake(95, -5);//向右偏移75个像素，向下偏移40个像素
+        annotationView.canShowCallout = NO;
+        annotationView.centerOffset = CGPointMake(0, -18);//标注的中心点坐标向上偏移18个像素
         if ([ann.type isEqualToString:@"sw"])
         {
             annotationView.image = [UIImage imageNamed:@"1"];
+            annotationView.station = [NSString stringWithFormat:@"水位测站: %@",ann.stationName];
+            annotationView.value = [NSString stringWithFormat:@"当前水位: %@",ann.valueName];
         }
         else if ([ann.type isEqualToString:@"yl"]){
             annotationView.image = [UIImage imageNamed:@"2"];
+            annotationView.station = [NSString stringWithFormat:@"雨量测站: %@",ann.stationName];
+            annotationView.value = [NSString stringWithFormat:@"1h雨量: %@",ann.valueName];
         }
         else if ([ann.type isEqualToString:@"sk"])
         {
             annotationView.image = [UIImage imageNamed:@"3"];
+            annotationView.station = [NSString stringWithFormat:@"水库名称: %@",ann.stationName];
+            annotationView.value = [NSString stringWithFormat:@"所属乡镇: %@",ann.valueName];
         }
         else if ([ann.type isEqualToString:@"sz"])
         {
             annotationView.image = [UIImage imageNamed:@"4"];
+            annotationView.station = [NSString stringWithFormat:@"水闸名称: %@",ann.stationName];
+            annotationView.value = [NSString stringWithFormat:@"所属乡镇: %@",ann.valueName];
         }
         else if ([ann.type isEqualToString:@"df"])
         {
             annotationView.image = [UIImage imageNamed:@"5"];
+            annotationView.station = [NSString stringWithFormat:@"堤防名称: %@",ann.stationName];
+            annotationView.value = [NSString stringWithFormat:@"所属乡镇: %@",ann.valueName];
         }
         else if ([ann.type isEqualToString:@"sdz"])
         {
             annotationView.image = [UIImage imageNamed:@"6"];
+            annotationView.station = [NSString stringWithFormat:@"水电站名称: %@",ann.stationName];
+            annotationView.value = [NSString stringWithFormat:@"所属乡镇: %@",ann.valueName];
         }
         else
         {
             annotationView.image = [UIImage imageNamed:@"7"];
+            annotationView.station = [NSString stringWithFormat:@"山塘名称: %@",ann.stationName];
+            annotationView.value = [NSString stringWithFormat:@"所属乡镇: %@",ann.valueName];
             
         }
         
+        annotationView.selected = YES;//处于选中的状态
         return annotationView;
     }
    
     return nil;
 }
-
-//创建气泡视图
-- (UIView *)createCallOutView:(CustomAnnotation *)annotation
-{
-    CustomCalloutView *callout = (CustomCalloutView *)[[[NSBundle mainBundle] loadNibNamed:@"CalloutView" owner:nil options:nil] lastObject];
-    
-    if ([annotation.type isEqualToString:@"sw"])
-    {
-        //水位站
-        
-        callout.stationlabel.text = @"雨量测站:";
-        callout.levelLabel.text = @"1h雨量:";
-    }
-    else if ([annotation.type isEqualToString:@"yl"])
-    {
-        //雨量站
-    }
-    else if ([annotation.type isEqualToString:@"sk"])
-    {
-        //水库站
-    }
-    else if ([annotation.type isEqualToString:@"sz"])
-    {
-        //水闸
-    }
-    else if ([annotation.type isEqualToString:@"df"])
-    {
-     //堤防
-    }
-    else if ([annotation.type isEqualToString:@"sdz"])
-    {
-     //水电站
-    }
-    else
-    {
-        
-        //山塘
-    }
-    
-    return callout;
-}
-
-
 @end

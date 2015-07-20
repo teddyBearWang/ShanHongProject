@@ -53,9 +53,7 @@
             }
         }
     }
-//    if (max < 6) {
-//        max = 6;
-//    }
+
     if (self.showRange) {
         _yValueMin = min;
     }else{
@@ -94,9 +92,16 @@
             [path addLineToPoint:CGPointMake(self.frame.size.width,UULabelHeight+i*levelHeight)];
             [path closePath];
             shapeLayer.path = path.CGPath;
-            shapeLayer.strokeColor = [[[UIColor blackColor] colorWithAlphaComponent:0.1] CGColor];
-            shapeLayer.fillColor = [[UIColor whiteColor] CGColor];
-            shapeLayer.lineWidth = 2;
+            if (i != 0) {
+                shapeLayer.strokeColor = [[[UIColor blackColor] colorWithAlphaComponent:0.8] CGColor];
+                shapeLayer.fillColor = [[UIColor blackColor] CGColor];
+                shapeLayer.lineWidth = 1;
+            }else{
+                shapeLayer.strokeColor = [[[UIColor lightGrayColor] colorWithAlphaComponent:0.1] CGColor];
+                shapeLayer.fillColor = [[UIColor whiteColor] CGColor];
+                shapeLayer.lineWidth = 1;
+            }
+           
             [self.layer addSublayer:shapeLayer];
         }
     }
@@ -128,12 +133,13 @@
             CAShapeLayer *shapeLayer = [CAShapeLayer layer];
             UIBezierPath *path = [UIBezierPath bezierPath];
             [path moveToPoint:CGPointMake(UUYLabelwidth+i*_xLabelWidth,UULabelHeight)];
-            [path addLineToPoint:CGPointMake(UUYLabelwidth+i*_xLabelWidth,self.frame.size.height-2*UULabelHeight)];
+            [path addLineToPoint:CGPointMake(UUYLabelwidth+i*_xLabelWidth,self.frame.size.height-UULabelHeight)];
+           // [path addLineToPoint:CGPointMake(UUYLabelwidth+i*_xLabelWidth,self.frame.size.height-UULabelHeight * 2)];
             [path closePath];
             shapeLayer.path = path.CGPath;
-            shapeLayer.strokeColor = [[[UIColor blackColor] colorWithAlphaComponent:0.1] CGColor];
-            shapeLayer.fillColor = [[UIColor whiteColor] CGColor];
-            shapeLayer.lineWidth = 2;
+            shapeLayer.strokeColor = [[[UIColor blackColor] colorWithAlphaComponent:0.8] CGColor];
+            shapeLayer.fillColor = [[UIColor blackColor] CGColor];
+            shapeLayer.lineWidth = 1;
             [self.layer addSublayer:shapeLayer];
         }
     }

@@ -65,10 +65,16 @@
     
     switch (indexPath.row) {
         case 0:
-            
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"设置成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert show];
+        }
             break;
         case 1:
-            
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"缓存已经清除" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert show];
+        }
             break;
         case 2:
         {
@@ -78,9 +84,17 @@
             
             break;
         case 3:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"当前已是最新版本" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert show];
+        }
             
             break;
         case 4:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"杭州定川信息技术有限公司版权所有" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert show];
+        }
             
             break;
         default:

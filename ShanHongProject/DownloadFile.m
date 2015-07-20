@@ -88,11 +88,15 @@ static DownloadFile *downloadFile = nil;
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    AFHTTPRequestOperation *operation = [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            
-    }];
+    AFHTTPRequestOperation *operation = nil;
+    NSString *Url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    @try {
+        operation = [manager GET:Url parameters:nil success:nil failure:nil];
+
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@",exception);
+    }
     [operation waitUntilFinished];
     if (operation.responseData != nil) {
         //缓存路径
@@ -102,9 +106,6 @@ static DownloadFile *downloadFile = nil;
     }else{
         [[NSNotificationCenter defaultCenter] postNotificationName:FILEDOWNLOADFAIL object:[self cacheFile:url]];
     }
-        
-    
-    
 }
 
 @end

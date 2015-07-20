@@ -12,8 +12,15 @@
 
 + (BOOL)fetchWithType:(NSString *)type;
 
-+ (NSArray *)requestData;
+//返回数组数据
++ (NSArray *)requestDatas;
 
 + (void)cancelRequest;
+
+//返回NSData类型数据
++ (NSData *)requestData;
+
+//下载图片
++ (BOOL)downLoadImages:(NSString *)image_url;
 
 @end

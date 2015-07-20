@@ -47,7 +47,9 @@
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     NSDictionary *dic = [user objectForKey:STATION];
     
+    self.title = [NSString stringWithFormat:@"天气预报(%@)",[dic objectForKey:@"ScityName"]];
     [self getWeatherData:[dic objectForKey:@"ScityName"]];
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -31,8 +31,31 @@ static NSString *_url = nil;
     return ret;
 }
 
+//下载图片
++ (BOOL)downLoadImages:(NSString *)image_url
+{
+    BOOL ret;
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    operation = [manager POST:image_url parameters:nil success:nil failure:nil];
+    [operation waitUntilFinished];
+    if (operation.responseData != 0) {
+        ret = YES;
+        img_data = operation.responseData;//将图片数据穿出
+        NSLog(@"加载图片");
+    }
+    return ret;
+}
+
+//返回NSData类型数据
+static NSData *img_data;
++ (NSData *)requestData
+{
+    return img_data;
+}
+
 static NSArray *datas = nil;
-+ (NSArray *)requestData
++ (NSArray *)requestDatas
 {
     return datas;
 }
@@ -41,6 +64,7 @@ static NSArray *datas = nil;
 {
     if (operation != nil) {
         [operation cancel];
+        NSLog(@"取消请求");
     }
 }
 

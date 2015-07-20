@@ -52,7 +52,7 @@
 
 - (void)initDatas
 {
-    _headers = @[@"警戒(汛限)",@"超警戒(超汛限)",@"实时水位(m)",@"最新时间",@"当日最大(m)",@"最大时间",@"库容"];
+    _headers = @[@"实时水位(m)",@"警戒/汛限(m)",@"超警/超限(m)",@"最新时间",@"当日最大(m)",@"最大时间",@"库容"];
     _kCount = _headers.count;
 }
 
@@ -63,12 +63,12 @@
     
     [self initDatas];
     
-    UIView *tableHeaderView = [[UIView alloc] initWithFrame:(CGRect){0,0,_kCount * kWidth, kHeight}];
+    UIView *tableHeaderView = [[UIView alloc] initWithFrame:(CGRect){0,0,_kCount * (kWidth + 5), kHeight}];
     tableHeaderView.backgroundColor = BG_COLOR;
     self.myTableViewHeaderView = tableHeaderView;
     
     for (int i=0; i<_kCount; i++) {
-        HeaderView *header = [[HeaderView alloc] initWithFrame:CGRectMake(i*kWidth, 0, kWidth, kHeight)];
+        HeaderView *header = [[HeaderView alloc] initWithFrame:CGRectMake(i*(kWidth + 5), 0, (kWidth + 5), kHeight)];
         header.num = _headers[i];
         [tableHeaderView addSubview:header];
     }
@@ -188,11 +188,13 @@
     cell.capacity.text = [[dic objectForKey:@"kr"] isEqual:@""] ? @"--" : [dic objectForKey:@"kr"];
     cell.maxLevel.text = [[dic objectForKey:@"max"] isEqual:@""] ? @"--" : [dic objectForKey:@"max"];
     cell.maxTime.text = [[dic objectForKey:@"maxTime"] isEqual:@""] ? @"--" : [dic objectForKey:@"maxTime"];
-    if ([[dic objectForKey:@"jjsw"] isEqual:@""]) {
-        cell.floodWarn.text = @"--";
-    }else{
+    if (![[dic objectForKey:@"jjsw"] isEqualToString:@""]) {
+        if ([[dic objectForKey:@"jjsw"] floatValue] > 0) {
+            cell.floodWarn.textColor = [UIColor redColor];
+        }
         cell.floodWarn.text = [dic objectForKey:@"jjsw"];
-        cell.floodWarn.textColor = [UIColor redColor];
+    }else{
+        cell.floodWarn.text = @"--";
     }
     return cell;
 }

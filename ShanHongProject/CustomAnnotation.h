@@ -11,6 +11,10 @@
 
 @interface CustomAnnotation : MAPointAnnotation
 
-@property (nonatomic, strong) NSString *type;
+@property (nonatomic, strong) NSString *type; //测站类型
+
+@property (nonatomic, strong) NSString *stationName;//测站名字
+
+@property (nonatomic, strong) NSString *valueName; //数值
 
 @end

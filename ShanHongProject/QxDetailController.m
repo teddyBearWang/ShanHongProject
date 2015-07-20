@@ -29,6 +29,8 @@
     [super viewWillDisappear:animated];
     if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound) {
         [QiXiangObject cancelRequest];
+        //将定时器停掉
+        [timers invalidate];
     }
 }
 
@@ -78,7 +80,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 //主线程
                 [SVProgressHUD dismiss];
-                datas = [QiXiangObject requestData];
+                datas = [QiXiangObject requestDatas];
                 datas =  [[datas reverseObjectEnumerator] allObjects]; //所有的元素倒叙
                 NSDictionary *dic = [datas objectAtIndex:0];
                 [self updateUI:[dic objectForKey:@"img"]];
@@ -92,18 +94,28 @@
 
 - (void)updateUI:(NSString *)img_url
 {
-    NSURL *url = [NSURL URLWithString:img_url];
-    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
-    image_view.image = image;
-    CGFloat imageH = image.size.height;
-    CGFloat imageW = image.size.width;
-    CGFloat imageX = 0;
-    CGFloat imageY = 0;
-    
-    image_view.frame = (CGRect){imageX,imageY,imageW,imageH};
-    scrollView.contentSize = CGSizeMake(imageW, imageH);
-}
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if ([QiXiangObject downLoadImages:img_url]) {
+            //更新UI
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //主线程
+                [SVProgressHUD dismiss];
+                UIImage *image = [UIImage imageWithData:[QiXiangObject requestData]];
+                image_view.image = image;
+                CGFloat imageH = image.size.height;
+                CGFloat imageW = image.size.width;
+                CGFloat imageX = 0;
+                CGFloat imageY = 0;
+                
+                image_view.frame = (CGRect){imageX,imageY,imageW,imageH};
+                scrollView.contentSize = CGSizeMake(imageW, imageH);
+                count++;
+                
+            });
+        }
+    });
 
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -116,7 +128,6 @@ static int count = 0;
     if (count != datas.count) {
         NSString *image_url = [[datas objectAtIndex:count] objectForKey:@"img"];
         [self updateUI:image_url];
-        count++;
     }else{
         [actionBtn setTitle:@"开始" forState:UIControlStateNormal];
         count = 0;
@@ -133,7 +144,7 @@ static int count = 0;
         _ispaly = YES;
         [btn setTitle:@"暂停" forState:UIControlStateNormal];
         //启动定时器
-        timers = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(updateImageViewAction:) userInfo:nil repeats:YES];
+        timers = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(updateImageViewAction:) userInfo:nil repeats:YES];
         if (count == datas.count) {
             count = 0;//若是全部播放结束了，那就从新开始
         }
