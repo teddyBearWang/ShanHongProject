@@ -50,6 +50,17 @@
     }
 }
 
+- (void)viewWillLayoutSubviews
+{
+    if ([_myTableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [_myTableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    }
+    
+    if ([_myTableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [_myTableView setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 0)];
+    }
+}
+
 - (void)initDatas
 {
     _headers = @[@"实时水位(m)",@"警戒/汛限(m)",@"超警/超限(m)",@"最新时间",@"当日最大(m)",@"最大时间",@"库容"];
@@ -90,14 +101,10 @@
     self.myTimeView.headTitle = @"站点名称";
     [self.view addSubview:self.myTimeView];
     
-    UIButton *selct_btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    selct_btn.frame = (CGRect){0,0,20,20};
-    [selct_btn setCorners:5.0];
-    [selct_btn setBackgroundImage:[UIImage imageNamed:@"filter"] forState:UIControlStateNormal];
-    [selct_btn addTarget:self action:@selector(filterAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *select = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(filterAction:)];
+    self.navigationItem.rightBarButtonItem = select;
     
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:selct_btn];
-    self.navigationItem.rightBarButtonItem = item;
+
     
     [self refresh:@"GetSqInfo"];
     
@@ -224,6 +231,17 @@
     chart.chartType = 1; //表示柱状图
     [self.navigationController pushViewController:chart animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

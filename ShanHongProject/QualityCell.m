@@ -53,11 +53,8 @@
     CGSize labelsize = [self.keyLabel.text sizeWithFont:[UIFont boldSystemFontOfSize:14] constrainedToSize:size lineBreakMode:NSLineBreakByWordWrapping];
     //算出自适应高度
     self.keyLabel.frame = (CGRect){self.keyLabel.frame.origin.x,self.keyLabel.frame.origin.y,self.keyLabel.frame.size.width,labelsize.height};
-    NSLog(@"计算出来的高度:%lf",labelsize.height);
-    NSLog(@"keyLabel的高度是：%lf",self.keyLabel.frame.size.height);
     frame.size.height = labelsize.height + 20;
     self.frame = frame;
-    NSLog(@"cell的高度是：%lf",self.frame.size.height);
     
 }
 

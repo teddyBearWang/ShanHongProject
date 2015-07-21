@@ -46,6 +46,18 @@
     
 }
 
+- (void)viewDidLayoutSubviews
+{
+    
+    if ([self.myTableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.myTableView setSeparatorInset: UIEdgeInsetsMake(0, 0, 0, 0)];
+    }
+    
+    if ([self.myTableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.myTableView setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 0)];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -142,6 +154,17 @@
             break;
     }
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

@@ -59,7 +59,7 @@
     }else{
         _yValueMin = 0;
     }
-    _yValueMax = (int)max * (1+0.3);
+    _yValueMax = (int)max * (1+0.4);
     
     if (_chooseRange.max!=_chooseRange.min) {
         _yValueMax = _chooseRange.max;

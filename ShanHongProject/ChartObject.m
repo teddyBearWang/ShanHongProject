@@ -41,7 +41,6 @@ static  NSString *_url = nil;
     
     if (operation.responseData != nil) {
         ret = YES;
-        NSLog(@"%@",operation.responseString);
         NSArray *arr = [NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableLeaves error:nil];
         
         if (x_Labels == nil) {

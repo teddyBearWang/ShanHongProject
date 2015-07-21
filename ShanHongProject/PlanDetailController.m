@@ -95,6 +95,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     NSDictionary *dic = _listData[indexPath.row];
+    cell.textLabel.font = [UIFont systemFontOfSize:14];
     cell.textLabel.text = [dic objectForKey:@"Sname"];
     return cell;
 }

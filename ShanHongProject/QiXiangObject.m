@@ -42,7 +42,6 @@ static NSString *_url = nil;
     if (operation.responseData != 0) {
         ret = YES;
         img_data = operation.responseData;//将图片数据穿出
-        NSLog(@"加载图片");
     }
     return ret;
 }
@@ -64,7 +63,6 @@ static NSArray *datas = nil;
 {
     if (operation != nil) {
         [operation cancel];
-        NSLog(@"取消请求");
     }
 }
 

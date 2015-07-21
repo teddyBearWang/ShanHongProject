@@ -46,7 +46,6 @@
 - (void)initChartView
 {
     chartView = [[WaterChartView alloc] initWithCustomFrame:(CGRect){0,0,chart_width,chart_heiht} withX_labels:x_Labels withY_values:@[y_Values]];
-    NSLog(@"图表的高度:%d 宽度:%d",chart_heiht,chart_width);
     [self.view addSubview:chartView];
     
     UILabel *label = [[UILabel alloc] initWithFrame:(CGRect){30,chart_heiht + 5 , kScreen_Width,30}];

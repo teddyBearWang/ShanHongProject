@@ -23,6 +23,14 @@
 //右边barItemView的高度
 #define RIGHTVIEWHEIHGT 45
 
+//搜索按钮宽度
+#define SelectBtnWidth 30
+//搜索按钮高度
+#define SelectBtnHeight 30
+//间距
+#define kMargin 5
+
+
 @interface GISViewController ()<MAMapViewDelegate>
 {
     MAMapView *_mapVIew;
@@ -76,25 +84,27 @@
 
 - (void)initNavigationBar
 {
-    UIView *view = [[UIView alloc] initWithFrame:(CGRect){0,0,RIGHTVIEWHEIHGT*2,RIGHTVIEWHEIHGT}];
-    view.backgroundColor = [UIColor clearColor];
+//    UIView *view = [[UIView alloc] initWithFrame:(CGRect){0,0,RIGHTVIEWHEIHGT*2,RIGHTVIEWHEIHGT}];
+//    view.backgroundColor = [UIColor clearColor];
+//    
+//    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithCustomView:view];
+//    self.navigationItem.rightBarButtonItem = right;
+//    
+//    UIButton *filterBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    filterBtn.frame = (CGRect){0,0,RIGHTVIEWHEIHGT,RIGHTVIEWHEIHGT};
+//    [filterBtn setImage:[UIImage imageNamed:@"select"] forState:UIControlStateNormal];
+//    [filterBtn setImage:[UIImage imageNamed:@"select_click"] forState:UIControlStateHighlighted];
+//    [view addSubview:filterBtn];
     
-    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithCustomView:view];
+//    UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    searchBtn.frame = (CGRect){RIGHTVIEWHEIHGT,0,RIGHTVIEWHEIHGT,RIGHTVIEWHEIHGT};
+//    [searchBtn setImage:[UIImage imageNamed:@"search"] forState:UIControlStateNormal];
+//    [searchBtn setImage:[UIImage imageNamed:@"search_click"] forState:UIControlStateHighlighted];
+//    [searchBtn addTarget:self action:@selector(searchStationAction) forControlEvents:UIControlEventTouchUpInside];
+//    [view addSubview:searchBtn];
+    
+    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchStationAction)];
     self.navigationItem.rightBarButtonItem = right;
-    
-    UIButton *filterBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    filterBtn.frame = (CGRect){0,0,RIGHTVIEWHEIHGT,RIGHTVIEWHEIHGT};
-    [filterBtn setImage:[UIImage imageNamed:@"select"] forState:UIControlStateNormal];
-    [filterBtn setImage:[UIImage imageNamed:@"select_click"] forState:UIControlStateHighlighted];
-    [filterBtn addTarget:self action:@selector(filterStationAction) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:filterBtn];
-    
-    UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    searchBtn.frame = (CGRect){RIGHTVIEWHEIHGT,0,RIGHTVIEWHEIHGT,RIGHTVIEWHEIHGT};
-    [searchBtn setImage:[UIImage imageNamed:@"search"] forState:UIControlStateNormal];
-    [searchBtn setImage:[UIImage imageNamed:@"search_click"] forState:UIControlStateHighlighted];
-    [searchBtn addTarget:self action:@selector(searchStationAction) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:searchBtn];
 }
 
 #pragma mark - private Method
@@ -133,6 +143,18 @@
     [self.navigationController pushViewController:filter animated:YES];
 }
 
+//切换地图图层类型
+- (void)ChangeMapViewType:(UIButton *)btn
+{
+    if (_mapVIew.mapType == MAMapTypeStandard) {
+        [btn setBackgroundImage:[UIImage imageNamed:@"changed"] forState:UIControlStateNormal];
+        _mapVIew.mapType = MAMapTypeSatellite;
+    }else{
+        [btn setBackgroundImage:[UIImage imageNamed:@"change"] forState:UIControlStateNormal];
+        _mapVIew.mapType = MAMapTypeStandard;
+    }
+}
+
 //创建地图
 - (void)createMapView
 {
@@ -147,11 +169,37 @@
     _mapVIew.showsCompass = NO;//不显示罗盘
     [self.view addSubview:_mapVIew];
     
+    
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([[userDic objectForKey:@"ScenterLat"] floatValue], [[userDic objectForKey:@"ScenterLng"] floatValue]);
     _mapVIew.centerCoordinate = coordinate;
+    _mapVIew.zoomLevel = 12;//地图的显示等级
     
     [self addAnnotationForMapView];
     
+    //创建功能按钮
+    [self createFunctionView];
+    
+}
+
+- (void)createFunctionView
+{
+    //站点选择
+    UIButton *select = [UIButton buttonWithType:UIButtonTypeCustom];
+    select.layer.cornerRadius = 5.0;
+    select.layer.masksToBounds = YES;
+    select.frame = (CGRect){kScreen_Width - kMargin*2-SelectBtnHeight,kMargin*2, SelectBtnWidth,SelectBtnHeight};
+    [select setBackgroundImage:[UIImage imageNamed:@"select"] forState:UIControlStateNormal];
+    [select setBackgroundImage:[UIImage imageNamed:@"select_click"] forState:UIControlStateHighlighted];
+    [select addTarget:self action:@selector(filterStationAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:select];
+    
+    UIButton *change = [UIButton buttonWithType:UIButtonTypeCustom];
+    change.layer.cornerRadius = 5.0;
+    change.layer.masksToBounds = YES;
+    change.frame = (CGRect){kScreen_Width - kMargin*2-SelectBtnHeight,kMargin*4+SelectBtnWidth,SelectBtnWidth,SelectBtnHeight};
+    [change setBackgroundImage:[UIImage imageNamed:@"change"] forState:UIControlStateNormal];
+    [change addTarget:self action:@selector(ChangeMapViewType:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:change];
 }
 #pragma mark - loadMap Private Method
 //生成标注点
@@ -176,9 +224,6 @@
             
         }
     }
-    
-   // [_segton.selectArray removeAllObjects];//清除单例中保存的
-    
     return annotations;
 }
 

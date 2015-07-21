@@ -82,8 +82,14 @@
                 [SVProgressHUD dismiss];
                 datas = [QiXiangObject requestDatas];
                 datas =  [[datas reverseObjectEnumerator] allObjects]; //所有的元素倒叙
-                NSDictionary *dic = [datas objectAtIndex:0];
-                [self updateUI:[dic objectForKey:@"img"]];
+                if (datas.count != 0) {
+                    NSDictionary *dic = [datas objectAtIndex:0];
+                    [self updateUI:[dic objectForKey:@"img"]];
+                }else{
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"得到的数据为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                    [alert show];
+                }
+
             });
         }else{
             [SVProgressHUD dismissWithError:@"加载失败"];
@@ -109,8 +115,6 @@
                 
                 image_view.frame = (CGRect){imageX,imageY,imageW,imageH};
                 scrollView.contentSize = CGSizeMake(imageW, imageH);
-                count++;
-                
             });
         }
     });
@@ -128,6 +132,8 @@ static int count = 0;
     if (count != datas.count) {
         NSString *image_url = [[datas objectAtIndex:count] objectForKey:@"img"];
         [self updateUI:image_url];
+        self.title = [[datas objectAtIndex:count] objectForKey:@"time"];
+        count++;
     }else{
         [actionBtn setTitle:@"开始" forState:UIControlStateNormal];
         count = 0;
@@ -165,7 +171,6 @@ static int count = 0;
  */
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
-    NSLog(@"开始缩放");
     return image_view;
 }
 
