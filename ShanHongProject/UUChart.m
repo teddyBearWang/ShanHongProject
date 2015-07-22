@@ -118,6 +118,36 @@
         if ([self.dataSource respondsToSelector:@selector(UUChart_ColorArray:)]) {
             [_barChart setColors:[self.dataSource UUChart_ColorArray:self]];
         }
+        
+        //显示横线
+        if ([self.dataSource respondsToSelector:@selector(UUChart:ShowHorizonLineAtIndex:)]) {
+            NSMutableArray *showHorizonArray = [[NSMutableArray alloc]init];
+            for (int i=0; i<5; i++) {
+                if ([self.dataSource UUChart:self ShowHorizonLineAtIndex:i]) {
+                    [showHorizonArray addObject:@"1"];
+                }else{
+                    [showHorizonArray addObject:@"0"];
+                }
+            }
+            [_barChart setShowHorizonLine:showHorizonArray];
+            
+        }
+        //显示竖线
+        if([self.dataSource respondsToSelector:@selector(UUChart:ShowVericationLineAtIndex:)])
+        {
+            NSMutableArray *showVericationArray = [[NSMutableArray alloc] init];
+            //获取X坐标数组
+            NSArray *xArr = [self.dataSource UUChart_xLableArray:self];
+            for (int i= 0; i<xArr.count; i++) {
+                if ([self.dataSource UUChart:self ShowVericationLineAtIndex:i]) {
+                    [showVericationArray addObject:@"1"];
+                }else{
+                    [showVericationArray addObject:@"0"];
+                }
+            }
+            [_barChart setShowVericationLine:showVericationArray];
+        }
+        
 		[_barChart setYValues:[self.dataSource UUChart_yValueArray:self]];
 		[_barChart setXLabels:[self.dataSource UUChart_xLableArray:self]];
         

@@ -103,7 +103,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+  //  [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSDictionary *dic = _listData[indexPath.row];
     if ([[dic objectForKey:@"PlanUrl"] isEqualToString:@""]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"无效的地址" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];

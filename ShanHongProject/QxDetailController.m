@@ -9,6 +9,7 @@
 #import "QxDetailController.h"
 #import "SVProgressHUD.h"
 #import "QiXiangObject.h"
+#import "UIImageView+WebCache.h"
 
 @interface QxDetailController ()<UIScrollViewDelegate>
 {
@@ -28,9 +29,15 @@
 {
     [super viewWillDisappear:animated];
     if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound) {
+        [SVProgressHUD dismissWithError:nil];
         [QiXiangObject cancelRequest];
         //将定时器停掉
         [timers invalidate];
+        
+        //清除图片缓存
+        [[SDImageCache sharedImageCache] clearDisk];
+        
+        [[SDImageCache sharedImageCache] clearMemory];
     }
 }
 
@@ -81,9 +88,8 @@
                 //主线程
                 [SVProgressHUD dismiss];
                 datas = [QiXiangObject requestDatas];
-                datas =  [[datas reverseObjectEnumerator] allObjects]; //所有的元素倒叙
                 if (datas.count != 0) {
-                    NSDictionary *dic = [datas objectAtIndex:0];
+                    NSDictionary *dic = [datas objectAtIndex:(datas.count - 1)];
                     [self updateUI:[dic objectForKey:@"img"]];
                 }else{
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"得到的数据为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
@@ -100,25 +106,28 @@
 
 - (void)updateUI:(NSString *)img_url
 {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        if ([QiXiangObject downLoadImages:img_url]) {
-            //更新UI
-            dispatch_async(dispatch_get_main_queue(), ^{
-                //主线程
-                [SVProgressHUD dismiss];
-                UIImage *image = [UIImage imageWithData:[QiXiangObject requestData]];
-                image_view.image = image;
-                CGFloat imageH = image.size.height;
-                CGFloat imageW = image.size.width;
-                CGFloat imageX = 0;
-                CGFloat imageY = 0;
-                
-                image_view.frame = (CGRect){imageX,imageY,imageW,imageH};
-                scrollView.contentSize = CGSizeMake(imageW, imageH);
-            });
-        }
-    });
 
+    [self downloadImage:img_url];
+
+}
+
+- (void)downloadImage:(NSString *)img_url
+{
+    [SVProgressHUD show];
+    NSURL *url = [NSURL URLWithString:[img_url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    //用block 可以在图片加载完成之后做些事情
+    [image_view sd_setImageWithURL:url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        [SVProgressHUD dismiss];
+        NSLog(@"这里可以在图片加载完成之后做些事情");
+        CGFloat imageH = image.size.height;
+        CGFloat imageW = image.size.width;
+        CGFloat imageX = 0;
+        CGFloat imageY = 0;
+        
+        image_view.frame = (CGRect){imageX,imageY,imageW,imageH};
+        scrollView.contentSize = CGSizeMake(imageW, imageH);
+    }];
+ 
 }
 
 - (void)didReceiveMemoryWarning {

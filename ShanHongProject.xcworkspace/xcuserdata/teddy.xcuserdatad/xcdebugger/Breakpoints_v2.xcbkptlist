@@ -154,7 +154,7 @@
                   moduleName = "ShanHongProject"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/teddy/Desktop/%E6%B5%99%E6%B1%9F%E6%B0%B4%E5%88%A9%E6%B2%B3%E5%8F%A3%E7%A0%94%E7%A9%B6%E9%99%A2/%E6%9D%AD%E5%B7%9E%E5%AE%9A%E5%B7%9D/%E9%A1%B9%E7%9B%AE/%E5%B1%B1%E6%B4%AA%E9%A1%B9%E7%9B%AE/native%20code/ShanHongProject/ShanHongProject/ProjectDetailController.m"
-                  timestampString = "459075814.827388"
+                  timestampString = "459241826.981318"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "57"
@@ -169,7 +169,7 @@
                   moduleName = "ShanHongProject"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/teddy/Desktop/%E6%B5%99%E6%B1%9F%E6%B0%B4%E5%88%A9%E6%B2%B3%E5%8F%A3%E7%A0%94%E7%A9%B6%E9%99%A2/%E6%9D%AD%E5%B7%9E%E5%AE%9A%E5%B7%9D/%E9%A1%B9%E7%9B%AE/%E5%B1%B1%E6%B4%AA%E9%A1%B9%E7%9B%AE/native%20code/ShanHongProject/ShanHongProject/ProjectDetailController.m"
-                  timestampString = "459075814.827516"
+                  timestampString = "459241826.981447"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "57"
@@ -601,22 +601,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ShanHongProject/QiXiangObject.m"
-            timestampString = "459071241.214024"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "+downLoadImages:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "ShanHongProject/UUChart.m"
             timestampString = "459072716.107974"
             startingColumnNumber = "9223372036854775807"
@@ -634,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShanHongProject/QxDetailController.m"
-            timestampString = "459075814.460965"
+            timestampString = "459245617.546553"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "-updateImageViewAction:"
             landmarkType = "5">
          </BreakpointContent>
@@ -650,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShanHongProject/QxDetailController.m"
-            timestampString = "459075685.90181"
+            timestampString = "459245617.546553"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "-getWebData"
             landmarkType = "5">
          </BreakpointContent>
@@ -665,46 +649,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ShanHongProject/QxDetailController.m"
-            timestampString = "459075708.709998"
+            filePath = "ShanHongProject/RainViewController.m"
+            timestampString = "459227791.986896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "-updateUI:"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "-tableView:willDisplayCell:forRowAtIndexPath:"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__31-[QxDetailController updateUI:]_block_invoke"
-                  moduleName = "ShanHongProject"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/teddy/Desktop/%E6%B5%99%E6%B1%9F%E6%B0%B4%E5%88%A9%E6%B2%B3%E5%8F%A3%E7%A0%94%E7%A9%B6%E9%99%A2/%E6%9D%AD%E5%B7%9E%E5%AE%9A%E5%B7%9D/%E9%A1%B9%E7%9B%AE/%E5%B1%B1%E6%B4%AA%E9%A1%B9%E7%9B%AE/native%20code/ShanHongProject/ShanHongProject/QxDetailController.m"
-                  timestampString = "459075814.875873"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "106"
-                  endingLineNumber = "106"
-                  offsetFromSymbolStart = "73">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__31-[QxDetailController updateUI:]_block_invoke_2"
-                  moduleName = "ShanHongProject"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/teddy/Desktop/%E6%B5%99%E6%B1%9F%E6%B0%B4%E5%88%A9%E6%B2%B3%E5%8F%A3%E7%A0%94%E7%A9%B6%E9%99%A2/%E6%9D%AD%E5%B7%9E%E5%AE%9A%E5%B7%9D/%E9%A1%B9%E7%9B%AE/%E5%B1%B1%E6%B4%AA%E9%A1%B9%E7%9B%AE/native%20code/ShanHongProject/ShanHongProject/QxDetailController.m"
-                  timestampString = "459075814.875993"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "106"
-                  endingLineNumber = "106"
-                  offsetFromSymbolStart = "15">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -713,46 +665,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ShanHongProject/QxDetailController.m"
-            timestampString = "459075730.142527"
+            filePath = "ShanHongProject/QiXiangObject.m"
+            timestampString = "459241426.04303"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "-updateUI:"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "+fetchWithType:"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[QxDetailController updateUI:]"
-                  moduleName = "ShanHongProject"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/teddy/Desktop/%E6%B5%99%E6%B1%9F%E6%B0%B4%E5%88%A9%E6%B2%B3%E5%8F%A3%E7%A0%94%E7%A9%B6%E9%99%A2/%E6%9D%AD%E5%B7%9E%E5%AE%9A%E5%B7%9D/%E9%A1%B9%E7%9B%AE/%E5%B1%B1%E6%B4%AA%E9%A1%B9%E7%9B%AE/native%20code/ShanHongProject/ShanHongProject/QxDetailController.m"
-                  timestampString = "459075814.876635"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "103"
-                  endingLineNumber = "103"
-                  offsetFromSymbolStart = "47">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__31-[QxDetailController updateUI:]_block_invoke"
-                  moduleName = "ShanHongProject"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/teddy/Desktop/%E6%B5%99%E6%B1%9F%E6%B0%B4%E5%88%A9%E6%B2%B3%E5%8F%A3%E7%A0%94%E7%A9%B6%E9%99%A2/%E6%9D%AD%E5%B7%9E%E5%AE%9A%E5%B7%9D/%E9%A1%B9%E7%9B%AE/%E5%B1%B1%E6%B4%AA%E9%A1%B9%E7%9B%AE/native%20code/ShanHongProject/ShanHongProject/QxDetailController.m"
-                  timestampString = "459075814.876761"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "103"
-                  endingLineNumber = "103"
-                  offsetFromSymbolStart = "12">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

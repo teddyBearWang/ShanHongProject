@@ -227,7 +227,7 @@
 {
     NSDictionary *dic = listData[indexPath.row];
     ChartViewController *chart = [[ChartViewController alloc] init];
-    chart.title_name = [NSString stringWithFormat:@"%@ 最近7日雨情",dic[@"stnm"]];
+    chart.title_name = dic[@"stnm"];
     chart.stcd = dic[@"stcd"];
     chart.requestType = @"GetStDayLjYl";
     chart.chartType = 2; //表示柱状图

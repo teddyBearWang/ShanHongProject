@@ -7,7 +7,7 @@
 //
 
 #import "QiXiangObject.h"
-#import <AFNetworking.h>
+#import "AFNetworking.h"
 #import "UntilObject.h"
 
 static    AFHTTPRequestOperation *operation = nil;
@@ -29,28 +29,6 @@ static NSString *_url = nil;
         datas = [NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableContainers error:nil];
     }
     return ret;
-}
-
-//下载图片
-+ (BOOL)downLoadImages:(NSString *)image_url
-{
-    BOOL ret;
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    operation = [manager POST:image_url parameters:nil success:nil failure:nil];
-    [operation waitUntilFinished];
-    if (operation.responseData != 0) {
-        ret = YES;
-        img_data = operation.responseData;//将图片数据穿出
-    }
-    return ret;
-}
-
-//返回NSData类型数据
-static NSData *img_data;
-+ (NSData *)requestData
-{
-    return img_data;
 }
 
 static NSArray *datas = nil;

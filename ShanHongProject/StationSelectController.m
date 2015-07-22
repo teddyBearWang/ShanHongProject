@@ -117,6 +117,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
     }
+    cell.textLabel.font = [UIFont systemFontOfSize:14];
     cell.textLabel.text = [listData[indexPath.row] objectForKey:@"ScityName"];
     return cell;
 }

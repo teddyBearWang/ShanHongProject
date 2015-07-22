@@ -18,6 +18,9 @@
     NSArray *y_Values;
     UILabel *_showTimeLabel;// 显示时间label
     int screen_heiht; //屏幕高度
+    
+    NSString *_todayDate;//今日日期
+    
 }
 
 @end
@@ -70,27 +73,45 @@
     // Do any additional setup after loading the view.
     
     //设置标题
-    self.title = self.title_name;
+    self.title = [NSString stringWithFormat:@"%@ 今日雨量",self.title_name];
     
     UIView *dateView = [self createSelectTimeView];
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:dateView];
     self.navigationItem.rightBarButtonItem = item;
     
     NSDate *now = [NSDate date];
+    _todayDate = [self requestDate:now];//将今天的日期保存起来
     [self getChartDataAction:now];
     
+}
+
+- (BOOL)isToday:(NSString *)dateStr
+{
+    if ([_todayDate isEqualToString:dateStr]) {
+        return YES;
+    }else{
+        return NO;
+    }
 }
 
 //获取折线图数据的方法
 - (void)getChartDataAction:(NSDate *)date
 {
     NSString *date_str = [self requestDate:date];
+    NSString *second_date = nil;
+    if ([self isToday:date_str]) {
+        //今日
+        second_date = date_str;//两个时间相同
+        self.title = self.title = [NSString stringWithFormat:@"%@ 今日雨量",self.title_name];;
+    }else{
+        //不是今天
+        NSDate *weekAgo = [self getWeekdaysAgo:date]; //时间往前退七天
+        second_date  = [self requestDate:weekAgo];
+        self.title = [NSString stringWithFormat:@"%@ 近7日雨量",self.title_name];
+    }
     
-    NSDate *weekAgo = [self getWeekdaysAgo:date];
-    NSString *weekAgo_str = [self requestDate:weekAgo];
-     
     
-    NSString *results = [NSString stringWithFormat:@"%@$%@$%@",self.stcd,weekAgo_str,date_str];
+    NSString *results = [NSString stringWithFormat:@"%@$%@$%@",self.stcd,second_date,date_str];
     //表示折线图上单条线
     if ([ChartObject fetcChartDataWithType:self.requestType results:results]) {
         x_Labels = [NSArray arrayWithArray:[ChartObject requestXLables]];
@@ -198,28 +219,27 @@
     
 }
 
-#pragma mark 折线图专享功能
 //判断显示横线条
 - (BOOL)UUChart:(UUChart *)chart ShowHorizonLineAtIndex:(NSInteger)index
 {
-   // if (index == 4) {
-      //  return YES;
-//    }else{
-//        return NO;
-//    }
+    if (index == 4) {
+        return YES;
+    }else{
+        return NO;
+    }
     
-    return YES;
+  //  return YES;
     
 }
 
 //判断显示竖线条
 - (BOOL)UUChart:(UUChart *)chart ShowVericationLineAtIndex:(NSInteger)index
 {
-   // if (index == 0) {
+    if (index == 0) {
         return YES;
-//    }else{
-//        return NO;
-//    }
+    }else{
+        return NO;
+    }
 }
 
 //颜色数组

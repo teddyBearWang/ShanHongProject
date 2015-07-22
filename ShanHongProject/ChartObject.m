@@ -64,8 +64,6 @@ static  NSString *_url = nil;
     return ret;
 }
 
-
-
 /*
  *获取X轴上的数据数组
  */

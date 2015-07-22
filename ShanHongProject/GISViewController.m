@@ -320,6 +320,9 @@
         if (annotationView == nil) {
             annotationView = [[CustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifer];
         }
+//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer  alloc] initWithTarget:self action:@selector(tapAnnotationVIewAction:)];
+//        tap.numberOfTapsRequired = 1;
+//        [annotationView addGestureRecognizer:tap];
         annotationView.calloutOffset = CGPointMake(95, -5);//向右偏移75个像素，向下偏移40个像素
         annotationView.canShowCallout = NO;
         annotationView.centerOffset = CGPointMake(0, -18);//标注的中心点坐标向上偏移18个像素
@@ -327,12 +330,12 @@
         {
             annotationView.image = [UIImage imageNamed:@"1"];
             annotationView.station = [NSString stringWithFormat:@"水位测站: %@",ann.stationName];
-            annotationView.value = [NSString stringWithFormat:@"当前水位: %@",ann.valueName];
+            annotationView.value = [NSString stringWithFormat:@"当前水位: %@ m",ann.valueName];
         }
         else if ([ann.type isEqualToString:@"yl"]){
             annotationView.image = [UIImage imageNamed:@"2"];
             annotationView.station = [NSString stringWithFormat:@"雨量测站: %@",ann.stationName];
-            annotationView.value = [NSString stringWithFormat:@"1h雨量: %@",ann.valueName];
+            annotationView.value = [NSString stringWithFormat:@"1h雨量: %@ mm",ann.valueName];
         }
         else if ([ann.type isEqualToString:@"sk"])
         {
@@ -371,5 +374,13 @@
     }
    
     return nil;
+}
+
+- (void)tapAnnotationVIewAction:(UIGestureRecognizer *)tap
+{
+    CustomAnnotationView *annotationView = (CustomAnnotationView *)tap.view;
+    CustomAnnotation *ann  = (CustomAnnotation *)annotationView.annotation;
+    NSString *name = ann.title;
+    NSLog(@"点击的事件是:%@",name);
 }
 @end

@@ -37,6 +37,9 @@
 
 @property (nonatomic, assign) CGRange chooseRange;
 
+@property (nonatomic, retain) NSMutableArray *ShowHorizonLine; //显示横线条
+@property (nonatomic, retain) NSMutableArray *ShowVericationLine; //显示竖线条
+
 @property (nonatomic, strong) NSArray * colors;
 
 
