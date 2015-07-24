@@ -110,15 +110,19 @@
     
     [SVProgressHUD showWithStatus:@"登录中..."];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        if ([LoginToken fetchWithUserName:self.userName.text Psw:self.psw.text Version:@"1.1.2" CityName:statusBtn.currentTitle]) {
+        if ([LoginToken fetchWithUserName:self.userName.text Psw:self.psw.text Version:@"1.0.1" CityName:statusBtn.currentTitle]) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [SVProgressHUD dismissWithSuccess:@"登陆成功"];
                 data = [LoginToken requestDatas];
-                [self saveInfo];
-                [self pushView:[data lastObject]];
-                NSString *url = _single.SproxyUrl;
+                if (data.count != 0) {
+                    [SVProgressHUD dismissWithSuccess:@"登陆成功"];
+                    NSDictionary *dic = [data objectAtIndex:0];
+                    _single.serverVersions = [dic objectForKey:@"version"];
+                    [self saveInfo];
+                    [self pushView:[data lastObject]];
 
-
+                }else{
+                    [SVProgressHUD dismissWithError:@"登陆失败"];
+                }
             });
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{

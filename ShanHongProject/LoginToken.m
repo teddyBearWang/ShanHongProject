@@ -24,7 +24,7 @@ static NSString *_url = nil;
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    NSString *user = [NSString stringWithFormat:@"%@$%@$%@$%@",name,psw,version,city];
+    NSString *user = [NSString stringWithFormat:@"%@$%@$%@$%@$ios",name,psw,version,city];
     NSDictionary *paramters = @{@"t":@"Login",
                                 @"results":user,
                                 @"returntype":@"json"};

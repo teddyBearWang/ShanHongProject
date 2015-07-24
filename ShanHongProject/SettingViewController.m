@@ -7,10 +7,12 @@
 //
 
 #import "SettingViewController.h"
+#import "SingleInstanceObject.h"
 
 @interface SettingViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSArray *_listData;
+    SingleInstanceObject *_segton;//单例
 }
 @property (weak, nonatomic) IBOutlet UIButton *setBtn;
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
@@ -24,7 +26,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _listData = @[@"消息提醒",@"清除缓存",@"当前版本",@"检查更新",@"关于"];
+    _listData = @[@"消息提醒",@"清除缓存",@"当前版本",@"关于"];
+    _segton = [SingleInstanceObject defaultInstance];
     self.view.backgroundColor = BG_COLOR;
     
     self.myTableView.delegate = self;
@@ -53,9 +56,22 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
+        
+        UILabel *version = [[UILabel alloc] initWithFrame:(CGRect){200,7,100,30}];
+        version.tag = 101;
+        version.font = [UIFont systemFontOfSize:12];
+        [cell.contentView addSubview:version];
     }
     
     cell.textLabel.font = [UIFont systemFontOfSize:14];
+    if (indexPath.row == 3) {
+        UILabel *version = (UILabel *)[self.view viewWithTag:101];
+        if ([self compareWithAppVersion]) {
+            version.text = [NSString stringWithFormat:@"最新版本: %@",_segton.serverVersions];
+        }else{
+            version.text = @"当前已是最新版本";
+        }
+    }
     cell.textLabel.text = _listData[indexPath.row];
     return cell;
 }
@@ -78,19 +94,16 @@
             break;
         case 2:
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"当前的版本是2.0" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            [alert show];
-        }
+            if ([self compareWithAppVersion]) {
+                //跳转到appStore
+                NSString *str = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/shan-hong-fang-zhi/id1020614336?mt=8"];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+            }
+            
+       }
             
             break;
         case 3:
-        {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"当前已是最新版本" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            [alert show];
-        }
-            
-            break;
-        case 4:
         {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"杭州定川信息技术有限公司版权所有" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
             [alert show];
@@ -103,7 +116,25 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-
+//版本比较，有新版本返回YES，无新版本返回NO
+- (BOOL)compareWithAppVersion
+{
+    if (![_segton.serverVersions isEqualToString:@""]) {
+        //先获取当前软件版本号
+        NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+        
+        if (![_segton.serverVersions isEqualToString:currentVersion]) {
+            //有新版本
+            return YES;
+        }else{
+            //没有新版本
+            return NO;
+        }
+    }else{
+        //版本号为空，不更新
+        return NO;
+    }
+}
 
 - (IBAction)changeAccountAction:(id)sender {
     [self dismissViewControllerAnimated:YES completion:NULL];

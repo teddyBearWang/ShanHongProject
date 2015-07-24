@@ -10,6 +10,7 @@
 
 @interface SingleInstanceObject : NSObject
 
+@property (nonatomic, assign) NSString *serverVersions;//服务器版本
 @property (nonatomic, strong) NSString *Scityid;//站点
 @property (nonatomic, strong) NSString *ScityName;//名称
 @property (nonatomic, strong) NSString *SproxyUrl;//服务地址
