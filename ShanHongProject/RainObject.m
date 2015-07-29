@@ -20,17 +20,23 @@ static NSString *_url = nil;
     BOOL ret = NO;
     
     _url = [UntilObject getWebURL];
+    NSLog(@"得到的地址是：%@",_url);
     //http://115.236.169.28/webserca/Data.ashx?t=GetYqInfo&returntype=json
     NSDictionary *parameter = @{@"t":type,@"returntype":@"json"};
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.requestSerializer.timeoutInterval = 10; //设置超时时间
+   // manager.requestSerializer.timeoutInterval = 15; //设置超时时间
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 15.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     _operation = [manager POST:_url parameters:parameter success:nil failure:nil];
     [_operation waitUntilFinished];
     if (_operation.responseData != nil) {
         ret = YES;
+        NSLog(@"得到的数据：%@",_operation.responseString);
         datas = [NSJSONSerialization JSONObjectWithData:_operation.responseData options:NSJSONReadingMutableContainers error:nil];
+        NSLog(@"得到的数据：%@",datas);
     }
     return ret;
     
@@ -54,15 +60,10 @@ static NSString *_url = nil;
     return ret;
 }
 
-- (AFHTTPRequestOperation *)getOperation
-{
-    return _operation;
-}
-
-
 static NSArray *datas = nil;
 + (NSArray *)requestData
 {
+    
     return datas;
 }
 

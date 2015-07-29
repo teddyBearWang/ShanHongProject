@@ -19,6 +19,9 @@ static AFHTTPRequestOperation *operation = nil;
     //http://115.236.2.245:38019/data.ashx?t=GetSite&returntype=json
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 5.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     NSDictionary *parameter = @{@"t":@"GetSite",
                                 @"returntype":@"json"};
     operation = [manager POST:Site_URL parameters:parameter success:nil failure:nil];

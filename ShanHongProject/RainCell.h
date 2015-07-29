@@ -9,9 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface RainCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *stationName;//测站名字
-@property (weak, nonatomic) IBOutlet UILabel *oneHour;
-@property (weak, nonatomic) IBOutlet UILabel *threeHour;
-@property (weak, nonatomic) IBOutlet UILabel *today;
+@property (weak, nonatomic) IBOutlet UILabel *oneHour;//1小时
+@property (weak, nonatomic) IBOutlet UILabel *threeHour;//3小时
+@property (weak, nonatomic) IBOutlet UILabel *today;//今日
+@property (weak, nonatomic) IBOutlet UILabel *sixHour; //6小时
+@property (weak, nonatomic) IBOutlet UILabel *twelveyHour; //12小时
+@property (weak, nonatomic) IBOutlet UILabel *twentyFourHour; //24小时
+@property (weak, nonatomic) IBOutlet UILabel *fortyFiverHour; //24小时
+@property (weak, nonatomic) IBOutlet UILabel *seventyTwoHour; //24小时
+
 
 @end

@@ -16,7 +16,7 @@ static AFHTTPRequestOperation *operation = nil;
 + (BOOL)fetch
 {
     BOOL ret = NO;
-    //http://115.236.169.28/webserca/data.ashx?&t=GetFxPlanTree&results=name$0$$false&returntype=json
+    //http://115.236.169.28/webserca/data.ashx?&t=GetGisInfo&returntype=json
     NSString *_url = [UntilObject getWebURL];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -27,7 +27,10 @@ static AFHTTPRequestOperation *operation = nil;
     [operation waitUntilFinished];
     if (operation.responseData != nil) {
         ret = YES;
+        NSLog(@"解析到得数据：%@",operation.responseString);
+
         data = [NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableContainers error:nil];
+        NSLog(@"解析到得数据：%@",data);
     }
     return ret;
 }

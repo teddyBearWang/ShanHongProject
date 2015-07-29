@@ -169,8 +169,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    FloodDetailController *detail = [[FloodDetailController alloc] init];
-//    [self.navigationController pushViewController:detail animated:YES];
     NSString *type = @"";
     switch (indexPath.row) {
         case 0:
@@ -192,6 +190,7 @@
         default:
             break;
     }
+
     [self getFloodDetailWith:type];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
