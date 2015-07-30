@@ -1,16 +1,17 @@
 //
-//  PeopleController.h
+//  ContactSecondController.h
 //  ShanHongProject
 //
-//  Created by teddy on 15/7/29.
+//  Created by teddy on 15/7/30.
 //  Copyright (c) 2015年 teddy. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface PeopleController : UIViewController
+@interface ContactSecondController : UIViewController
 
-@property (nonatomic, copy) NSString *sid;//编号
+
+@property (nonatomic, copy) NSString *Sid;
 
 @property (nonatomic, copy) NSString *title_name;
 

@@ -1,13 +1,16 @@
 //
 //  ContactFirstController.m
 //  ShanHongProject
-//
+//  *********通讯录第一级*****************
 //  Created by teddy on 15/7/29.
 //  Copyright (c) 2015年 teddy. All rights reserved.
 //
 
 #import "ContactFirstController.h"
 #import "ContactViewController.h"
+#import "ContactSecondController.h"
+#import "ContactObject.h"
+#import "SVProgressHUD.h"
 
 @interface ContactFirstController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -19,15 +22,26 @@
 
 @implementation ContactFirstController
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound) {
+        [SVProgressHUD dismiss];
+        [ContactObject cancelRequest];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     self.title = @"通讯录";
+    self.myTableView.delegate = self;
+    self.myTableView.dataSource = self;
     
     UIButton *right_btn = [UIButton buttonWithType:UIButtonTypeCustom];
     right_btn.titleLabel.font = [UIFont systemFontOfSize:14];
-    right_btn.frame = (CGRect){0,0,40,30};
+    right_btn.frame = (CGRect){0,0,40,25};
     [right_btn setTitle:@"搜索" forState:UIControlStateNormal];
     [right_btn addTarget:self action:@selector(searchAction:) forControlEvents:UIControlEventTouchUpInside];
     right_btn.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -36,6 +50,35 @@
     UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithCustomView:right_btn];
     self.navigationItem.rightBarButtonItem = right;
     
+    [self getWebData];
+    
+}
+
+//获取网络数据
+- (void)getWebData
+{
+    [SVProgressHUD showWithStatus:@"加载中..."];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if ([ContactObject fetch:@""]) {
+            [self updateUI];
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //请求失败
+                [SVProgressHUD dismissWithError:@"加载失败"];
+            });
+        }
+    });
+}
+
+- (void)updateUI
+{
+    [SVProgressHUD dismissWithSuccess:@"加载成功"];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        listArray = [ContactObject requestData];
+        if (listArray.count != 0) {
+            [self.myTableView reloadData];
+        }
+    });
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,11 +114,22 @@
     }
     cell.textLabel.font = [UIFont systemFontOfSize:14];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.textLabel.text = [listArray[indexPath.row] objectForKey:@"personNM"];
     return  cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSString *sid = [listArray[indexPath.row] objectForKey:@"PersonCD"];
+    ContactSecondController *second = [[ContactSecondController alloc] init];
+    second.Sid = sid;
+    second.title_name = [listArray[indexPath.row] objectForKey:@"personNM"];
+    
+    UIBarButtonItem *back = [[UIBarButtonItem alloc] init];
+    back.title = @"返回";
+    self.navigationItem.backBarButtonItem = back;
+    [self.navigationController pushViewController:second animated:YES];
+    
 }
 @end

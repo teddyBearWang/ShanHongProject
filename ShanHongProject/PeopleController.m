@@ -8,6 +8,8 @@
 
 #import "PeopleController.h"
 #import "ContactCell.h"
+#import "ContactObject.h"
+#import "SVProgressHUD.h"
 
 @interface PeopleController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -23,15 +25,47 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _tableView = [[UITableView alloc] initWithFrame:(CGRect){0,0,kScreen_Width,kScreen_height - 64} style:UITableViewStylePlain];
+    self.title = self.title_name;
+    
+    _tableView = [[UITableView alloc] initWithFrame:(CGRect){0,0,kScreen_Width,kScreen_height - kTableViewmargin} style:UITableViewStyleGrouped];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
+    
+    [self getWebData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)getWebData
+{
+    [SVProgressHUD showWithStatus:@"加载中..."];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if ([ContactObject fetch:self.sid]) {
+            [self updateUI];
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismissWithError:@"加载失败"];
+            });
+        }
+    });
+}
+
+- (void)updateUI
+{
+    [SVProgressHUD dismissWithSuccess:@"加载成功"];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        list = [ContactObject requestData];
+        if (list.count != 0) {
+            [_tableView reloadData];
+        }else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前无联系人" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+    });
 }
 
 #pragma mark - UITableViewDataSource
@@ -50,8 +84,15 @@
     }
     
     NSDictionary *dic = list[indexPath.row];
+    NSString *name = [dic objectForKey:@"personNM"];
+    NSLog(@"姓名是: %@",name);
     [cell updateCell:dic];
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -75,7 +116,6 @@
     NSString *str = [NSString stringWithFormat:@"tel://%@",num];
     UIWebView *webView = [[UIWebView alloc] init];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
-    
 }
 
 @end

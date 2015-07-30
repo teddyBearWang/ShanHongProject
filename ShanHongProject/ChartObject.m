@@ -33,7 +33,7 @@ static  NSString *_url = nil;
                                  @"returntype":@"json"};
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    
+    NSLog(@"%@",_url);
     AFHTTPRequestOperation *operation = [manager POST:_url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //成功
     } failure:nil];

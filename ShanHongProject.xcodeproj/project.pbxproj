@@ -19,6 +19,9 @@
 		9F0DBF091B57946A00EA6575 /* GISObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0DBF081B57946A00EA6575 /* GISObject.m */; };
 		9F0DBF241B57B1E200EA6575 /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0DBF231B57B1E200EA6575 /* CustomAnnotation.m */; };
 		9F0DBF271B57B9A400EA6575 /* SelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0DBF261B57B9A400EA6575 /* SelectViewController.m */; };
+		9F3227411B69AA8D0008CE70 /* ContactSecondController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3227401B69AA8D0008CE70 /* ContactSecondController.m */; };
+		9F3227441B69AADB0008CE70 /* ContactThirdController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3227431B69AADB0008CE70 /* ContactThirdController.m */; };
+		9F3227471B69ACA30008CE70 /* ContactForthController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3227461B69ACA30008CE70 /* ContactForthController.m */; };
 		9F32AC2B1B6859EE00520FA4 /* ContactFirstController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F32AC2A1B6859EE00520FA4 /* ContactFirstController.m */; };
 		9F32AC441B68BAEB00520FA4 /* PeopleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F32AC431B68BAEB00520FA4 /* PeopleController.m */; };
 		9F32AC471B68CBCA00520FA4 /* ContactObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F32AC461B68CBCA00520FA4 /* ContactObject.m */; };
@@ -318,6 +321,12 @@
 		9F0DBF231B57B1E200EA6575 /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
 		9F0DBF251B57B9A400EA6575 /* SelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectViewController.h; sourceTree = "<group>"; };
 		9F0DBF261B57B9A400EA6575 /* SelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectViewController.m; sourceTree = "<group>"; };
+		9F32273F1B69AA8D0008CE70 /* ContactSecondController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactSecondController.h; sourceTree = "<group>"; };
+		9F3227401B69AA8D0008CE70 /* ContactSecondController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactSecondController.m; sourceTree = "<group>"; };
+		9F3227421B69AADB0008CE70 /* ContactThirdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactThirdController.h; sourceTree = "<group>"; };
+		9F3227431B69AADB0008CE70 /* ContactThirdController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactThirdController.m; sourceTree = "<group>"; };
+		9F3227451B69ACA30008CE70 /* ContactForthController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactForthController.h; sourceTree = "<group>"; };
+		9F3227461B69ACA30008CE70 /* ContactForthController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactForthController.m; sourceTree = "<group>"; };
 		9F32AC291B6859EE00520FA4 /* ContactFirstController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactFirstController.h; sourceTree = "<group>"; };
 		9F32AC2A1B6859EE00520FA4 /* ContactFirstController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactFirstController.m; sourceTree = "<group>"; };
 		9F32AC421B68BAEB00520FA4 /* PeopleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleController.h; sourceTree = "<group>"; };
@@ -1120,6 +1129,12 @@
 				9F3DD3B81B4E5DA900DE201E /* ContactViewController.m */,
 				9F32AC291B6859EE00520FA4 /* ContactFirstController.h */,
 				9F32AC2A1B6859EE00520FA4 /* ContactFirstController.m */,
+				9F32273F1B69AA8D0008CE70 /* ContactSecondController.h */,
+				9F3227401B69AA8D0008CE70 /* ContactSecondController.m */,
+				9F3227421B69AADB0008CE70 /* ContactThirdController.h */,
+				9F3227431B69AADB0008CE70 /* ContactThirdController.m */,
+				9F3227451B69ACA30008CE70 /* ContactForthController.h */,
+				9F3227461B69ACA30008CE70 /* ContactForthController.m */,
 				9F32AC421B68BAEB00520FA4 /* PeopleController.h */,
 				9F32AC431B68BAEB00520FA4 /* PeopleController.m */,
 			);
@@ -1664,6 +1679,7 @@
 				9F3D62571B26CFBB0012D7CF /* WaterCell.m in Sources */,
 				9F91590A1B25763800CFA0DB /* MenuViewController.m in Sources */,
 				9F3DD3B91B4E5DA900DE201E /* ContactViewController.m in Sources */,
+				9F3227411B69AA8D0008CE70 /* ContactSecondController.m in Sources */,
 				9F3D62651B26DA220012D7CF /* SingleInstanceObject.m in Sources */,
 				9F3D86BB1B5F853D002B0447 /* UIImage+MultiFormat.m in Sources */,
 				9F3722671B39295A00E468AF /* ProjectListController.m in Sources */,
@@ -1705,6 +1721,7 @@
 				9F41B17E1B4A222000C2C5EC /* HeaderView.m in Sources */,
 				9F3D86B71B5F853D002B0447 /* SDWebImageManager.m in Sources */,
 				9F0DBEEF1B57421A00EA6575 /* GISViewController.m in Sources */,
+				9F3227441B69AADB0008CE70 /* ContactThirdController.m in Sources */,
 				9F3D86B61B5F853D002B0447 /* SDWebImageDownloaderOperation.m in Sources */,
 				9F3AE1321B2FF100005EFC86 /* WeatherViewController.m in Sources */,
 				9F3D86B41B5F853D002B0447 /* SDWebImageDecoder.m in Sources */,
@@ -1738,6 +1755,7 @@
 				9F0DBF061B578C1100EA6575 /* UntilObject.m in Sources */,
 				9F3D62521B26CF7E0012D7CF /* RainCell.m in Sources */,
 				9FE4978E1B40D75C00E97B7C /* QualityCell.m in Sources */,
+				9F3227471B69ACA30008CE70 /* ContactForthController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1873,7 +1891,7 @@
 					"\"SystemConfiguration\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2ac21e6c-4279-4977-8bb6-13b1d8f3c363";
+				PROVISIONING_PROFILE = "3d7774b1-7a45-4464-830c-2ac2f1a63069";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
@@ -1911,7 +1929,7 @@
 					"\"SystemConfiguration\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2ac21e6c-4279-4977-8bb6-13b1d8f3c363";
+				PROVISIONING_PROFILE = "3d7774b1-7a45-4464-830c-2ac2f1a63069";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;

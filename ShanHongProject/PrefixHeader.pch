@@ -37,6 +37,9 @@ typedef enum {
 #define kWidthMargin 1
 #define kHeightMargin 3
 
+
+#define kTableViewmargin 44
+
 #define kScreen_Width [[UIScreen mainScreen] bounds].size.width
 #define kScreen_height [[UIScreen mainScreen] bounds].size.height
 
