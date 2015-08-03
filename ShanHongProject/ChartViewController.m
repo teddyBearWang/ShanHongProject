@@ -210,7 +210,7 @@
 //            return y_Values;
 //        }else{
 //            //单条线
-            return @[y_Values];
+            return y_Values;
        // }
     }
     @catch (NSException *exception) {

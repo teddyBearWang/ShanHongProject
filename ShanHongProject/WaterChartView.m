@@ -59,7 +59,12 @@
 //数值多重数组
 - (NSArray *)UUChart_yValueArray:(UUChart *)chart
 {
-    return self.y_values;
+    @try {
+        return self.y_values;
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@",exception);
+    }
 }
 
 //颜色数组

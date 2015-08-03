@@ -229,6 +229,7 @@
     chart.stcd = dic[@"stcd"];
     chart.requestType = @"GetStDaySW";
     chart.chartType = 1; //表示柱状图
+    //[self.navigationController pushViewController:chart animated:YES];
     [self.navigationController pushViewController:chart animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

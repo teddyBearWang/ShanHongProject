@@ -43,6 +43,9 @@ static  NSString *_url = nil;
         ret = YES;
         NSArray *arr = [NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableLeaves error:nil];
         
+        //
+        NSMutableArray *valueAry = [NSMutableArray array];
+        NSMutableArray *jjValueAry = [NSMutableArray array];
         if (x_Labels == nil) {
             x_Labels = [NSMutableArray array];
         }else if(x_Labels.count != 0){
@@ -57,7 +60,12 @@ static  NSString *_url = nil;
         for (int i=0; i<arr.count; i++) {
             NSDictionary *dic = [arr objectAtIndex:i];
             [x_Labels addObject:[dic objectForKey:@"time"]];
-            [y_values addObject:[dic objectForKey:@"value"]];
+            [valueAry addObject:[dic objectForKey:@"value"]];
+            [jjValueAry addObject:[dic objectForKey:@"jjsw"]];
+        }
+        [y_values addObject:valueAry];
+        if (![[[arr firstObject] objectForKey:@"jjsw"] isEqualToString:@""]) {
+            [y_values addObject:jjValueAry];
         }
     }
 

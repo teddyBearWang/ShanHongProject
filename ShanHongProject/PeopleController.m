@@ -116,6 +116,7 @@
     NSString *str = [NSString stringWithFormat:@"tel://%@",num];
     UIWebView *webView = [[UIWebView alloc] init];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
+    [self.view addSubview:webView];
 }
 
 @end

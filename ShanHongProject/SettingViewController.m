@@ -27,6 +27,7 @@
     // Do any additional setup after loading the view.
     
     _listData = @[@"消息提醒",@"清除缓存",@"当前版本",@"关于"];
+    //_listData = @[@"消息提醒",@"清除缓存",@"关于"];
     _segton = [SingleInstanceObject defaultInstance];
     self.view.backgroundColor = BG_COLOR;
     
@@ -96,10 +97,11 @@
         {
             if ([self compareWithAppVersion]) {
                 //跳转到appStore
-                NSString *str = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/shan-hong-fang-zhi/id1020614336?mt=8"];
+               // NSString *str = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/shan-hong-fang-zhi/id1020614336?mt=8"];
+                NSString *str = [NSString stringWithFormat:@"http://115.236.2.245:38019/sh2.html"];
+
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
             }
-            
        }
             
             break;

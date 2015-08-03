@@ -54,13 +54,13 @@
         }
     }
 
-    if (self.showRange) {
-        _yValueMin = min;
-    }else{
-        _yValueMin = 0;
-    }
-    _yValueMax = (int)max * (1+0.4);
-    
+//    if (self.showRange) {
+//        _yValueMin = min;
+//    }else{
+//        _yValueMin = 0;
+//    }
+    _yValueMax = (int)max * (1+0.05);
+    _yValueMin = (int)min * (1-0.05);
     if (_chooseRange.max!=_chooseRange.min) {
         _yValueMax = _chooseRange.max;
         _yValueMin = _chooseRange.min;

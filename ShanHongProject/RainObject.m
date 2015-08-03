@@ -20,7 +20,6 @@ static NSString *_url = nil;
     BOOL ret = NO;
     
     _url = [UntilObject getWebURL];
-    NSLog(@"得到的地址是：%@",_url);
     //http://115.236.169.28/webserca/Data.ashx?t=GetYqInfo&returntype=json
     NSDictionary *parameter = @{@"t":type,@"returntype":@"json"};
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -34,9 +33,7 @@ static NSString *_url = nil;
     [_operation waitUntilFinished];
     if (_operation.responseData != nil) {
         ret = YES;
-        NSLog(@"得到的数据：%@",_operation.responseString);
         datas = [NSJSONSerialization JSONObjectWithData:_operation.responseData options:NSJSONReadingMutableContainers error:nil];
-        NSLog(@"得到的数据：%@",datas);
     }
     return ret;
     

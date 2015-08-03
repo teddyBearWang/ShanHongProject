@@ -7,14 +7,12 @@
 //
 
 #import "RainChartController.h"
-//#import "UUChart.h"
 #import "ChartObject.h"
 #import "SVProgressHUD.h"
 #import "WaterChartView.h"
 
 @interface RainChartController ()
 {
-  //  UUChart *chartView;
     WaterChartView *chartView;
     NSArray *x_Labels;
     NSArray *y_Values;
@@ -45,13 +43,18 @@
 //创建chartVIew
 - (void)initChartView
 {
-    chartView = [[WaterChartView alloc] initWithCustomFrame:(CGRect){0,0,chart_width,chart_heiht} withX_labels:x_Labels withY_values:@[y_Values]];
+    chartView = [[WaterChartView alloc] initWithCustomFrame:(CGRect){0,0,chart_width,chart_heiht} withX_labels:x_Labels withY_values:y_Values];
     [self.view addSubview:chartView];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:(CGRect){30,chart_heiht + 5 , kScreen_Width,30}];
-    label.font = [UIFont systemFontOfSize:14];
-    label.text = @"注: x轴:小时时段, y轴:水位(m)";
-    [self.view addSubview:label];
+    UILabel *label1 = [[UILabel alloc] initWithFrame:(CGRect){30,chart_heiht + 5 , kScreen_Width,30}];
+    label1.font = [UIFont systemFontOfSize:14];
+    label1.text = @"注: x轴:小时时段, y轴:水位(m)";
+    [self.view addSubview:label1];
+    
+    UILabel *label2 = [[UILabel alloc] initWithFrame:(CGRect){30,label1.frame.origin.y + label1.frame.size.height + 10 , kScreen_Width,30}];
+    label2.font = [UIFont systemFontOfSize:14];
+    label2.text = @"  红线:代表警戒(汛限)水位; 绿线: 代表实时水位";
+    [self.view addSubview:label2];
 
 }
 

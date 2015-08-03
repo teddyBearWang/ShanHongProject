@@ -123,6 +123,9 @@
         //取消网络请求
         [RainObject cancelRequest];
     }
+    
+    self.myTimeView = nil;
+    _tableView = nil;
 }
 
 #pragma mark - private
@@ -149,8 +152,6 @@
         }
     });
 }
-
-
 
 - (void)filterAction:(UIButton *)btn
 {
@@ -187,7 +188,6 @@
         cell = (RainCell *)[[[NSBundle mainBundle] loadNibNamed:@"Rain" owner:nil options:nil] lastObject];
     }
     NSDictionary *dic = listData[indexPath.row];
-  //  cell.values = [self selectValues:dic];
     cell.oneHour.text = [[dic objectForKey:@"rain1h"] isEqualToString:@""] ? @"--" : [dic objectForKey:@"rain1h"];
     cell.threeHour.text = [[dic objectForKey:@"rain3h"] isEqualToString:@""] ? @"--" : [dic objectForKey:@"rain3h"];
     cell.today.text = [[dic objectForKey:@"raintoday"] isEqualToString:@""] ? @"--" : [dic objectForKey:@"raintoday"];
@@ -200,20 +200,6 @@
     return cell;
 
 }
-
-////得到cell的值数组
-//- (NSMutableArray *)selectValues:(NSDictionary *)dic
-//{
-//    NSMutableArray *values = [NSMutableArray arrayWithCapacity:8];
-//    NSArray *keys = @[@"rain1h",@"rain3h",@"raintoday",@"rain6h",@"rain12h",@"rain24h",@"rain48h",@"rain72h"];
-//    for (NSString *key in keys) {
-//      //  id val = [dic objectForKey:key];
-//        NSString *value = [[dic objectForKey:key] isEqualToString:@""] ? @"--" : [dic objectForKey:key];
-//        [values addObject:value];
-//    }
-//    
-//    return values;
-//}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
