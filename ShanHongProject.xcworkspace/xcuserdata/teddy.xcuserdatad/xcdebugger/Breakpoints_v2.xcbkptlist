@@ -154,7 +154,7 @@
                   moduleName = "ShanHongProject"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/teddy/Desktop/%E6%B5%99%E6%B1%9F%E6%B0%B4%E5%88%A9%E6%B2%B3%E5%8F%A3%E7%A0%94%E7%A9%B6%E9%99%A2/%E6%9D%AD%E5%B7%9E%E5%AE%9A%E5%B7%9D/%E9%A1%B9%E7%9B%AE/%E5%B1%B1%E6%B4%AA%E9%A1%B9%E7%9B%AE/native%20code/ShanHongProject/ShanHongProject/ProjectDetailController.m"
-                  timestampString = "460288508.582137"
+                  timestampString = "460361467.572355"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "57"
@@ -169,7 +169,7 @@
                   moduleName = "ShanHongProject"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/teddy/Desktop/%E6%B5%99%E6%B1%9F%E6%B0%B4%E5%88%A9%E6%B2%B3%E5%8F%A3%E7%A0%94%E7%A9%B6%E9%99%A2/%E6%9D%AD%E5%B7%9E%E5%AE%9A%E5%B7%9D/%E9%A1%B9%E7%9B%AE/%E5%B1%B1%E6%B4%AA%E9%A1%B9%E7%9B%AE/native%20code/ShanHongProject/ShanHongProject/ProjectDetailController.m"
-                  timestampString = "460288508.582262"
+                  timestampString = "460361467.572487"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "57"
@@ -1088,22 +1088,6 @@
             startingLineNumber = "31"
             endingLineNumber = "31"
             landmarkName = "+fetcChartDataWithType:results:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ShanHongProject/ContactObject.m"
-            timestampString = "460288303.554815"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "+fetch:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

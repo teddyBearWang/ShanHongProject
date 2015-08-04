@@ -85,7 +85,6 @@
     
     NSDictionary *dic = list[indexPath.row];
     NSString *name = [dic objectForKey:@"personNM"];
-    NSLog(@"姓名是: %@",name);
     [cell updateCell:dic];
     return cell;
 }

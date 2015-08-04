@@ -108,7 +108,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSString *sid = [listData[indexPath.row] objectForKey:@"PersonCD"];
     NSString *title = [listData[indexPath.row] objectForKey:@"personNM"];
-    if ([sid containsString:@"s"]) {
+    
+
+    //判断是否以@"s"开头
+    if ([sid hasPrefix:@"s"]) {
         //表示县本级
         PeopleController *people = [[PeopleController alloc] init];
         people.sid = sid;//传递编号

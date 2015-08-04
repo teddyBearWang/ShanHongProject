@@ -107,7 +107,7 @@
     NSString *sid = [listData[indexPath.row] objectForKey:@"PersonCD"];
     NSString *title = [listData[indexPath.row] objectForKey:@"personNM"];
 
-    if ([sid containsString:@"s"]) {
+    if ([sid hasPrefix:@"s"]) {
         //本级
         PeopleController *people = [[PeopleController alloc] init];
         people.sid = sid;//传递编号
