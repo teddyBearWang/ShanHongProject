@@ -26,6 +26,7 @@ static NSString *_url = nil;
     operation = [manager POST:_url parameters:parameter success:nil failure:nil];
     [operation waitUntilFinished];
     if (operation.responseData != 0) {
+        NSLog(@"得到的网络数据:%@",operation.responseString);
         ret = YES;
         datas = [NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableContainers error:nil];
     }

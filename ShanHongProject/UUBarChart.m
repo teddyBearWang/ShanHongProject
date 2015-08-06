@@ -197,7 +197,7 @@
         }
     }
     
-    [myScrollView setContentOffset:CGPointMake(0, -10)];
+   // [myScrollView setContentOffset:CGPointMake(0, -10)];
 }
 
 @end

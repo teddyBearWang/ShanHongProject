@@ -43,11 +43,11 @@
     
     //保存下屏幕竖着的时候的高度
     screen_heiht = self.view.frame.size.height;
-    if (y_Values.count == 0 || x_Labels.count == 0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前没有可以显示的图表数据" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alert show];
-    }
-    [self initChartView];
+//    if (y_Values.count == 0 || x_Labels.count == 0) {
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前没有可以显示的图表数据" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//        [alert show];
+//    }
+//    [self initChartView];
     
 }
 
@@ -112,11 +112,36 @@
     
     
     NSString *results = [NSString stringWithFormat:@"%@$%@$%@",self.stcd,second_date,date_str];
-    //表示折线图上单条线
-    if ([ChartObject fetcChartDataWithType:self.requestType results:results]) {
+    [SVProgressHUD showWithStatus:@"加载中..."];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //表示折线图上单条线
+        if ([ChartObject fetcChartDataWithType:self.requestType results:results]) {
+//            x_Labels = [NSArray arrayWithArray:[ChartObject requestXLables]];
+//            y_Values = [NSArray arrayWithArray:(NSArray *)[ChartObject requestYValues]];
+            [self updateUI];
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismissWithError:@"加载失败"];
+            });
+        }
+    });
+  
+}
+
+- (void)updateUI
+{
+    [SVProgressHUD dismissWithSuccess:@"加载成功"];
+    dispatch_async(dispatch_get_main_queue(), ^{
         x_Labels = [NSArray arrayWithArray:[ChartObject requestXLables]];
         y_Values = [NSArray arrayWithArray:(NSArray *)[ChartObject requestYValues]];
-    }
+        
+        if (y_Values.count == 0 || x_Labels.count == 0) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前没有可以显示的图表数据" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+        [self initChartView];
+    });
+    
 }
 
 - (UIView *)createSelectTimeView

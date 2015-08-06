@@ -32,11 +32,13 @@
     //保存下屏幕竖着的时候的高度
     chart_heiht = ([[UIScreen mainScreen] bounds].size.height)/2;
     chart_width = [[UIScreen mainScreen] bounds].size.width ;
-    if (y_Values.count == 0 || x_Labels.count == 0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前没有可以显示的图表数据" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alert show];
-    }
-    [self initChartView];
+    
+    
+//    if (y_Values.count == 0 || x_Labels.count == 0) {
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前没有可以显示的图表数据" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//        [alert show];
+//    }
+//    [self initChartView];
 }
 
 
@@ -64,6 +66,7 @@
     
     //设置标题
     self.title = self.title_name;
+    self.view.backgroundColor =BG_COLOR;
     
     UIView *dateView = [self createSelectTimeView];
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:dateView];
@@ -81,11 +84,33 @@
     NSString *date_str = [self requestDate:date];
     
     NSString *results = [NSString stringWithFormat:@"%@$%@$%@",self.stcd,date_str,date_str];
-    //表示折线图上单条线
-    if ([ChartObject fetcChartDataWithType:self.requestType results:results]) {
+    [SVProgressHUD showWithStatus:@"加载中.."];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //表示折线图上单条线
+        if ([ChartObject fetcChartDataWithType:self.requestType results:results]) {
+         
+            [self updateUI];
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //加载失败
+                [SVProgressHUD dismissWithError:@"加载失败"];
+            });
+        }
+    });
+}
+
+- (void)updateUI
+{
+    [SVProgressHUD dismissWithSuccess:@"加载成功"];
+    dispatch_async(dispatch_get_main_queue(), ^{
         x_Labels = [NSArray arrayWithArray:[ChartObject requestXLables]];
         y_Values = [NSArray arrayWithArray:(NSArray *)[ChartObject requestYValues]];
-    }
+        if (y_Values.count == 0 || x_Labels.count == 0) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前没有可以显示的图表数据" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+        [self initChartView];
+    });
 }
 
 - (UIView *)createSelectTimeView
