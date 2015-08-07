@@ -18,6 +18,8 @@
 #import "FilterViewController.h"
 #import "FilterObject.h"
 
+#define SelectBtn_height 40
+
 @interface WaterViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSArray *listData;//数据源
@@ -25,12 +27,18 @@
     NSArray *_headers;// 列表头部视图的字段
     NSMutableArray *_stations;//站点tableVIew的数据源
     
+    __weak IBOutlet UIButton *wuSong_btn; //吴淞高程
+    __weak IBOutlet UIButton *eightFive_btn; //85高程
     NSUInteger _kCount;
 }
 
 @property (strong, nonatomic)  UIView *myTableViewHeaderView;
 
 @property (nonatomic, strong) MyTimeView *myTimeView;
+
+//不同的高程选择
+- (IBAction)gaoChengSelectAction:(id)sender;
+
 @end
 
 @implementation WaterViewController
@@ -69,9 +77,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"水情信息";
     self.view.backgroundColor = BG_COLOR;
     
+    [self initBar];
     [self initDatas];
     
     UIView *tableHeaderView = [[UIView alloc] initWithFrame:(CGRect){0,0,_kCount * (kWidth + 5), kHeight}];
@@ -84,31 +92,47 @@
         [tableHeaderView addSubview:header];
     }
     
-    _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.myTableViewHeaderView.frame.size.width, kScreen_height) style:UITableViewStylePlain];
+    _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.myTableViewHeaderView.frame.size.width, kScreen_height - SelectBtn_height-NavigationBarHeight) style:UITableViewStylePlain];
     _myTableView.delegate = self;
     _myTableView.dataSource = self;
     _myTableView.bounces = NO;
     
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(kWidth, 0, kScreen_Width - kWidth, kScreen_height)];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(kWidth, 0, kScreen_Width - kWidth, kScreen_height - SelectBtn_height - NavigationBarHeight)];
     [scrollView addSubview:_myTableView];
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.bounces = NO;
     scrollView.contentSize = CGSizeMake(self.myTableViewHeaderView.frame.size.width, 0);
     [self.view addSubview:scrollView];
     
-    self.myTimeView = [[MyTimeView alloc] initWithFrame:CGRectMake(0, 0, kWidth, kScreen_height)];
+    self.myTimeView = [[MyTimeView alloc] initWithFrame:CGRectMake(0, 0, kWidth, kScreen_height - SelectBtn_height - NavigationBarHeight)];
     self.myTimeView.listData = _stations;
     self.myTimeView.headTitle = @"站点名称";
     [self.view addSubview:self.myTimeView];
     
+    
     UIBarButtonItem *select = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(filterAction:)];
     self.navigationItem.rightBarButtonItem = select;
     
+    //数据加载结束之前，先禁止交互
+    eightFive_btn.userInteractionEnabled = NO;
+    wuSong_btn.userInteractionEnabled = NO;
 
     
     [self refresh:@"GetSqInfo"];
     
     
+}
+
+- (void)initBar
+{
+    NSArray *items = @[@"全部",@"河道",@"水库"];
+    UISegmentedControl *seg = [[UISegmentedControl alloc] initWithItems:items];
+    seg.segmentedControlStyle = UISegmentedControlStyleBar;
+    seg.selectedSegmentIndex = 0;
+    seg.momentary = NO; //设置成NO，则保持被选中的状态
+    seg.apportionsSegmentWidthsByContent = YES;
+    [seg addTarget:self action:@selector(selectSegmentAction:) forControlEvents:UIControlEventValueChanged];
+    self.navigationItem.titleView = seg;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -122,6 +146,33 @@
     if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound) {
         //用户点击返回,取消用户请求
         [RainObject cancelRequest];
+    }
+}
+
+#pragma mark - Private Method
+- (void)selectSegmentAction:(UISegmentedControl *)seg
+{
+    switch (seg.selectedSegmentIndex) {
+        case 0:
+        {
+            NSLog(@"选择了全部");
+        }
+            
+            break;
+        case 1:
+        {
+            NSLog(@"选择了河道");
+        }
+            
+            break;
+        case 2:
+        {
+            NSLog(@"选择了水库");
+        }
+            
+            break;
+        default:
+            break;
     }
 }
 
@@ -172,6 +223,10 @@
         }
         [_myTableView reloadData];
         [self.myTimeView refrushTableView:_stations];
+        //85高程按钮默认被选中
+        eightFive_btn.userInteractionEnabled = YES;
+        wuSong_btn.userInteractionEnabled = YES;
+        eightFive_btn.selected = YES;
     });
 }
 #pragma mark - UITableViewDataSOurce
@@ -257,4 +312,54 @@
     }
 }
 
+//不同的高程选择
+- (IBAction)gaoChengSelectAction:(id)sender
+{
+    UIButton *select_btn = (UIButton *)sender;
+    if(select_btn.selected == YES)
+    {
+        return;
+    }
+    
+    float addNumber;
+    if ([select_btn.currentTitle isEqualToString:@"85高程"]) {
+        //选择了85高程
+        eightFive_btn.selected = YES;
+        wuSong_btn.selected = NO;
+        addNumber = -1.84;
+    }else{
+        //选择了吴淞高程
+        eightFive_btn.selected = NO;
+        wuSong_btn.selected = YES;
+        addNumber = 1.84;
+    }
+    NSMutableArray *deal_arr = [NSMutableArray arrayWithCapacity:listData.count];
+    for (NSDictionary *dic in listData) {
+        NSString *new = [dic objectForKey:@"new"];
+        if ([new isEqualToString:@""]) {
+            //不是数字，不处理
+            [deal_arr addObject:dic];
+        }else{
+            //是数字
+           float new_value = [new floatValue] + addNumber;
+            [dic setValue:[NSString stringWithFormat:@"%.2lf",new_value] forKey:@"new"];
+            [deal_arr addObject:dic];
+        }
+    }
+    
+    listData = (NSArray *)deal_arr;
+    [_myTableView reloadData];
+    
+}
+
+- (BOOL)isDigital:(NSString *)nunStr
+{
+    for (int i = 0; i<[nunStr length]; i++) {
+        char c = [nunStr characterAtIndex:i];
+        if (!isdigit(c)) {
+            return NO;
+        }
+    }
+    return YES;
+}
 @end

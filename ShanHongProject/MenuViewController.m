@@ -9,8 +9,9 @@
 #import "MenuViewController.h"
 #import "ContactViewController.h"
 #import "UntilObject.h"
+#import "SingleInstanceObject.h"
 
-@interface MenuViewController ()
+@interface MenuViewController ()<UIAlertViewDelegate>
 {
     
     __weak IBOutlet UIImageView *_bgView;
@@ -20,6 +21,7 @@
     __weak IBOutlet UILabel *_dateLabel;
     
     __weak IBOutlet UILabel *_tempureLabel;
+    SingleInstanceObject *_segton;
 }
 
 - (IBAction)contactSelectAction:(id)sender;
@@ -42,6 +44,13 @@
     _dateLabel.text = [UntilObject getSystemdate];
     _weatherLabel.text = [self.loginDic objectForKey:@"stxt"];
     _tempureLabel.text = [self.loginDic objectForKey:@"stemperature"];
+    
+    _segton = [SingleInstanceObject defaultInstance];
+    if ([self compareWithAppVersion]) {
+        NSString *str = [NSString stringWithFormat:@"当前有最新版本%@,是否立即更新",_segton.serverVersions];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:str delegate:self cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
+        [alert show];
+    }
 
 }
 
@@ -50,7 +59,36 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma maek - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        NSString *str = [NSString stringWithFormat:@"http://115.236.2.245:38019/sh2.html"];
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    }
+}
 
+
+//版本比较，有新版本返回YES，无新版本返回NO
+- (BOOL)compareWithAppVersion
+{
+    if (![_segton.serverVersions isEqualToString:@""]) {
+        //先获取当前软件版本号
+        NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+        
+        if (![_segton.serverVersions isEqualToString:currentVersion]) {
+            //有新版本
+            return YES;
+        }else{
+            //没有新版本
+            return NO;
+        }
+    }else{
+        //版本号为空，不更新
+        return NO;
+    }
+}
 
 - (IBAction)contactSelectAction:(id)sender
 {

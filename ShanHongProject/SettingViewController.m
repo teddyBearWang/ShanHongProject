@@ -26,8 +26,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-   // _listData = @[@"消息提醒",@"清除缓存",@"当前版本",@"关于"];
-    _listData = @[@"消息提醒",@"清除缓存",@"关于"];
+    _listData = @[@"消息提醒",@"清除缓存",@"当前版本",@"关于"];
+    //_listData = @[@"消息提醒",@"清除缓存",@"关于"];
     _segton = [SingleInstanceObject defaultInstance];
     self.view.backgroundColor = BG_COLOR;
     
@@ -65,14 +65,14 @@
     }
     
     cell.textLabel.font = [UIFont systemFontOfSize:14];
-//    if (indexPath.row == 3) {
-//        UILabel *version = (UILabel *)[self.view viewWithTag:101];
-//        if ([self compareWithAppVersion]) {
-//            version.text = [NSString stringWithFormat:@"最新版本: %@",_segton.serverVersions];
-//        }else{
-//            version.text = @"当前已是最新版本";
-//        }
-//    }
+    if (indexPath.row == 3) {
+        UILabel *version = (UILabel *)[self.view viewWithTag:101];
+        if ([self compareWithAppVersion]) {
+            version.text = [NSString stringWithFormat:@"最新版本: %@",_segton.serverVersions];
+        }else{
+            version.text = @"当前已是最新版本";
+        }
+    }
     cell.textLabel.text = _listData[indexPath.row];
     return cell;
 }
@@ -95,25 +95,25 @@
             break;
         case 2:
         {
-//            if ([self compareWithAppVersion]) {
-//                //跳转到appStore
-//               // NSString *str = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/shan-hong-fang-zhi/id1020614336?mt=8"];
-//                NSString *str = [NSString stringWithFormat:@"http://115.236.2.245:38019/sh2.html"];
-//
-//                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
-//            }
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"杭州定川信息技术有限公司版权所有" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                [alert show];
+            if ([self compareWithAppVersion]) {
+                //跳转到appStore
+               // NSString *str = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/shan-hong-fang-zhi/id1020614336?mt=8"];
+                NSString *str = [NSString stringWithFormat:@"http://115.236.2.245:38019/sh2.html"];
+
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+            }
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"杭州定川信息技术有限公司版权所有" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//                [alert show];
        }
             
             break;
-//        case 3:
-//        {
-//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"杭州定川信息技术有限公司版权所有" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-//            [alert show];
-//        }
-//            
-//            break;
+        case 3:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"杭州定川信息技术有限公司版权所有" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+            
+            break;
         default:
             break;
     }

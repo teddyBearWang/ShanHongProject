@@ -31,8 +31,8 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.rowHeight = 44;
-    listData = @[@"水库",@"闸门",@"堤防",@"水电站",@"山塘"];
-    images = @[@"sk",@"sz",@"df",@"sdz",@"st"];
+    listData = @[@"水库",@"闸门",@"水电站",@"山塘"];
+    images = @[@"sk",@"sz",@"sdz",@"st"];
     
     UIBarButtonItem *filter = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(filterAction:)];
     self.navigationItem.rightBarButtonItem = filter;
@@ -105,15 +105,15 @@
             type = @"sz";
             titleName = @"闸门信息";
             break;
+//        case 2:
+//            type = @"df";
+//            titleName = @"堤防信息";
+//            break;
         case 2:
-            type = @"df";
-            titleName = @"堤防信息";
-            break;
-        case 3:
             type = @"sdz";
             titleName = @"水电站信息";
             break;
-        case 4:
+        case 3:
             type = @"st";
             titleName = @"山塘信息";
             break;

@@ -37,6 +37,7 @@ typedef enum {
 #define kWidthMargin 1
 #define kHeightMargin 3
 
+#define NavigationBarHeight 44
 
 #define kTableViewmargin 44
 
