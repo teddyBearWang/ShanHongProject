@@ -27,7 +27,6 @@ static AFHTTPRequestOperation *operation = nil;
     [operation waitUntilFinished];
     if (operation.responseData != nil) {
         ret = YES;
-        NSLog(@"得到的数据:%@",operation.responseString);
         data = [NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableContainers error:nil];
     }
     return ret;

@@ -123,6 +123,8 @@
     ProjectListController *listCtrl = [[ProjectListController alloc] init];
     listCtrl.projectType = type;
     listCtrl.title_name = titleName;
+    listCtrl.requestType = @"GetProjects"; //请求工情
+    listCtrl.labelArray = @[@"名称",@"所属流域",@"所属乡镇"];
     [self.navigationController pushViewController:listCtrl animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

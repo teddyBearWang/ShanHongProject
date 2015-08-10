@@ -22,11 +22,9 @@ static NSString *_url = nil;
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSDictionary *parameter = @{@"t":type,@"results":project,@"returntype":@"json"};
-    NSLog(@"地址是：%@",_url);
     operation = [manager POST:_url parameters:parameter success:nil failure:nil];
     [operation waitUntilFinished];
     if (operation.responseData != 0) {
-        NSLog(@"得到的网络数据:%@",operation.responseString);
         ret = YES;
         datas = [NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableContainers error:nil];
     }

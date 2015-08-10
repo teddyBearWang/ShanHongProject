@@ -14,6 +14,7 @@
 @interface MenuViewController ()<UIAlertViewDelegate>
 {
     
+    __weak IBOutlet UIButton *fxjz_btn;
     __weak IBOutlet UIImageView *_bgView;
     __weak IBOutlet UIImageView *_imageView;
     
@@ -51,6 +52,9 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:str delegate:self cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
         [alert show];
     }
+    
+    fxjz_btn.layer.cornerRadius = 10.0f;
+    fxjz_btn.layer.masksToBounds = YES;
 
 }
 

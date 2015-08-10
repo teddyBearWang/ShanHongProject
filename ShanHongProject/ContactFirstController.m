@@ -39,16 +39,8 @@
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
     
-    UIButton *right_btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    right_btn.titleLabel.font = [UIFont systemFontOfSize:14];
-    right_btn.frame = (CGRect){0,0,40,25};
-    [right_btn setTitle:@"搜索" forState:UIControlStateNormal];
-    [right_btn addTarget:self action:@selector(searchAction:) forControlEvents:UIControlEventTouchUpInside];
-    right_btn.layer.borderColor = [UIColor whiteColor].CGColor;
-    right_btn.layer.borderWidth = 0.5;
-    
-    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithCustomView:right_btn];
-    self.navigationItem.rightBarButtonItem = right;
+    UIBarButtonItem *search = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchAction:)];
+    self.navigationItem.rightBarButtonItem = search;
     
     [self getWebData];
     

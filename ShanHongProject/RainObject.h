@@ -11,7 +11,7 @@
 
 @interface RainObject : NSObject
 
-+ (BOOL)fetch:(NSString *)type;
++ (BOOL)fetch:(NSString *)requestType withReaults:(NSString *)type;
 
 + (NSArray *)requestData;
 

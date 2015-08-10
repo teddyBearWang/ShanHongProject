@@ -15,13 +15,13 @@ static  AFHTTPRequestOperation *_operation = nil;
 static NSString *_url = nil;
 @implementation RainObject
 
-+ (BOOL)fetch:(NSString *)type
++ (BOOL)fetch:(NSString *)requestType withReaults:(NSString *)type
 {
     BOOL ret = NO;
     
     _url = [UntilObject getWebURL];
     //http://115.236.169.28/webserca/Data.ashx?t=GetYqInfo&returntype=json
-    NSDictionary *parameter = @{@"t":type,@"returntype":@"json"};
+    NSDictionary *parameter = @{@"t":requestType,@"results":type,@"returntype":@"json"};
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
    // manager.requestSerializer.timeoutInterval = 15; //设置超时时间
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];

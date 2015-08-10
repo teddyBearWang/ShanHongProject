@@ -8,6 +8,7 @@
 
 #import "QiXiangViewController.h"
 #import "QxDetailController.h"
+#import "WeatherDetailController.h"
 
 @interface QiXiangViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -27,8 +28,8 @@
     self.myTableView.dataSource = self;
     self.myTableView.rowHeight = 44;
     
-    listData = @[@"一小时降水预报",@"三小时降水预报",@"卫星云图",@"气象雷达"];
-    images = @[@"rainYb",@"rainYb",@"wxyt",@"qxld"];
+    listData = @[@"天气预报",@"一小时降水预报",@"三小时降水预报",@"卫星云图",@"气象雷达"];
+    images = @[@"wh",@"rainYb",@"rainYb",@"wxyt",@"qxld"];
 }
 
 - (void)viewWillLayoutSubviews
@@ -68,28 +69,56 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    QxDetailController *qx = [[QxDetailController alloc] init];
     switch (indexPath.row) {
         case 0:
-            //一小时强降水
-            qx.type = @"rain1h$";
+        {
+            WeatherDetailController *weather = [[WeatherDetailController alloc] initWithNibName:@"WeatherDetailController" bundle:nil];
+            [self.navigationController pushViewController:weather animated:YES];
+        }
             break;
         case 1:
-            //三小时强降水
-            qx.type = @"rain3h$";
+        {
+            //一小时强降水
+            QxDetailController *qx = [[QxDetailController alloc] init];
+            qx.type = @"rain1h$";
+           [self.navigationController pushViewController:qx animated:YES];
+        }
             break;
         case 2:
-            //卫星云图
-            qx.type = @"wxyt$";
+        {
+            //三小时强降水
+            QxDetailController *qx = [[QxDetailController alloc] init];
+            qx.type = @"rain3h$";
+            [self.navigationController pushViewController:qx animated:YES];
+        }
             break;
         case 3:
+        {
+            //卫星云图
+            QxDetailController *qx = [[QxDetailController alloc] init];
+            qx.type = @"wxyt$";
+            [self.navigationController pushViewController:qx animated:YES];
+        }
+            break;
+        case 4:
+        {
             //气象雷达
+            QxDetailController *qx = [[QxDetailController alloc] init];
             qx.type = @"qxld$";
+            [self.navigationController pushViewController:qx animated:YES];
+        }
+            break;
+//        case 5:
+//        {
+//            //地址灾害
+//            QxDetailController *qx = [[QxDetailController alloc] init];
+//            qx.type = @"qxld$";
+//            [self.navigationController pushViewController:qx animated:YES];
+//        }
             break;
         default:
             break;
     }
-    [self.navigationController pushViewController:qx animated:YES];
 
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

@@ -1,16 +1,16 @@
 //
-//  WeatherViewController.m
+//  WeatherDetailController.m
 //  ShanHongProject
 //
-//  Created by teddy on 15/6/16.
+//  Created by teddy on 15/8/10.
 //  Copyright (c) 2015年 teddy. All rights reserved.
 //
 
-#import "WeatherViewController.h"
+#import "WeatherDetailController.h"
 #import "SVProgressHUD.h"
 #import "WeatherObject.h"
 
-@interface WeatherViewController ()
+@interface WeatherDetailController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *currentTemputer;
 @property (weak, nonatomic) IBOutlet UILabel *currentTime;
@@ -30,7 +30,7 @@
 
 @end
 
-@implementation WeatherViewController
+@implementation WeatherDetailController
 
 - (void)viewWillDisappear:(BOOL)animated
 {

@@ -118,7 +118,7 @@
     wuSong_btn.userInteractionEnabled = NO;
 
     
-    [self refresh:@"GetSqInfo"];
+    [self refresh:@"GetSqInfo" withREsults:@""];
     
     
 }
@@ -156,18 +156,21 @@
         case 0:
         {
             NSLog(@"选择了全部");
+            [self refresh:@"GetSqInfo" withREsults:@""];
         }
             
             break;
         case 1:
         {
             NSLog(@"选择了河道");
+            [self refresh:@"GetSqInfo" withREsults:@"28"];
         }
             
             break;
         case 2:
         {
             NSLog(@"选择了水库");
+            [self refresh:@"GetSqInfo" withREsults:@"27"];
         }
             
             break;
@@ -197,11 +200,11 @@
     });
 }
 
-- (void)refresh:(NSString *)type
+- (void)refresh:(NSString *)requestType withREsults:(NSString *)type
 {
     [SVProgressHUD showWithStatus:@"加载中.."];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        if ([RainObject fetch:type]) {
+        if ([RainObject fetch:requestType withReaults:type]) {
             //更新UI
             [self updateUI];
         }else{

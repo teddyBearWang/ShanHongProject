@@ -36,24 +36,25 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = self.title_name;
+    self.view.backgroundColor = BG_COLOR;
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 64)style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource =self;
     [self.view addSubview:_tableView];
     
-    [self getProjectList];
+    [self getProjectListWithType:self.requestType withResults:self.projectType];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (void)getProjectList
+- (void)getProjectListWithType:(NSString *)type withResults:(NSString *)result
 {
     [SVProgressHUD show];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        if ([ProjectObject fetch:@"GetProjects" withProject:self.projectType]) {
+        if ([ProjectObject fetch:type withProject:result]) {
             [SVProgressHUD dismissWithSuccess:@"加载成功"];
             dispatch_async(dispatch_get_main_queue(), ^{
                 listData = [ProjectObject requestData];
@@ -94,6 +95,13 @@
 {
     ProjectDetailController *detail = [[ProjectDetailController alloc] init];
     detail.Object_dic = listData[indexPath.row];
+    if (self.type == 0) {
+        //工情详情
+        detail.requestType = @"GetProjectsView";
+    }else{
+        //地质灾害点详情
+        detail.requestType = @"GetFloodView";
+    }
     [self.navigationController pushViewController:detail animated:YES];
     UIBarButtonItem *item = [[UIBarButtonItem alloc] init];
     item.title = @"返回";
@@ -103,7 +111,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    CustomHeaderView *view = [[CustomHeaderView alloc] initWithFirstLabel:@"名称" withSecond:@"所属流域" withThree:@"所属乡镇"];
+    CustomHeaderView *view = [[CustomHeaderView alloc] initWithFirstLabel:_labelArray[0] withSecond:_labelArray[1] withThree:_labelArray[2]];
     return view;
 }
 

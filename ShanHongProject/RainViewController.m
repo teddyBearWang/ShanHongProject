@@ -133,7 +133,7 @@
 {
     [SVProgressHUD show];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        if ([RainObject fetch:@"GetYqInfo"]) {
+        if ([RainObject fetch:@"GetYqInfo" withReaults:@""]) {
            dispatch_async(dispatch_get_main_queue(), ^{
                [SVProgressHUD dismissWithSuccess:@"加载成功"];
                listData = [RainObject requestData];

@@ -33,7 +33,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _table = [[UITableView alloc] initWithFrame:(CGRect){0,0,self.view.frame.size.width,self.view.frame.size.height - 64} style:UITableViewStylePlain];
+    self.view.backgroundColor = BG_COLOR;
+    _table = [[UITableView alloc] initWithFrame:(CGRect){0,0,self.view.frame.size.width,self.view.frame.size.height - 44} style:UITableViewStylePlain];
     _table.delegate = self;
     _table.dataSource = self;
     [self.view addSubview:_table];
@@ -55,7 +56,7 @@
     [SVProgressHUD show];
     NSString *results = [NSString stringWithFormat:@"%@$%@",[self.Object_dic objectForKey:@"MyType"],[self.Object_dic objectForKey:@"RSCD"]];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        if ([ProjectObject fetch:@"GetProjectsView" withProject:results]) {
+        if ([ProjectObject fetch:self.requestType withProject:results]) {
             [self updateUI];
         }else{
           dispatch_async(dispatch_get_main_queue(), ^{

@@ -12,4 +12,7 @@
 
 @property (nonatomic, strong) NSDictionary *Object_dic;
 
+@property (nonatomic, copy) NSString *requestType;
+
+
 @end
