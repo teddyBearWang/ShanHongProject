@@ -54,7 +54,6 @@ static DownloadFile *downloadFile = nil;
     //pdf文件夹存在的路径
     cacheFolder = [cacheFolder stringByAppendingPathComponent:@"PDF"];
     //cacheFolder = ****/pdf/12345.pdf
-    NSLog(@"PDF文件夹的路劲是：%@",cacheFolder);
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if (![fileManager fileExistsAtPath:cacheFolder]) {
@@ -63,7 +62,6 @@ static DownloadFile *downloadFile = nil;
         //文件夹不存在，则创建
         [fileManager createDirectoryAtPath:cacheFolder withIntermediateDirectories:YES attributes:nil error:&error];
         if (error) {
-            NSLog(@"文件夹创建失败");
             return nil;
         }
     }
@@ -95,7 +93,6 @@ static DownloadFile *downloadFile = nil;
 
     }
     @catch (NSException *exception) {
-        NSLog(@"%@",exception);
     }
     [operation waitUntilFinished];
     if (operation.responseData != nil) {

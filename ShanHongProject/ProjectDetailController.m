@@ -90,7 +90,7 @@
     }
     NSDictionary *dic = listData[indexPath.row];
     [cell setKeyLabelText:[dic objectForKey:@"type"]];
-    cell.valueLabel.text = [[dic objectForKey:@"value"] isEqual:@""] ? @"--" : [dic objectForKey:@"value"];
+    [cell setValueLabelText:[[dic objectForKey:@"value"] isEqual:@""] ? @"--" : [dic objectForKey:@"value"]];
     return cell;
 }
 

@@ -112,7 +112,7 @@
     
     
     NSString *results = [NSString stringWithFormat:@"%@$%@$%@",self.stcd,second_date,date_str];
-    [SVProgressHUD showWithStatus:@"加载中..."];
+    //[SVProgressHUD showWithStatus:@"加载中..."];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         //表示折线图上单条线
         if ([ChartObject fetcChartDataWithType:self.requestType results:results]) {
@@ -130,7 +130,7 @@
 
 - (void)updateUI
 {
-    [SVProgressHUD dismissWithSuccess:@"加载成功"];
+   // [SVProgressHUD dismissWithSuccess:@"加载成功"];
     dispatch_async(dispatch_get_main_queue(), ^{
         x_Labels = [NSArray arrayWithArray:[ChartObject requestXLables]];
         y_Values = [NSArray arrayWithArray:(NSArray *)[ChartObject requestYValues]];
@@ -239,7 +239,6 @@
        // }
     }
     @catch (NSException *exception) {
-        NSLog(@"%@",exception);
     }
     
 }

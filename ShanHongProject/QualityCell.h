@@ -13,7 +13,10 @@
 @property (nonatomic, strong) UILabel *keyLabel;
 @property (nonatomic, strong) UILabel *valueLabel;
 
-//设置keyde的值并且实现自动换行
+//设置key的值并且实现自动换行
 - (void)setKeyLabelText:(NSString *)key;
+
+//设置Value的值并且实现自动换行
+- (void)setValueLabelText:(NSString *)value;
 
 @end

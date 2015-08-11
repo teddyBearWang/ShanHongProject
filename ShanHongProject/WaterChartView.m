@@ -63,7 +63,7 @@
         return self.y_values;
     }
     @catch (NSException *exception) {
-        NSLog(@"%@",exception);
+        
     }
 }
 

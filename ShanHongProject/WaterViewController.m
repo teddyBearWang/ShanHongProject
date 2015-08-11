@@ -155,21 +155,18 @@
     switch (seg.selectedSegmentIndex) {
         case 0:
         {
-            NSLog(@"选择了全部");
             [self refresh:@"GetSqInfo" withREsults:@""];
         }
             
             break;
         case 1:
         {
-            NSLog(@"选择了河道");
             [self refresh:@"GetSqInfo" withREsults:@"28"];
         }
             
             break;
         case 2:
         {
-            NSLog(@"选择了水库");
             [self refresh:@"GetSqInfo" withREsults:@"27"];
         }
             
@@ -229,7 +226,9 @@
         //85高程按钮默认被选中
         eightFive_btn.userInteractionEnabled = YES;
         wuSong_btn.userInteractionEnabled = YES;
+        //默认就是选中85高程的，每次请求网络之后改变
         eightFive_btn.selected = YES;
+        wuSong_btn.selected = NO;
     });
 }
 #pragma mark - UITableViewDataSOurce

@@ -118,7 +118,6 @@
     //用block 可以在图片加载完成之后做些事情
     [image_view sd_setImageWithURL:url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         [SVProgressHUD dismiss];
-        NSLog(@"这里可以在图片加载完成之后做些事情");
         CGFloat imageH = image.size.height;
         CGFloat imageW = image.size.width;
         CGFloat imageX = 0;
@@ -191,7 +190,7 @@ static int count = 0;
  */
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView
 {
-    NSLog(@"正在缩放");
+    return;
 }
 
 
@@ -205,7 +204,7 @@ static int count = 0;
  */
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale
 {
-    NSLog(@"缩放结束");
+    return;
 }
 
 

@@ -240,7 +240,7 @@
 // called when text ends editing，当searchBar释放第一响应者的时候开始搜索
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
 {
-    NSLog(@"结束了才开始搜索");
+    return;
 }
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar
 {

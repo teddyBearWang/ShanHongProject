@@ -21,7 +21,6 @@ static NSString *_url = nil;
     //http://115.236.169.28/webserca/Data.ashx?t=Login&results=dcxxadmin$123456$1.1.2$淳安&returntype=json
     BOOL ret = NO;
     _url = [UntilObject getWebURL];
-    NSLog(@"%@",_url);
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     

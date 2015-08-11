@@ -381,6 +381,5 @@
     CustomAnnotationView *annotationView = (CustomAnnotationView *)tap.view;
     CustomAnnotation *ann  = (CustomAnnotation *)annotationView.annotation;
     NSString *name = ann.title;
-    NSLog(@"点击的事件是:%@",name);
 }
 @end

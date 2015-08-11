@@ -123,9 +123,6 @@
         //取消网络请求
         [RainObject cancelRequest];
     }
-    
-    self.myTimeView = nil;
-    _tableView = nil;
 }
 
 #pragma mark - private
@@ -244,7 +241,6 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat offSetY = _tableView.contentOffset.y;//tableVIew的Y方向的偏移
-    
     CGPoint timeOffSet = self.myTimeView.myTableView.contentOffset;
     
     timeOffSet.y = offSetY;

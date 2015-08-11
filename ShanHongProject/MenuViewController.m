@@ -53,8 +53,8 @@
         [alert show];
     }
     
-    fxjz_btn.layer.cornerRadius = 10.0f;
-    fxjz_btn.layer.masksToBounds = YES;
+//    fxjz_btn.layer.cornerRadius = 10.0f;
+//    fxjz_btn.layer.masksToBounds = YES;
 
 }
 
