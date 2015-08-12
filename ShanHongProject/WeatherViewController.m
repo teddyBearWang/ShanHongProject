@@ -26,10 +26,13 @@
     if ([self.itemsTable respondsToSelector:@selector(setSeparatorInset:)]) {
         [self.itemsTable setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     }
-    
-    if ([self.itemsTable respondsToSelector:@selector(setLayoutMargins:)]) {
-        [self.itemsTable setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 0)];
+#ifdef __IPHONE_8_0
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        if ([self.itemsTable respondsToSelector:@selector(setLayoutMargins:)]) {
+            [self.itemsTable setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 0)];
+        }
     }
+#endif
 }
 
 - (void)viewDidLoad {
@@ -110,6 +113,20 @@
     [self.navigationController pushViewController:listCtrl animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+#ifdef __IPHONE_8_0
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+            [cell setLayoutMargins:UIEdgeInsetsZero];
+        }
+    }
+#endif
 }
 
 @end

@@ -37,9 +37,13 @@
         [_table setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     }
     
-    if ([_table respondsToSelector:@selector(setLayoutMargins:)]) {
-        [_table setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 0)];
+#ifdef __IPHONE_8_0
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        if ([_table respondsToSelector:@selector(setLayoutMargins:)]) {
+            [_table setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 0)];
+        }
     }
+#endif
 }
 
 - (void)viewDidLoad {
@@ -133,10 +137,13 @@
     if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
         [cell setSeparatorInset:UIEdgeInsetsZero];
     }
-    
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
+#ifdef __IPHONE_8_0
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+            [cell setLayoutMargins:UIEdgeInsetsZero];
+        }
     }
+#endif
 }
 
 #pragma mark - block 回调传值

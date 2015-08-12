@@ -63,10 +63,14 @@
     if ([_myTableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [_myTableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     }
-    
-    if ([_myTableView respondsToSelector:@selector(setLayoutMargins:)]) {
-        [_myTableView setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 0)];
+#ifdef __IPHONE_8_0
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        if ([_myTableView respondsToSelector:@selector(setLayoutMargins:)]) {
+            [_myTableView setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 0)];
+        }
     }
+
+#endif
 }
 
 - (void)initDatas
@@ -296,10 +300,13 @@
     if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
         [cell setSeparatorInset:UIEdgeInsetsZero];
     }
-    
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
+#ifdef __IPHONE_8_0
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+            [cell setLayoutMargins:UIEdgeInsetsZero];
+        }
     }
+#endif
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

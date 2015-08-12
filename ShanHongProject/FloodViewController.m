@@ -52,10 +52,13 @@
     if ([self.myTableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [self.myTableView setSeparatorInset: UIEdgeInsetsMake(0, 0, 0, 0)];
     }
-    
-    if ([self.myTableView respondsToSelector:@selector(setLayoutMargins:)]) {
-        [self.myTableView setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 0)];
+#ifdef __IPHONE_8_0
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        if ([self.myTableView respondsToSelector:@selector(setLayoutMargins:)]) {
+            [self.myTableView setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 0)];
+        }
     }
+#endif
 }
 
 - (void)didReceiveMemoryWarning {
@@ -161,10 +164,13 @@
     if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
         [cell setSeparatorInset:UIEdgeInsetsZero];
     }
-    
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
+#ifdef __IPHONE_8_0
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+            [cell setLayoutMargins:UIEdgeInsetsZero];
+        }
     }
+#endif
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
