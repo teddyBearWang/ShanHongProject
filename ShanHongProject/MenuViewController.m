@@ -46,15 +46,16 @@
     _weatherLabel.text = [self.loginDic objectForKey:@"stxt"];
     _tempureLabel.text = [self.loginDic objectForKey:@"stemperature"];
     
+    
+    /*
+     //提醒软件更新
     _segton = [SingleInstanceObject defaultInstance];
     if ([self compareWithAppVersion]) {
         NSString *str = [NSString stringWithFormat:@"当前有最新版本%@,是否立即更新",_segton.serverVersions];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:str delegate:self cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
         [alert show];
     }
-    
-//    fxjz_btn.layer.cornerRadius = 10.0f;
-//    fxjz_btn.layer.masksToBounds = YES;
+     */
 
 }
 

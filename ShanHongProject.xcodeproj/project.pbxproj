@@ -1474,7 +1474,7 @@
 				TargetAttributes = {
 					9F35AA981B1FEDA400D9D329 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = GGLTBH2LF8;
+						DevelopmentTeam = LNMMM7J8HZ;
 					};
 					9F35AAB11B1FEDA400D9D329 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -1954,8 +1954,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hangzhou Dingchuan Information Technology Co., Ltd";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: roger ace (LNMMM7J8HZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: roger ace (LNMMM7J8HZ)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/teddy/Desktop/山洪预警",
@@ -1966,7 +1966,7 @@
 				INFOPLIST_FILE = ShanHongProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-Objc",
@@ -1982,7 +1982,7 @@
 					"\"SystemConfiguration\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4d26bc01-ad88-40c3-be0f-bd2df9bd4e6a";
+				PROVISIONING_PROFILE = "23db81b4-c41b-4a9d-8436-170149f4ec81";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
@@ -1993,8 +1993,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hangzhou Dingchuan Information Technology Co., Ltd";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: roger ace (LNMMM7J8HZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: roger ace (LNMMM7J8HZ)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/teddy/Desktop/山洪预警",
@@ -2005,6 +2005,7 @@
 				INFOPLIST_FILE = ShanHongProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-Objc",
@@ -2020,7 +2021,7 @@
 					"\"SystemConfiguration\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4d26bc01-ad88-40c3-be0f-bd2df9bd4e6a";
+				PROVISIONING_PROFILE = "23db81b4-c41b-4a9d-8436-170149f4ec81";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;

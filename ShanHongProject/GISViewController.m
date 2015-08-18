@@ -84,25 +84,6 @@
 
 - (void)initNavigationBar
 {
-//    UIView *view = [[UIView alloc] initWithFrame:(CGRect){0,0,RIGHTVIEWHEIHGT*2,RIGHTVIEWHEIHGT}];
-//    view.backgroundColor = [UIColor clearColor];
-//    
-//    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithCustomView:view];
-//    self.navigationItem.rightBarButtonItem = right;
-//    
-//    UIButton *filterBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    filterBtn.frame = (CGRect){0,0,RIGHTVIEWHEIHGT,RIGHTVIEWHEIHGT};
-//    [filterBtn setImage:[UIImage imageNamed:@"select"] forState:UIControlStateNormal];
-//    [filterBtn setImage:[UIImage imageNamed:@"select_click"] forState:UIControlStateHighlighted];
-//    [view addSubview:filterBtn];
-    
-//    UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    searchBtn.frame = (CGRect){RIGHTVIEWHEIHGT,0,RIGHTVIEWHEIHGT,RIGHTVIEWHEIHGT};
-//    [searchBtn setImage:[UIImage imageNamed:@"search"] forState:UIControlStateNormal];
-//    [searchBtn setImage:[UIImage imageNamed:@"search_click"] forState:UIControlStateHighlighted];
-//    [searchBtn addTarget:self action:@selector(searchStationAction) forControlEvents:UIControlEventTouchUpInside];
-//    [view addSubview:searchBtn];
-    
     UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchStationAction)];
     self.navigationItem.rightBarButtonItem = right;
 }
@@ -172,7 +153,7 @@
     
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([[userDic objectForKey:@"ScenterLat"] floatValue], [[userDic objectForKey:@"ScenterLng"] floatValue]);
     _mapVIew.centerCoordinate = coordinate;
-    _mapVIew.zoomLevel = 12;//地图的显示等级
+    _mapVIew.zoomLevel = 10;//地图的显示等级
     
     [self addAnnotationForMapView];
     
@@ -312,6 +293,7 @@
  */
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id <MAAnnotation>)annotation
 {
+    
     CustomAnnotation *ann = (CustomAnnotation *)annotation;
     
     if ([ann isKindOfClass:[MAPointAnnotation class]]) {
@@ -368,18 +350,51 @@
             annotationView.value = [NSString stringWithFormat:@"所属乡镇: %@",ann.valueName];
             
         }
+        if (mapView.zoomLevel > 12) {
+            annotationView.selected = YES;//处于选中的状态
+        }
         
-        annotationView.selected = YES;//处于选中的状态
         return annotationView;
     }
    
     return nil;
 }
 
-- (void)tapAnnotationVIewAction:(UIGestureRecognizer *)tap
+/*
+ @brief 地图区域即将改变时会调用此接口
+ @param mapview 地图View
+ @param animated 是否动画
+ */
+//- (void)mapView:(MAMapView *)mapView regionWillChangeAnimated:(BOOL)animated
+//{
+//   // if (mapView.zoomLevel > 15) {
+//        //先删除标注
+//        if (_mapVIew.annotations.count > 0) {
+//            [_mapVIew removeAnnotations:_mapVIew.annotations];
+//        }
+//        
+//        [self addAnnotationForMapView];
+//   // }
+//   
+//    
+//   // [self performSelector:@selector(mapView: viewForAnnotation:) withObject:nil];
+//
+//}
+
+- (void)mapView:(MAMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-    CustomAnnotationView *annotationView = (CustomAnnotationView *)tap.view;
-    CustomAnnotation *ann  = (CustomAnnotation *)annotationView.annotation;
-    NSString *name = ann.title;
+    NSLog(@"当前地图的等级是 %lf",mapView.zoomLevel);
+    if (mapView.annotations.count > 0) {
+        [mapView removeAnnotations:mapView.annotations];
+    }
+    
+    [self addAnnotationForMapView];
 }
+
+////
+//- (void)tapAnnotationVIewAction:(UIGestureRecognizer *)tap
+//{
+//    CustomAnnotationView *annotationView = (CustomAnnotationView *)tap.view;
+//    CustomAnnotation *ann  = (CustomAnnotation *)annotationView.annotation;
+//}
 @end

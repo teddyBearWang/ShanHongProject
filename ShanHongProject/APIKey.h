@@ -11,9 +11,9 @@
 
 
 //高德地图APIKeys
-//const static NSString *APIKey = @"0f79304fde8ed02ae0fabf252d3c1bc1";
+const static NSString *APIKey = @"0f79304fde8ed02ae0fabf252d3c1bc1";
 
 //企业版KEY
-const static NSString *APIKey = @"99802f7a9162f8cbba0181289b2da4bc";
+//const static NSString *APIKey = @"99802f7a9162f8cbba0181289b2da4bc";
 
 #endif
