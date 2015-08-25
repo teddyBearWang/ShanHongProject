@@ -1,14 +1,14 @@
 //
-//  ContactObject.h
+//  SendMessageObject.h
 //  ShanHongProject
-//  **********通讯录*************
-//  Created by teddy on 15/7/29.
+//  ************发送短信***************
+//  Created by teddy on 15/8/24.
 //  Copyright (c) 2015年 teddy. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface ContactObject : NSObject
+@interface SendMessageObject : NSObject
 
 + (BOOL)fetchWithType:(NSString *)type result:(NSString *)results;
 

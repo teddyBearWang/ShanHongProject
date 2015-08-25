@@ -58,7 +58,8 @@
 {
     [SVProgressHUD showWithStatus:@"加载中..."];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        if ([ContactObject fetch:self.sid]) {
+        //GetAdcdAdress2
+        if ([ContactObject fetchWithType:@"GetAdcdAdress2" result:self.sid]) {
             //成功
             [self updateUI];
         }else{

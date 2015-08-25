@@ -293,7 +293,6 @@
  */
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id <MAAnnotation>)annotation
 {
-    
     CustomAnnotation *ann = (CustomAnnotation *)annotation;
     
     if ([ann isKindOfClass:[MAPointAnnotation class]]) {
@@ -365,36 +364,20 @@
  @param mapview 地图View
  @param animated 是否动画
  */
-//- (void)mapView:(MAMapView *)mapView regionWillChangeAnimated:(BOOL)animated
-//{
-//   // if (mapView.zoomLevel > 15) {
-//        //先删除标注
-//        if (_mapVIew.annotations.count > 0) {
-//            [_mapVIew removeAnnotations:_mapVIew.annotations];
-//        }
-//        
-//        [self addAnnotationForMapView];
-//   // }
-//   
-//    
-//   // [self performSelector:@selector(mapView: viewForAnnotation:) withObject:nil];
-//
-//}
-
 - (void)mapView:(MAMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-    NSLog(@"当前地图的等级是 %lf",mapView.zoomLevel);
+    //地图进行缩放的时候，先将地图上的标注点全部删除，然后重新添加标注点
     if (mapView.annotations.count > 0) {
         [mapView removeAnnotations:mapView.annotations];
     }
-    
     [self addAnnotationForMapView];
 }
 
-////
+//
 //- (void)tapAnnotationVIewAction:(UIGestureRecognizer *)tap
 //{
 //    CustomAnnotationView *annotationView = (CustomAnnotationView *)tap.view;
 //    CustomAnnotation *ann  = (CustomAnnotation *)annotationView.annotation;
 //}
+
 @end

@@ -18,6 +18,8 @@
 @property (nonatomic, strong) NSString *ScenterLat;//地图默认定位纬度
 @property (nonatomic, strong) NSString *ScenterZoom;//地图默认方法级别
 
+@property (nonatomic, strong) NSMutableArray *warnPeopleList;//选中的要发送预警的人员
+
 @property (nonatomic, strong) NSMutableArray *selectArray;//GIS中站点的显示的站点类别
 + (SingleInstanceObject *)defaultInstance;
 

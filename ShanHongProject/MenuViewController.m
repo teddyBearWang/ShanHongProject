@@ -23,9 +23,11 @@
     
     __weak IBOutlet UILabel *_tempureLabel;
     SingleInstanceObject *_segton;
+    
 }
 
 - (IBAction)contactSelectAction:(id)sender;
+
 
 @end
 
@@ -100,4 +102,5 @@
     ContactViewController *contact = [[ContactViewController alloc] init];
     [self.navigationController pushViewController:contact animated:YES];
 }
+
 @end

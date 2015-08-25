@@ -1,18 +1,17 @@
 //
-//  ContactObject.m
+//  SendMessageObject.m
 //  ShanHongProject
 //
-//  Created by teddy on 15/7/29.
+//  Created by teddy on 15/8/24.
 //  Copyright (c) 2015年 teddy. All rights reserved.
 //
 
-#import "ContactObject.h"
+#import "SendMessageObject.h"
 #import <AFNetworking.h>
 #import "UntilObject.h"
 
 static AFHTTPRequestOperation *_operation = nil;
-@implementation ContactObject
-
+@implementation SendMessageObject
 
 + (BOOL)fetchWithType:(NSString *)type result:(NSString *)results
 {
@@ -47,4 +46,5 @@ static NSArray *data = nil;
         [_operation cancel];
     }
 }
+
 @end
