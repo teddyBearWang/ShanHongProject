@@ -1,25 +1,26 @@
 //
-//  PlanViewController.m
+//  ThirdPlanController.m
 //  ShanHongProject
-//  **********第一级***************
-//  Created by teddy on 15/7/7.
+//  ************行政村级别**************
+//  Created by teddy on 15/8/28.
 //  Copyright (c) 2015年 teddy. All rights reserved.
 //
 
-#import "PlanViewController.h"
+#import "ThirdPlanController.h"
 #import "SVProgressHUD.h"
 #import "PlanObject.h"
-#import "SecondPlanController.h"
+#import "PlanDetailController.h"
+#import "ForthPlanController.h"
 
-@interface PlanViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface ThirdPlanController () <UITableViewDelegate,UITableViewDataSource>
 {
+    UITableView *_tableView; //列表
     NSArray *_listData;//数据源
 }
-@property (weak, nonatomic) IBOutlet UITableView *myTableView;
 
 @end
 
-@implementation PlanViewController
+@implementation ThirdPlanController
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -33,11 +34,23 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.myTableView.delegate = self;
-    self.myTableView.dataSource = self;
+    [self initBar];
+    self.title = [self.dic objectForKey:@"PersonNM"];
+    
+    _tableView = [[UITableView alloc] initWithFrame:(CGRect){0,0,kScreen_Width,kScreen_height} style:UITableViewStyleGrouped];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [self.view addSubview:_tableView];
     
     [self requestHttp];
-    
+}
+
+- (void)initBar
+{
+    UIBarButtonItem *back = [[UIBarButtonItem alloc] init];
+    back.title = @"返回";
+    self.navigationItem.backBarButtonItem = back;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,7 +63,7 @@
 {
     [SVProgressHUD showWithStatus:@"加载中.."];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        if ([PlanObject fetchWithSicd:@""]) {
+        if ([PlanObject fetchWithSicd:[self.dic objectForKey:@"PersonCD"]]) {
             [self updateUI];
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -67,7 +80,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         _listData = [PlanObject requestDatas];
         if (_listData.count != 0) {
-            [self.myTableView reloadData];
+            [_tableView reloadData];
         }else{
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前无预案" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
             [alert show];
@@ -98,14 +111,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SecondPlanController *detail = [[SecondPlanController alloc] init];
-    detail.dic = _listData[indexPath.row];
-    
-    UIBarButtonItem *back = [[UIBarButtonItem alloc] init];
-    back.title = @"返回";
-    self.navigationItem.backBarButtonItem = back;
-    [self.navigationController pushViewController:detail animated:YES];
-    
+    NSDictionary *select_dic = _listData[indexPath.row];
+    if ([[select_dic objectForKey:@"PersonCD"] hasPrefix:@"s"]) {
+        //PersonCD中含有S，表示县级本级
+        PlanDetailController *detail = [[PlanDetailController alloc] init];
+        detail.dic = select_dic;
+        [self.navigationController pushViewController:detail animated:YES];
+    }else{
+        //push进入下一级
+        ForthPlanController *second = [[ForthPlanController alloc] init];
+        second.dic = select_dic;
+        [self.navigationController pushViewController:second animated:YES];
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

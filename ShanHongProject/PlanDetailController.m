@@ -59,7 +59,7 @@
 {
     [SVProgressHUD showWithStatus:@"加载中.."];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        if ([PlanObject fetchWithType:@"GetFxPlanTree" level:@"1" sicd:[self.dic objectForKey:@"Sid"]]) {
+        if ([PlanObject fetchWithSicd:[self.dic objectForKey:@"PersonCD"]]) {
             [self updateUI];
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -96,7 +96,7 @@
     }
     NSDictionary *dic = _listData[indexPath.row];
     cell.textLabel.font = [UIFont systemFontOfSize:14];
-    cell.textLabel.text = [dic objectForKey:@"Sname"];
+    cell.textLabel.text = [dic objectForKey:@"PersonNM"];
     return cell;
 }
 
@@ -111,6 +111,7 @@
     }else{
         [self downPDFFile:[dic objectForKey:@"PlanUrl"]];
     }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - 下载PDF

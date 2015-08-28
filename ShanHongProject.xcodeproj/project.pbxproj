@@ -139,6 +139,9 @@
 		9F3ED6C41B590982004CC57E /* userheader.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F3ED6C31B590982004CC57E /* userheader.png */; };
 		9F3ED6C61B59098B004CC57E /* userheader@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F3ED6C51B59098B004CC57E /* userheader@3x.png */; };
 		9F3ED6C81B59099E004CC57E /* userheader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F3ED6C71B59099E004CC57E /* userheader@2x.png */; };
+		9F3FB2181B9000B4007C1621 /* SecondPlanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3FB2171B9000B4007C1621 /* SecondPlanController.m */; };
+		9F3FB21B1B9002E5007C1621 /* ThirdPlanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3FB21A1B9002E5007C1621 /* ThirdPlanController.m */; };
+		9F3FB21E1B900657007C1621 /* ForthPlanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3FB21D1B900657007C1621 /* ForthPlanController.m */; };
 		9F41B17E1B4A222000C2C5EC /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F41B1791B4A222000C2C5EC /* HeaderView.m */; };
 		9F41B17F1B4A222000C2C5EC /* MyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F41B17B1B4A222000C2C5EC /* MyCell.m */; };
 		9F41B1801B4A222000C2C5EC /* MyTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F41B17D1B4A222000C2C5EC /* MyTimeView.m */; };
@@ -531,6 +534,12 @@
 		9F3ED6C31B590982004CC57E /* userheader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userheader.png; sourceTree = "<group>"; };
 		9F3ED6C51B59098B004CC57E /* userheader@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userheader@3x.png"; sourceTree = "<group>"; };
 		9F3ED6C71B59099E004CC57E /* userheader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userheader@2x.png"; sourceTree = "<group>"; };
+		9F3FB2161B9000B4007C1621 /* SecondPlanController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondPlanController.h; sourceTree = "<group>"; };
+		9F3FB2171B9000B4007C1621 /* SecondPlanController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondPlanController.m; sourceTree = "<group>"; };
+		9F3FB2191B9002E5007C1621 /* ThirdPlanController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdPlanController.h; sourceTree = "<group>"; };
+		9F3FB21A1B9002E5007C1621 /* ThirdPlanController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdPlanController.m; sourceTree = "<group>"; };
+		9F3FB21C1B900657007C1621 /* ForthPlanController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForthPlanController.h; sourceTree = "<group>"; };
+		9F3FB21D1B900657007C1621 /* ForthPlanController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForthPlanController.m; sourceTree = "<group>"; };
 		9F41B1781B4A222000C2C5EC /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
 		9F41B1791B4A222000C2C5EC /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
 		9F41B17A1B4A222000C2C5EC /* MyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCell.h; sourceTree = "<group>"; };
@@ -1369,6 +1378,12 @@
 			children = (
 				9F429EA41B4B6ECE005A877F /* PlanViewController.h */,
 				9F429EA51B4B6ECE005A877F /* PlanViewController.m */,
+				9F3FB2161B9000B4007C1621 /* SecondPlanController.h */,
+				9F3FB2171B9000B4007C1621 /* SecondPlanController.m */,
+				9F3FB2191B9002E5007C1621 /* ThirdPlanController.h */,
+				9F3FB21A1B9002E5007C1621 /* ThirdPlanController.m */,
+				9F3FB21C1B900657007C1621 /* ForthPlanController.h */,
+				9F3FB21D1B900657007C1621 /* ForthPlanController.m */,
 				9F4343911B54B12C00EC3B00 /* PlanDetailController.h */,
 				9F4343921B54B12C00EC3B00 /* PlanDetailController.m */,
 				9F429EA71B4B6F4E005A877F /* PdfReaderViewController.h */,
@@ -1852,6 +1867,7 @@
 				9FE497921B4120F400E97B7C /* FloodObject.m in Sources */,
 				9F3AE12E1B2FF0CC005EFC86 /* QiXiangViewController.m in Sources */,
 				9F5418801B43754300E8CEB0 /* WaterChartView.m in Sources */,
+				9F3FB2181B9000B4007C1621 /* SecondPlanController.m in Sources */,
 				9F4546811B31162E005FACCC /* UUChart.m in Sources */,
 				9F4546871B311660005FACCC /* ChartObject.m in Sources */,
 				9F32AC441B68BAEB00520FA4 /* PeopleController.m in Sources */,
@@ -1916,10 +1932,12 @@
 				9F3ED6701B588E67004CC57E /* StationType.m in Sources */,
 				9F3D86B21B5F853D002B0447 /* SDImageCache.m in Sources */,
 				9F3D62621B26D8130012D7CF /* SiteObject.m in Sources */,
+				9F3FB21B1B9002E5007C1621 /* ThirdPlanController.m in Sources */,
 				9F0DBF061B578C1100EA6575 /* UntilObject.m in Sources */,
 				9F3D62521B26CF7E0012D7CF /* RainCell.m in Sources */,
 				9FE4978E1B40D75C00E97B7C /* QualityCell.m in Sources */,
 				9F3227471B69ACA30008CE70 /* ContactForthController.m in Sources */,
+				9F3FB21E1B900657007C1621 /* ForthPlanController.m in Sources */,
 				9F3C163A1B8AC3AD00B7C3E3 /* ConfirmViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

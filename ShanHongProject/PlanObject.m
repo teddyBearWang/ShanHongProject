@@ -15,17 +15,18 @@ static NSString *_url = nil;
 @implementation PlanObject
 
 
-+ (BOOL)fetchWithType:(NSString *)type level:(NSString *)level sicd:(NSString *)sicd
++ (BOOL)fetchWithSicd:(NSString *)sicd
 {
     BOOL ret = NO;
-    //http://115.236.169.28/webserca/data.ashx?&t=GetFxPlanTree&results=name$0$$false&returntype=json
+    //http://115.236.169.28/webserca/data.ashx?&t=GetFxPlanTree&results=name$0$$false&returntype=json  废弃
+    //http://115.236.169.28/webserca/Data.ashx?t=GetNamePlan2&results=330127102218100
     _url = [UntilObject getWebURL];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    NSString *str = [NSString stringWithFormat:@"name$%@$%@$false",level,sicd];
-    NSDictionary *parameters = @{@"t":type,
-                                 @"results":str,
+   // NSString *str = [NSString stringWithFormat:@"name$%@$%@$false",level,sicd];
+    NSDictionary *parameters = @{@"t":@"GetNamePlan2",
+                                 @"results":sicd,
                                  @"returntype":@"json"};
     operation = [manager POST:_url parameters:parameters success:nil failure:nil];
     [operation waitUntilFinished];

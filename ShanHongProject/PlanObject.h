@@ -11,7 +11,7 @@
 @interface PlanObject : NSObject
 
 
-+ (BOOL)fetchWithType:(NSString *)type level:(NSString *)level sicd:(NSString *)sicd;
++ (BOOL)fetchWithSicd:(NSString *)sicd;
 
 + (NSArray *)requestDatas;
 
