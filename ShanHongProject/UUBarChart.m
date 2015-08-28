@@ -72,7 +72,7 @@
     
     for (int i=0; i<5; i++) {
         UUChartLabel * label = [[UUChartLabel alloc] initWithFrame:CGRectMake(0.0,chartCavanHeight-i*levelHeight, UUYLabelwidth, UULabelHeight)];
-		label.text = [NSString stringWithFormat:@"%.2f",level * i+_yValueMin];
+		label.text = [NSString stringWithFormat:@"%.1f",level * i+_yValueMin];
 		[self addSubview:label];
     }
     

@@ -101,7 +101,7 @@
     NSDictionary *dic = _instance.warnPeopleList[indexPath.row];
     cell.textLabel.font = [UIFont systemFontOfSize:14];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.textLabel.text = [dic objectForKey:@"personNM"];
+    cell.textLabel.text = [dic objectForKey:@"PersonNM"];
     return cell;
 }
 

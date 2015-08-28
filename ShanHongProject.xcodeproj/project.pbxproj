@@ -25,6 +25,7 @@
 		9F32AC2B1B6859EE00520FA4 /* ContactFirstController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F32AC2A1B6859EE00520FA4 /* ContactFirstController.m */; };
 		9F32AC441B68BAEB00520FA4 /* PeopleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F32AC431B68BAEB00520FA4 /* PeopleController.m */; };
 		9F32AC471B68CBCA00520FA4 /* ContactObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F32AC461B68CBCA00520FA4 /* ContactObject.m */; };
+		9F32EB221B8DB75500D0B75E /* SecondTownController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F32EB211B8DB75500D0B75E /* SecondTownController.m */; };
 		9F35AA9F1B1FEDA400D9D329 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F35AA9E1B1FEDA400D9D329 /* main.m */; };
 		9F35AAA21B1FEDA400D9D329 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F35AAA11B1FEDA400D9D329 /* AppDelegate.m */; };
 		9F35AAAA1B1FEDA400D9D329 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F35AAA91B1FEDA400D9D329 /* Images.xcassets */; };
@@ -366,6 +367,8 @@
 		9F32AC431B68BAEB00520FA4 /* PeopleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleController.m; sourceTree = "<group>"; };
 		9F32AC451B68CBCA00520FA4 /* ContactObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactObject.h; sourceTree = "<group>"; };
 		9F32AC461B68CBCA00520FA4 /* ContactObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactObject.m; sourceTree = "<group>"; };
+		9F32EB201B8DB75500D0B75E /* SecondTownController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondTownController.h; sourceTree = "<group>"; };
+		9F32EB211B8DB75500D0B75E /* SecondTownController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondTownController.m; sourceTree = "<group>"; };
 		9F35AA991B1FEDA400D9D329 /* ShanHongProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShanHongProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F35AA9D1B1FEDA400D9D329 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F35AA9E1B1FEDA400D9D329 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1454,6 +1457,8 @@
 			children = (
 				9F711CD31B86BB4D005B727B /* WarnTownController.h */,
 				9F711CD41B86BB4D005B727B /* WarnTownController.m */,
+				9F32EB201B8DB75500D0B75E /* SecondTownController.h */,
+				9F32EB211B8DB75500D0B75E /* SecondTownController.m */,
 				9F711CD61B86C4E9005B727B /* PeopleDetailController.h */,
 				9F711CD71B86C4E9005B727B /* PeopleDetailController.m */,
 				9F3C16381B8AC3AD00B7C3E3 /* ConfirmViewController.h */,
@@ -1533,7 +1538,6 @@
 				TargetAttributes = {
 					9F35AA981B1FEDA400D9D329 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = LNMMM7J8HZ;
 					};
 					9F35AAB11B1FEDA400D9D329 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -1902,6 +1906,7 @@
 				9F0DBF241B57B1E200EA6575 /* CustomAnnotation.m in Sources */,
 				9F39C7B51B4508A30067869B /* TyphoonViewController.m in Sources */,
 				9F3AE12A1B2FEEE4005EFC86 /* QiXiangObject.m in Sources */,
+				9F32EB221B8DB75500D0B75E /* SecondTownController.m in Sources */,
 				9F3D625C1B26CFE30012D7CF /* CustomHeaderView.m in Sources */,
 				9F4546A71B317D0A005FACCC /* FloodDetailController.m in Sources */,
 				9F429EA91B4B6F4E005A877F /* PdfReaderViewController.m in Sources */,
@@ -2024,8 +2029,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: roger ace (W6A2225E87)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: roger ace (W6A2225E87)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hangzhou Dingchuan Information Technology Co., Ltd";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hangzhou Dingchuan Information Technology Co., Ltd";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/teddy/Desktop/山洪预警",
@@ -2052,7 +2057,7 @@
 					"\"SystemConfiguration\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "04be446c-4df9-42f7-becc-29f7a14ac12c";
+				PROVISIONING_PROFILE = "4d26bc01-ad88-40c3-be0f-bd2df9bd4e6a";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
@@ -2063,8 +2068,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: roger ace (W6A2225E87)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: roger ace (W6A2225E87)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hangzhou Dingchuan Information Technology Co., Ltd";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hangzhou Dingchuan Information Technology Co., Ltd";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/teddy/Desktop/山洪预警",
@@ -2091,7 +2096,7 @@
 					"\"SystemConfiguration\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "04be446c-4df9-42f7-becc-29f7a14ac12c";
+				PROVISIONING_PROFILE = "4d26bc01-ad88-40c3-be0f-bd2df9bd4e6a";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;

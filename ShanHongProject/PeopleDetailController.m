@@ -81,7 +81,7 @@
 - (void)getWebData
 {
     [SVProgressHUD showWithStatus:@"加载中..."];
-    NSString *result = [NSString stringWithFormat:@"1$%@",self.Sid];
+    NSString *result = [NSString stringWithFormat:@"%@",self.Sid];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         if ([ContactObject fetchWithType:@"GetMyWarnPerson" result:result]) {
             //成功
@@ -125,7 +125,7 @@
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     cell.imageView.image = [UIImage imageNamed:@"man"];
-    cell.name.text = [dic objectForKey:@"personNM"];
+    cell.name.text = [dic objectForKey:@"PersonNM"];
     cell.phoneNumber.text = [dic objectForKey:@"Mobile"];
     return cell;
 }
