@@ -49,7 +49,7 @@
     _tempureLabel.text = [self.loginDic objectForKey:@"stemperature"];
     
     
-    /*
+    
      //提醒软件更新
     _segton = [SingleInstanceObject defaultInstance];
     if ([self compareWithAppVersion]) {
@@ -57,7 +57,7 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:str delegate:self cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
         [alert show];
     }
-     */
+     
 
 }
 

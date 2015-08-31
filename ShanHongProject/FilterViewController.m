@@ -98,6 +98,7 @@
                 //表示工情筛选
                 ProjectDetailController *detail = [[ProjectDetailController alloc] init];
                 detail.Object_dic = [_data objectAtIndex:indexPath.row];
+                detail.requestType = @"GetProjectsView";
                 [self.navigationController pushViewController:detail animated:YES];
             }
                 break;
@@ -157,6 +158,7 @@
                 //表示工情筛选
                 ProjectDetailController *detail = [[ProjectDetailController alloc] init];
                 detail.Object_dic = [filterData objectAtIndex:indexPath.row];
+                detail.requestType = @"GetProjectsView";
                 [self.navigationController pushViewController:detail animated:YES];
             }
                 break;
