@@ -129,7 +129,9 @@
     //检查本地存储着的站点，默认显示“选择状态”
     if ([[[[NSUserDefaults standardUserDefaults] objectForKey:STATION] objectForKey:@"ScityName"] isEqualToString:[listData[indexPath.row] objectForKey:@"ScityName"]]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        //默认选择
         _selectRow = indexPath.row;
+        selectArea = [[[NSUserDefaults standardUserDefaults] objectForKey:STATION] objectForKey:@"ScityName"];
     }else{
         cell.accessoryType = UITableViewCellAccessoryNone;
     }

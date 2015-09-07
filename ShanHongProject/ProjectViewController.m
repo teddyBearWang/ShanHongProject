@@ -31,11 +31,13 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.rowHeight = 44;
-    listData = @[@"水库",@"闸门",@"水电站",@"山塘"];
-    images = @[@"sk",@"sz",@"sdz",@"st"];
+//    listData = @[@"水库",@"闸门",@"水电站",@"山塘"];
+//    images = @[@"sk",@"sz",@"sdz",@"st"];
     
     UIBarButtonItem *filter = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(filterAction:)];
     self.navigationItem.rightBarButtonItem = filter;
+    
+    [self getProjectItmes];
 }
 
 - (void)viewWillLayoutSubviews
@@ -55,6 +57,45 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - private Method
+
+//本地化
+- (NSDictionary *)getUserInfo
+{
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSDictionary *userDic = [user objectForKey:STATION];
+    return userDic;
+}
+
+- (void)getProjectItmes
+{
+    [SVProgressHUD showWithStatus:@"加载中.."];
+    NSDictionary *dic = [self getUserInfo];
+    NSString *result = [NSString stringWithFormat:@"%@$gq",[dic objectForKey:@"Scityid"]];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if ([ProjectObject fetch:@"GetMyProjectsList" withProject:result]) {
+            //获取成功
+            [self updateUI];
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //失败
+                [SVProgressHUD dismissWithError:@"加载失败"];
+            });
+        }
+    });
+}
+
+- (void)updateUI
+{
+    [SVProgressHUD dismissWithSuccess:@"加载成功"];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        listData = [ProjectObject requestData];
+        if (listData.count != 0) {
+            [self.tableView reloadData];
+        }
+    });
 }
 
 - (void)filterAction:(id)sender
@@ -88,8 +129,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    cell.textLabel.text = listData[indexPath.row];
-    cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
+    NSDictionary *dic = listData[indexPath.row];
+    cell.textLabel.text = [dic objectForKey:@"SmodelName"];
+    cell.imageView.image = [UIImage imageNamed:[dic objectForKey:@"SmodelIcon"]];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.font = [UIFont systemFontOfSize:14];
     return cell;
@@ -98,35 +140,37 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //listData = @[@"水库",@"水闸",@"堤防",@"堰坝",@"水电站",@"山塘"];
-    NSString *type = @"";
-    NSString *titleName = @"";
-    switch (indexPath.row) {
-        case 0:
-            type = @"sk";
-            titleName = @"水库信息";
-            break;
-        case 1:
-            type = @"sz";
-            titleName = @"闸门信息";
-            break;
-//        case 2:
-//            type = @"df";
-//            titleName = @"堤防信息";
+    
+//    NSString *type = @"";
+//    NSString *titleName = @"";
+//    switch (indexPath.row) {
+//        case 0:
+//            type = @"sk";
+//            titleName = @"水库信息";
 //            break;
-        case 2:
-            type = @"sdz";
-            titleName = @"水电站信息";
-            break;
-        case 3:
-            type = @"st";
-            titleName = @"山塘信息";
-            break;
-        default:
-            break;
-    }
+//        case 1:
+//            type = @"sz";
+//            titleName = @"闸门信息";
+//            break;
+////        case 2:
+////            type = @"df";
+////            titleName = @"堤防信息";
+////            break;
+//        case 2:
+//            type = @"sdz";
+//            titleName = @"水电站信息";
+//            break;
+//        case 3:
+//            type = @"st";
+//            titleName = @"山塘信息";
+//            break;
+//        default:
+//            break;
+//    }
+    NSDictionary *dic = [listData objectAtIndex:indexPath.row];
     ProjectListController *listCtrl = [[ProjectListController alloc] init];
-    listCtrl.projectType = type;
-    listCtrl.title_name = titleName;
+    listCtrl.projectType = [dic objectForKey:@"SmodelIcon"];
+    listCtrl.title_name = [dic objectForKey:@"SmodelName"];
     listCtrl.requestType = @"GetProjects"; //请求工情
     listCtrl.labelArray = @[@"名称",@"所属流域",@"所属乡镇"];
     [self.navigationController pushViewController:listCtrl animated:YES];
