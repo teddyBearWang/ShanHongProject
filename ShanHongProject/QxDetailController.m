@@ -58,6 +58,7 @@
     
     image_view = [[UIImageView alloc] init];
     
+    
     scrollView = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     //设置scrollVIew四周增加额外的滚动区域
@@ -66,7 +67,7 @@
     //设置缩放时候的最大最小倍数
     scrollView.minimumZoomScale = 0.2f;
     scrollView.maximumZoomScale = 3.0f;
-    scrollView.bounces = YES;//弹簧效果
+   // scrollView.bounces = YES;//弹簧效果
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.showsVerticalScrollIndicator = YES;
     scrollView.delegate = self;
@@ -80,13 +81,12 @@
 - (void)getWebData
 {
     
-    [SVProgressHUD show];
+   // [SVProgressHUD show];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         if ([QiXiangObject fetchWithType:self.type]) {
             //更新UI
             dispatch_async(dispatch_get_main_queue(), ^{
                 //主线程
-                [SVProgressHUD dismiss];
                 datas = [QiXiangObject requestDatas];
                 if (datas.count != 0) {
                     NSDictionary *dic = [datas objectAtIndex:(datas.count - 1)];
@@ -98,7 +98,6 @@
 
             });
         }else{
-            [SVProgressHUD dismissWithError:@"加载失败"];
         }
     });
 }
@@ -113,11 +112,24 @@
 
 - (void)downloadImage:(NSString *)img_url
 {
-    [SVProgressHUD show];
+   // [SVProgressHUD show];
     NSURL *url = [NSURL URLWithString:[img_url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     //用block 可以在图片加载完成之后做些事情
-    [image_view sd_setImageWithURL:url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        [SVProgressHUD dismiss];
+    
+//    [image_view sd_setImageWithURL:url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//        CGFloat imageH = image.size.height;
+//        CGFloat imageW = image.size.width;
+//        CGFloat imageX = 0;
+//        CGFloat imageY = 0;
+//        
+//        image_view.frame = (CGRect){imageX,imageY,imageW,imageH};
+//        scrollView.contentSize = CGSizeMake(imageW, imageH);
+//    }];
+    
+    //异步下载
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        UIImage *image = [[UIImage alloc] initWithData:data];
         CGFloat imageH = image.size.height;
         CGFloat imageW = image.size.width;
         CGFloat imageX = 0;
@@ -125,9 +137,26 @@
         
         image_view.frame = (CGRect){imageX,imageY,imageW,imageH};
         scrollView.contentSize = CGSizeMake(imageW, imageH);
+        image_view.image = image;
     }];
- 
+    
+    
+    
+   
 }
+
+#pragma NSURLConnectionDataDelegate
+////接收数据中
+//- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+//{
+//    
+//}
+//
+////接受完成
+//- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+//{
+//    
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -147,6 +176,7 @@ static int count = 0;
         count = 0;
         //停止计时器
         [timer invalidate];
+        _ispaly = NO;
     }
     
 }
@@ -154,6 +184,8 @@ static int count = 0;
 //开始播放
 - (void)startPlayImage:(UIButton *)btn
 {
+    NSLog(@"开始自动播放");
+
     if (_ispaly == NO) {
         _ispaly = YES;
         [btn setTitle:@"暂停" forState:UIControlStateNormal];
