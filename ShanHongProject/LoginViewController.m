@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UINavigationBar *bar; //导航栏
 @property (weak, nonatomic) IBOutlet UITextField *userName;
 @property (weak, nonatomic) IBOutlet UITextField *psw;
+
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *user_image;
 
