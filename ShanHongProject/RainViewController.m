@@ -12,12 +12,12 @@
 #import "UIView+RootView.h"
 #import "SVProgressHUD.h"
 #import "CustomHeaderView.h"
-#import "ChartViewController.h"
 #import "FilterViewController.h"
 #import "CustomRainHeaderView.h"
 #import "HeaderView.h"
 #import "MyTimeView.h"
 #import "FilterObject.h"
+#import "WebChartController.h"
 
 @interface RainViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -38,21 +38,21 @@
 
 @implementation RainViewController
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    //强制屏幕横屏
-    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
-        SEL selector = NSSelectorFromString(@"setOrientation:");
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
-        [invocation setSelector:selector];
-        [invocation setTarget:[UIDevice currentDevice]];
-        int val = UIInterfaceOrientationPortrait;
-        [invocation setArgument:&val atIndex:2];
-        [invocation invoke];
-    }
-    
-}
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//    //强制屏幕横屏
+//    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+//        SEL selector = NSSelectorFromString(@"setOrientation:");
+//        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
+//        [invocation setSelector:selector];
+//        [invocation setTarget:[UIDevice currentDevice]];
+//        int val = UIInterfaceOrientationPortrait;
+//        [invocation setArgument:&val atIndex:2];
+//        [invocation invoke];
+//    }
+//    
+//}
 
 - (void)initData
 {
@@ -221,11 +221,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *dic = listData[indexPath.row];
-    ChartViewController *chart = [[ChartViewController alloc] init];
-    chart.title_name = dic[@"stnm"];
-    chart.stcd = dic[@"stcd"];
-    chart.requestType = @"GetStDayLjYl";
-    chart.chartType = 2; //表示柱状图
+    WebChartController *chart = [[WebChartController alloc] init];
+    chart.cityName = dic[@"stnm"];
+    chart.cityId = dic[@"stcd"];
+    chart.chartType = @"2"; //表示柱状图
     [self.navigationController pushViewController:chart animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

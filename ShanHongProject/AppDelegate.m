@@ -11,6 +11,8 @@
 #import "APIKey.h"
 #import <MAMapKit/MAMapKit.h>
 
+
+
 @interface AppDelegate ()
 
 @end
@@ -43,6 +45,29 @@
     
     
     return YES;
+}
+
+- (void)application:(UIApplication *)application willChangeStatusBarOrientation:(UIInterfaceOrientation)newStatusBarOrientation duration:(NSTimeInterval)duration
+{
+    NSLog(@"设备方向即将发生改变");
+    [[NSNotificationCenter defaultCenter] postNotificationName:DEVICE_ORIENTATION_CHANGE object:[NSString stringWithFormat:@"%ld",newStatusBarOrientation]];
+}
+- (void)application:(UIApplication *)application didChangeStatusBarOrientation:(UIInterfaceOrientation)oldStatusBarOrientation
+{
+    NSLog(@"设备方向已经发生改变");
+}
+
+//是否支持横屏
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+    
+    if(_isFull){
+        //允许向右横屏或者返回竖屏
+        return (UIInterfaceOrientationMaskLandscapeRight | UIInterfaceOrientationMaskPortrait) ;
+        
+    }
+    //不允许
+    return UIInterfaceOrientationMaskPortrait;
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

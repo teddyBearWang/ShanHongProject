@@ -81,7 +81,7 @@ static AFHTTPRequestOperation *_operation = nil;
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    NSString *str = @"http://api.fir.im/apps/latest/56306717e75e2d5191000004";
+    NSString *str = @"http://api.fir.im/apps/latest/56306717e75e2d5191000004?api_token=082701147ad92d225ce9cc6f45ff3638";
     _operation = [manager GET:str parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //成功
         NSDictionary *resDict = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableLeaves error:nil];

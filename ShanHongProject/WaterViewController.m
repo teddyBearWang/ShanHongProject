@@ -17,6 +17,8 @@
 #import "UIView+RootView.h"
 #import "FilterViewController.h"
 #import "FilterObject.h"
+#import "UntilObject.h"
+#import "WebChartController.h"
 
 #define SelectBtn_height 40
 
@@ -26,6 +28,7 @@
     UITableView *_myTableView;
     NSArray *_headers;// 列表头部视图的字段
     NSMutableArray *_stations;//站点tableVIew的数据源
+    NSArray *_segDataList;//站点类型的数据源(全部，河道，水库，潮位，其他)
     
     __weak IBOutlet UIButton *wuSong_btn; //吴淞高程
     __weak IBOutlet UIButton *eightFive_btn; //85高程
@@ -47,15 +50,15 @@
 {
     [super viewWillAppear:animated];
     //强制屏幕横屏
-    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
-        SEL selector = NSSelectorFromString(@"setOrientation:");
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
-        [invocation setSelector:selector];
-        [invocation setTarget:[UIDevice currentDevice]];
-        int val = UIInterfaceOrientationPortrait;
-        [invocation setArgument:&val atIndex:2];
-        [invocation invoke];
-    }
+//    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+//        SEL selector = NSSelectorFromString(@"setOrientation:");
+//        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
+//        [invocation setSelector:selector];
+//        [invocation setTarget:[UIDevice currentDevice]];
+//        int val = UIInterfaceOrientationPortrait;
+//        [invocation setArgument:&val atIndex:2];
+//        [invocation invoke];
+//    }
 }
 
 - (void)viewWillLayoutSubviews
@@ -83,7 +86,42 @@
     [super viewDidLoad];
     self.view.backgroundColor = BG_COLOR;
     
-    [self initBar];
+   // [self initBar];
+
+
+    //http://61.164.85.250:13447/WebSerXs/data.ashx?t=GetMyProjectsList&results=xiangshan$sq&returnType=json
+    NSString *cityId = [UntilObject getCityId];
+    NSString *result = [NSString stringWithFormat:@"%@$sq",cityId];
+    [SVProgressHUD showWithStatus:nil];
+   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+       [RainObject fetchWithType:@"GetMyProjectsList" withResult:result success:^(NSArray *dictArr) {
+           //成功
+           _segDataList = [NSArray arrayWithArray:dictArr];
+           NSMutableArray *list = [NSMutableArray arrayWithCapacity:dictArr.count];
+           for (NSDictionary *dict in dictArr) {
+               NSString *type = [dict objectForKey:@"SmodelName"];
+               [list addObject:type];
+           }
+           //初始化界面
+           [self initBar:list];
+           [self initTableView];
+          // [SVProgressHUD dismiss];
+           //请求全部数据
+           NSDictionary *selectDict = dictArr[0];
+           [self refresh:@"GetSqInfo" withREsults:[selectDict objectForKey:@"SmodelFilter"]];
+           
+       } error:^{
+           //失败
+           [SVProgressHUD dismissWithError:@"加载失败"];
+       }];
+   });
+
+    
+    
+}
+
+//初始化列表界面
+- (void)initTableView{
     [self initDatas];
     
     UIView *tableHeaderView = [[UIView alloc] initWithFrame:(CGRect){0,0,_kCount * (kWidth + 5), kHeight}];
@@ -120,17 +158,12 @@
     //数据加载结束之前，先禁止交互
     eightFive_btn.userInteractionEnabled = NO;
     wuSong_btn.userInteractionEnabled = NO;
-
-    
-    [self refresh:@"GetSqInfo" withREsults:@""];
-    
-    
 }
 
-- (void)initBar
+- (void)initBar:(NSArray *)list
 {
-    NSArray *items = @[@"全部",@"河道",@"水库"];
-    UISegmentedControl *seg = [[UISegmentedControl alloc] initWithItems:items];
+   // NSArray *items = @[@"全部",@"河道",@"水库"];
+    UISegmentedControl *seg = [[UISegmentedControl alloc] initWithItems:list];
     seg.segmentedControlStyle = UISegmentedControlStyleBar;
     seg.selectedSegmentIndex = 0;
     seg.momentary = NO; //设置成NO，则保持被选中的状态
@@ -156,28 +189,30 @@
 #pragma mark - Private Method
 - (void)selectSegmentAction:(UISegmentedControl *)seg
 {
-    switch (seg.selectedSegmentIndex) {
-        case 0:
-        {
-            [self refresh:@"GetSqInfo" withREsults:@""];
-        }
-            
-            break;
-        case 1:
-        {
-            [self refresh:@"GetSqInfo" withREsults:@"28"];
-        }
-            
-            break;
-        case 2:
-        {
-            [self refresh:@"GetSqInfo" withREsults:@"27"];
-        }
-            
-            break;
-        default:
-            break;
-    }
+//    switch (seg.selectedSegmentIndex) {
+//        case 0:
+//        {
+//            [self refresh:@"GetSqInfo" withREsults:@""];
+//        }
+//            
+//            break;
+//        case 1:
+//        {
+//            [self refresh:@"GetSqInfo" withREsults:@"28"];
+//        }
+//            
+//            break;
+//        case 2:
+//        {
+//            [self refresh:@"GetSqInfo" withREsults:@"27"];
+//        }
+//            
+//            break;
+//        default:
+//            break;
+//    }
+    NSDictionary *dict = _segDataList[seg.selectedSegmentIndex];
+    [self refresh:@"GetSqInfo" withREsults:[dict objectForKey:@"SmodelFilter"]];
 }
 
 - (void)filterAction:(id)sender
@@ -285,11 +320,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *dic = listData[indexPath.row];
-    RainChartController *chart = [[RainChartController alloc] init];
-    chart.title_name = dic[@"stnm"];
-    chart.stcd = dic[@"stcd"];
-    chart.requestType = @"GetStDaySW";
-    chart.chartType = 1; //表示柱状图
+    WebChartController *chart = [[WebChartController alloc] init];
+    chart.cityName = dic[@"stnm"];
+    chart.cityId = dic[@"stcd"];
+    chart.chartType = @"1";
     //[self.navigationController pushViewController:chart animated:YES];
     [self.navigationController pushViewController:chart animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

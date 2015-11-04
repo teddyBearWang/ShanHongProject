@@ -19,6 +19,7 @@
 		9F0DBF091B57946A00EA6575 /* GISObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0DBF081B57946A00EA6575 /* GISObject.m */; };
 		9F0DBF241B57B1E200EA6575 /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0DBF231B57B1E200EA6575 /* CustomAnnotation.m */; };
 		9F0DBF271B57B9A400EA6575 /* SelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0DBF261B57B9A400EA6575 /* SelectViewController.m */; };
+		9F0DD2E51BE9EA7100D5A073 /* WebChartController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0DD2E41BE9EA7100D5A073 /* WebChartController.m */; };
 		9F3227411B69AA8D0008CE70 /* ContactSecondController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3227401B69AA8D0008CE70 /* ContactSecondController.m */; };
 		9F3227441B69AADB0008CE70 /* ContactThirdController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3227431B69AADB0008CE70 /* ContactThirdController.m */; };
 		9F3227471B69ACA30008CE70 /* ContactForthController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3227461B69ACA30008CE70 /* ContactForthController.m */; };
@@ -358,6 +359,8 @@
 		9F0DBF231B57B1E200EA6575 /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
 		9F0DBF251B57B9A400EA6575 /* SelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectViewController.h; sourceTree = "<group>"; };
 		9F0DBF261B57B9A400EA6575 /* SelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectViewController.m; sourceTree = "<group>"; };
+		9F0DD2E31BE9EA7100D5A073 /* WebChartController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebChartController.h; sourceTree = "<group>"; };
+		9F0DD2E41BE9EA7100D5A073 /* WebChartController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebChartController.m; sourceTree = "<group>"; };
 		9F32273F1B69AA8D0008CE70 /* ContactSecondController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactSecondController.h; sourceTree = "<group>"; };
 		9F3227401B69AA8D0008CE70 /* ContactSecondController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactSecondController.m; sourceTree = "<group>"; };
 		9F3227421B69AADB0008CE70 /* ContactThirdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactThirdController.h; sourceTree = "<group>"; };
@@ -881,6 +884,15 @@
 				9F3ED68D1B58ED7D004CC57E /* l7.png */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		9F0DD2E21BE9EA3B00D5A073 /* WebChartView */ = {
+			isa = PBXGroup;
+			children = (
+				9F0DD2E31BE9EA7100D5A073 /* WebChartController.h */,
+				9F0DD2E41BE9EA7100D5A073 /* WebChartController.m */,
+			);
+			name = WebChartView;
 			sourceTree = "<group>";
 		};
 		9F35AA901B1FEDA300D9D329 = {
@@ -1485,6 +1497,7 @@
 		9F91590B1B2576EE00CFA0DB /* items */ = {
 			isa = PBXGroup;
 			children = (
+				9F0DD2E21BE9EA3B00D5A073 /* WebChartView */,
 				9F711CD21B86BB1E005B727B /* warnMessage */,
 				9F0DBEDC1B57353400EA6575 /* GIS */,
 				9F3DD3B31B4E488500DE201E /* Contact */,
@@ -1939,6 +1952,7 @@
 				9F3227471B69ACA30008CE70 /* ContactForthController.m in Sources */,
 				9F3FB21E1B900657007C1621 /* ForthPlanController.m in Sources */,
 				9F3C163A1B8AC3AD00B7C3E3 /* ConfirmViewController.m in Sources */,
+				9F0DD2E51BE9EA7100D5A073 /* WebChartController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

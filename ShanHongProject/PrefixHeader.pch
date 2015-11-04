@@ -58,6 +58,7 @@ typedef enum {
 //站名
 #define SITE @"site"
 
-
+//设备发生旋转的通知
+#define DEVICE_ORIENTATION_CHANGE @"DeviceOrientationChange"
 
 #endif

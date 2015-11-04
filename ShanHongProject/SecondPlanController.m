@@ -76,14 +76,13 @@
 
 - (void)updateUI
 {
-    [SVProgressHUD dismissWithSuccess:@"加载成功"];
     dispatch_async(dispatch_get_main_queue(), ^{
         _listData = [PlanObject requestDatas];
         if (_listData.count != 0) {
+            [SVProgressHUD dismissWithSuccess:@"加载成功"];
             [_tableView reloadData];
         }else{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前无预案" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            [alert show];
+            [SVProgressHUD dismissWithError:@"当前无数据"];
         }
     });
 }

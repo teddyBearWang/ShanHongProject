@@ -79,11 +79,13 @@
 
 - (void)updateUI
 {
-    [SVProgressHUD dismissWithSuccess:@"加载成功"];
     dispatch_async(dispatch_get_main_queue(), ^{
         _list = [ContactObject requestData];
         if (_list.count != 0) {
+            [SVProgressHUD dismissWithSuccess:@"加载成功"];
             [_tableView reloadData];
+        }else{
+            [SVProgressHUD dismissWithError:@"当前无数据"];
         }
     });
 }

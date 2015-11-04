@@ -39,6 +39,36 @@ static NSString *_url = nil;
     
 }
 
+/*
+ *requestType:请求类型
+ *result:参数
+ *successBlock:成功之后的回调
+ *errorBlock； 失败之后的回调
+ */
++ (void)fetchWithType:(NSString *)requestType withResult:(NSString *)result success:(void(^)(NSArray *dictArr))successBlock error:(void(^)(void))errorBlock
+{
+    
+    _url = [UntilObject getWebURL];
+    //http://115.236.169.28/webserca/Data.ashx?t=GetYqInfo&returntype=json
+    NSDictionary *parameter = @{@"t":requestType,@"results":result,@"returntype":@"json"};
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    // manager.requestSerializer.timeoutInterval = 15; //设置超时时间
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 15.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    _operation = [manager POST:_url parameters:parameter success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //成功
+        NSArray *list = [NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableContainers error:nil];
+        successBlock(list);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        //失败
+        errorBlock();
+    }];
+}
+
+
 //请求筛选服务
 + (BOOL)fetchFilterData
 {

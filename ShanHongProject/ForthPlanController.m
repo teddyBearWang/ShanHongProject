@@ -82,8 +82,7 @@
         if (_listData.count != 0) {
             [_tableView reloadData];
         }else{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前无预案" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            [alert show];
+            [SVProgressHUD dismissWithError:@"当前无数据"];
         }
     });
 }

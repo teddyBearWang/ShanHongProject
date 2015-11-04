@@ -72,10 +72,15 @@
 
 - (void)updateUI
 {
-    [SVProgressHUD dismissWithSuccess:@"加载成功"];
     dispatch_async(dispatch_get_main_queue(), ^{
         _listData = [PlanObject requestDatas];
-        [self.tableView reloadData];
+        if (_listData.count != 0) {
+            [SVProgressHUD dismissWithSuccess:@"加载成功"];
+            [self.tableView reloadData];
+        }else{
+            [SVProgressHUD dismissWithError:@"当前无数据"];
+        }
+        
     });
 }
 

@@ -13,6 +13,9 @@
 //获取网络地址
 + (NSString *)getWebURL;
 
+//获取站点id
++ (NSString *)getCityId;
+
 //获取系统时间字符串
 + (NSString *)getSystemdate;
 

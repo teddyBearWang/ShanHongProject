@@ -13,6 +13,14 @@
 
 + (BOOL)fetch:(NSString *)requestType withReaults:(NSString *)type;
 
+/*
+ *requestType:请求类型
+ *result:参数
+ *successBlock:成功之后的回调
+ *errorBlock； 失败之后的回调
+ */
++ (void)fetchWithType:(NSString *)requestType withResult:(NSString *)result success:(void(^)(NSArray *dictArr))successBlock error:(void(^)(void))errorBlock;
+
 + (NSArray *)requestData;
 
 + (void)cancelRequest;

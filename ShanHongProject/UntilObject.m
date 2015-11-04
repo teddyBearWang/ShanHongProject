@@ -20,6 +20,16 @@
     return url;
 }
 
+//获取站点id
++ (NSString *)getCityId
+{
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    
+    NSDictionary *dic = [user objectForKey:STATION];
+    NSString *cityId = [dic objectForKey:@"Scityid"];
+    return cityId;
+}
+
 //获取系统时间字符串
 + (NSString *)getSystemdate
 {
