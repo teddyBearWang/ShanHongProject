@@ -9,6 +9,7 @@
 #import "WebChartController.h"
 #import "SVProgressHUD.h"
 #import "AppDelegate.h"
+#import "UntilObject.h"
 
 @interface WebChartController ()<UIWebViewDelegate>
 {
@@ -31,6 +32,9 @@
     //禁止横屏
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     appDelegate.isFull = NO;
+    //
+    [SVProgressHUD dismiss];
+    [_chartView stopLoading];
 }
 
 - (void)viewDidLoad {
@@ -59,7 +63,7 @@
     _chartView.delegate  = self;
     [self.view addSubview:_chartView];
     
-    NSString *url = [NSString stringWithFormat:@"%@/%@/%@",_typeUrl,self.cityId,[self.cityName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSString *url = [NSString stringWithFormat:@"%@/%@/%@/%@",_typeUrl,self.cityId,[self.cityName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],[UntilObject getCityId]];
     [SVProgressHUD showWithStatus:nil];
     [_chartView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
     
