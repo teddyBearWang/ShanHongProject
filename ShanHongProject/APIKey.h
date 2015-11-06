@@ -14,6 +14,6 @@
 //const static NSString *APIKey = @"0f79304fde8ed02ae0fabf252d3c1bc1";
 
 //企业版KEY
-const static NSString *APIKey = @"99802f7a9162f8cbba0181289b2da4bc";
+const static NSString *APIKey = @"3992f2b833327cfed05eb0bca6f12549";
 
 #endif
